@@ -16,7 +16,7 @@ fausto = User.new(email: "fausto@tripper.com", password: "fausto123", first_name
 fausto.photo.attach(io: File.open('app/assets/images/user_seeds/fausto.png'), filename: "fausto.png", content_type: "image/png")
 fausto.save
 
-alexis = User.new(email: "alexis@tripper.com", password: "alexis123", first_name: "Florentin", last_name: "Alexis")
+alexis = User.new(email: "alexis@tripper.com", password: "alexis123", first_name: "Alexis", last_name: "Florentin")
 alexis.photo.attach(io: File.open('app/assets/images/user_seeds/alexis.png'), filename: "alexis.png", content_type: "image/png")
 alexis.save
 
@@ -24,7 +24,7 @@ gaetan = User.new(email: "gaetan@tripper.com", password: "gaetan123", first_name
 gaetan.photo.attach(io: File.open('app/assets/images/user_seeds/gaetan.png'), filename: "gaetan.png", content_type: "image/png")
 gaetan.save
 
-camila = User.new(email: "camila@tripper.com", password: "camila123", first_name: "Pedraza", last_name: "Camila")
+camila = User.new(email: "camila@tripper.com", password: "camila123", first_name: "Camila", last_name: "Pedraza")
 camila.photo.attach(io: File.open('app/assets/images/user_seeds/camila.png'), filename: "camila.png", content_type: "image/png")
 camila.save
 
