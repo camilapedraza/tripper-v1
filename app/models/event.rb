@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  EVENT_TYPES = %w[flight train bus boat car_bike stay restaurant show visit other]
+  EVENT_TYPES = %w[journey flight train bus boat car_bike stay restaurant show visit other]
 
   belongs_to :trip
   has_many :tasks, dependent: :destroy
@@ -11,6 +11,9 @@ class Event < ApplicationRecord
   # with_options if: :flight? do
   #   validates :
   # end
+  def journey?
+    event_type == "journey"
+  end
 
   def flight?
     event_type == "flight"
