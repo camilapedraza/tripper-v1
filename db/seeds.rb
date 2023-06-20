@@ -136,3 +136,152 @@ Event.create(
   start_location: "Chamonix-Mont-Blanc",
   end_location: "Paris 75007"
 )
+Event.create(
+  name: "Flight to Madrid",
+  trip: trip2,
+  event_type: "flight",
+  start_date: DateTime.new(2023, 5, 21, 10, 55),
+  end_date: DateTime.new(2023, 5, 21, 13, 05),
+  start_location: "Paris",
+  end_location: "Madrid, Spain",
+  provider: "Transavia"
+)
+Event.create(
+  name: "Madrid Appartment",
+  trip: trip2,
+  event_type: "stay",
+  start_date: DateTime.new(2023, 5, 21),
+  end_date: DateTime.new(2023, 5, 23),
+  start_location: "Calle de 2 de May 10, Madrid, Spain",
+  end_location: "Calle de 2 de May 10, Madrid, Spain",
+  notes: "Piso 4"
+)
+Event.create(
+  name: "From Madrid to Palma",
+  trip: trip2,
+  event_type: "flight",
+  start_date: DateTime.new(2023, 5, 23, 9, 30),
+  end_date: DateTime.new(2023, 5, 23, 10, 55),
+  start_location: "Madrid, Spain",
+  end_location: "Palma, Spain",
+  provider: "Iberia Express"
+)
+Event.create(
+  name: "Car rental",
+  trip: trip2,
+  event_type: "car/bike",
+  start_date: DateTime.new(2023, 5, 23),
+  end_date: DateTime.new(2023, 5, 28),
+  start_location: "Palma, Spain",
+  end_location: "Palma, Spain",
+  provider: "Sixt"
+)
+Event.create(
+  name: "Stay in Palma",
+  trip: trip2,
+  event_type: "stay",
+  start_date: DateTime.new(2023, 5, 23),
+  end_date: DateTime.new(2023, 5, 28),
+  start_location: "Carrer Princesa, 15, Can Picafort, Illes Balears",
+  end_location: "Carrer Princesa, 15, Can Picafort, Illes Balears"
+)
+Event.create(
+  name: "Flight to Madrid",
+  trip: trip2,
+  event_type: "flight",
+  start_date: DateTime.new(2023, 5, 28, 8),
+  end_date: DateTime.new(2023, 5, 28),
+  start_location: "Palma, Spain",
+  end_location: "Madrid, Spain",
+  provider: "Air Europa",
+  reservation_number: "UX6012"
+)
+Event.create(
+  name: "Flight to Lisbon",
+  trip: trip2,
+  event_type: "flight",
+  start_date: DateTime.new(2023, 5, 28),
+  end_date: DateTime.new(2023, 5, 28, 10, 50),
+  start_location: "Madrid, Spain",
+  end_location: "Lisbon, Portugal",
+  provider: "Air Europa",
+  reservation_number: "UX1153"
+)
+Event.create(
+  name: "Lisbon Appt",
+  trip: trip2,
+  event_type: "stay",
+  start_date: DateTime.new(2023, 5, 28),
+  end_date: DateTime.new(2023, 5, 30),
+  provider: "AirBnB",
+  start_location: "Lisbon, Portugal",
+  end_location: "Lisbon, Portugal",
+  notes: "Airbnb - Beco do Maquinez 10 Apartment #4 / Check-in after 3pm // Check-out before 11am"
+)
+Event.create(
+  name: "Car rental from Lisbon to Porto through Sintra",
+  trip: trip2,
+  event_type: "car/bike",
+  start_date: DateTime.new(2023, 5, 28),
+  end_date: DateTime.new(2023, 6, 5),
+  start_location: "Lisbon, Portugal",
+  end_location: "Porto, Portugal",
+  provider: "Sixt"
+)
+Event.create(
+  name: "Sintra stay",
+  trip: trip2,
+  event_type: "stay",
+  start_date: DateTime.new(2023, 5, 30),
+  end_date: DateTime.new(2023, 6, 1),
+  provider: "AirBnB",
+  start_location: "Rua Ferraria 8, Sintra, Portugal",
+  end_location: "Rua Ferraria 8, Sintra, Portugal",
+  notes: "Check-in after 2pm // Check-out before 11am"
+)
+Event.create(
+  name: "Quinta da Regaleira",
+  trip: trip2,
+  event_type: "visit",
+  start_date: DateTime.new(2023, 5, 31, 10, 30),
+  end_date: DateTime.new(2023, 5, 31),
+  start_location: "R. Barbosa du Bocage 5, 2710-567 Sintra, Portugal",
+  end_location: "R. Barbosa du Bocage 5, 2710-567 Sintra, Portugal"
+)
+Event.create(
+  name: "Pena Palace",
+  trip: trip2,
+  event_type: "visit",
+  start_date: DateTime.new(2023, 5, 31, 14, 30),
+  end_date: DateTime.new(2023, 5, 31),
+  start_location: "Estrada da Pena, 2710-609 Sintra, Portugal",
+  end_location: "Estrada da Pena, 2710-609 Sintra, Portugal"
+)
+Event.create(
+  name: "Monserrate",
+  trip: trip2,
+  event_type: "visit",
+  start_date: DateTime.new(2023, 6, 1, 10),
+  end_date: DateTime.new(2023, 6, 1),
+  start_location: "Sintra, Portugal",
+  end_location: "Sintra, Portugal"
+)
+Event.create(
+  name: "Porto stay",
+  trip: trip2,
+  event_type: "stay",
+  start_date: DateTime.new(2023, 6, 1),
+  end_date: DateTime.new(2023, 6, 5),
+  provider: "AirBnB",
+  start_location: "Rua da Alegria 120 1º frente, Porto, Portugal",
+  end_location: "Rua da Alegria 120 1º frente, Porto, Portugal"
+)
+Event.create(
+  name: "Fado show",
+  trip: trip2,
+  event_type: "show",
+  start_date: DateTime.new(2023, 6, 4),
+  end_date: DateTime.new(2023, 6, 4),
+  start_location: "Porto, Portugal",
+  end_location: "Porto, Portugal"
+)
