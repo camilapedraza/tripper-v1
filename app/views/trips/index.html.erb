@@ -1,0 +1,16 @@
+<h1>My Trips</h1>
+<% @trips.each do |trip| %>
+  <strong><%= trip.name %></strong>
+  <ul>
+    <% if trip.events.any? %>
+      <%# This location needs to be run through geocoder so it's prettier %>
+      <%# For multidestination trips, this location makes no sense (my trip says the destination is Madrid) %>
+      <li><%= trip.events.first.end_location %></li>
+      <li>From: <%= trip.events.first.start_date.strftime("%b %d") %> - To: <%= trip.events.last.end_date.strftime("%b %d") %> </li>
+      <li><%= pluralize(trip.events.count, "event")%></li>
+    <% else %>
+      <li>No events for this trip yet</li>
+    <% end %>
+      <li><%= pluralize(trip.collaborators.count + 1, "tripper") %></li>
+  </ul>
+<% end %>
