@@ -285,3 +285,146 @@ Event.create(
   start_location: "Porto, Portugal",
   end_location: "Porto, Portugal"
 )
+Event.create(
+  name: "Flight to Bordeaux",
+  trip: trip2,
+  event_type: "flight",
+  start_date: DateTime.new(2023, 6, 5, 16, 5),
+  end_date: DateTime.new(2023, 6, 5, 18, 40),
+  start_location: "Porto, Portugal",
+  end_location: "Bordeaux, France"
+)
+Event.create(
+  name: "Bordeaux stay",
+  trip: trip2,
+  event_type: "stay",
+  start_date: DateTime.new(2023, 6, 5),
+  end_date: DateTime.new(2023, 6, 8),
+  provider: "AirBnB",
+  start_location: "Chem. de Port Leyron, 33880 Baurech, France",
+  end_location: "Chem. de Port Leyron, 33880 Baurech, France"
+)
+Event.create(
+  name: "Train to Paris",
+  trip: trip2,
+  event_type: "train",
+  start_date: DateTime.new(2023, 6, 8, 12, 20),
+  end_date: DateTime.new(2023, 6, 8, 14, 41),
+  provider: "Ouigo",
+  start_location: "Bordeaux Saint-Jean, France",
+  end_location: "Paris Montparnasse, France"
+)
+Event.create(
+  name: "Restaurant Pain Vin Fromages",
+  trip: trip2,
+  event_type: "restaurant",
+  start_date: DateTime.new(2023, 6, 10, 21, 15),
+  end_date: DateTime.new(2023, 6, 10),
+  start_location: "3 Rue Geoffroy l'Angevin, 75004 Paris",
+  end_location: "3 Rue Geoffroy l'Angevin, 75004 Paris"
+)
+Event.create(
+  name: "Sainte Chapelle",
+  trip: trip2,
+  event_type: "visit",
+  start_date: DateTime.new(2023, 6, 11, 11),
+  end_date: DateTime.new(2023, 6, 11),
+  start_location: "10 Bd du Palais, 75001 Paris",
+  end_location: "10 Bd du Palais, 75001 Paris"
+)
+Event.create(
+  name: "Chateau de Versailles",
+  trip: trip2,
+  event_type: "visit",
+  start_date: DateTime.new(2023, 6, 11, 14, 30),
+  end_date: DateTime.new(2023, 6, 11),
+  start_location: "Place d'Armes, 78000 Versailles",
+  end_location: "Place d'Armes, 78000 Versailles"
+)
+Event.create(
+  name: "Giverny Monet",
+  trip: trip2,
+  event_type: "visit",
+  start_date: DateTime.new(2023, 6, 12, 12, 30),
+  end_date: DateTime.new(2023, 6, 12),
+  start_location: "84 Rue Claude Monet, 27620 Giverny",
+  end_location: "84 Rue Claude Monet, 27620 Giverny"
+)
+Event.create(
+  name: "Eiffel Tower",
+  trip: trip2,
+  event_type: "visit",
+  start_date: DateTime.new(2023, 6, 12, 21, 30),
+  end_date: DateTime.new(2023, 6, 12),
+  start_location: "Champ de Mars, 5 Av. Anatole France, 75007 Paris",
+  end_location: "Champ de Mars, 5 Av. Anatole France, 75007 Paris"
+)
+Event.create(
+  name: "Orangerie",
+  trip: trip2,
+  event_type: "visit",
+  start_date: DateTime.new(2023, 6, 13),
+  end_date: DateTime.new(2023, 6, 13),
+  start_location: "Jardin des Tuileries, 75001 Paris",
+  end_location: "Jardin des Tuileries, 75001 Paris"
+)
+Event.create(
+  name: "Louvre Museum",
+  trip: trip2,
+  event_type: "visit",
+  start_date: DateTime.new(2023, 6, 14, 10),
+  end_date: DateTime.new(2023, 6, 14),
+  start_location: "75001 Paris",
+  end_location: "75001 Paris"
+)
+Event.create(
+  name: "Vol vers le Lavandou",
+  trip: trip4,
+  event_type: "flight",
+  start_date: DateTime.new(2023, 7, 16, 13, 20),
+  end_date: DateTime.new(2023, 7, 16, 15, 5),
+  provider: "Easyjet",
+  seat_number: "12A",
+  start_location: "Aéroport Paris-Charles de Gaulle, 95700 Roissy-en-France",
+  end_location: "Aéroport de Toulon-Hyères, Bd de la Marine, 83400 Hyères"
+)
+Event.create(
+  name: "Première cuite au Mix",
+  trip: trip4,
+  event_type: "restaurant",
+  provider: "Le Mix",
+  provider_phone: "04 89 66 91 85",
+  start_date: DateTime.new(2023, 7, 16, 21),
+  end_date: DateTime.new(2023, 7, 17),
+  start_location: "Quai d'Honneur, 83980 Le Lavandou",
+  end_location: "Quai d'Honneur, 83980 Le Lavandou"
+)
+Event.create(
+  name: "Marché artisanal nocturne (front de mer du Lavandou)",
+  trip: trip4,
+  event_type: "other",
+  start_date: DateTime.new(2023, 7, 19),
+  end_date: DateTime.new(2023, 7, 19),
+  start_location: "Front de mer, 83980 Le Lavandou",
+  end_location: "Front de mer, 83980 Le Lavandou"
+)
+Event.create(
+  name: "Langoustes au restaurant Plage du Layet",
+  trip: trip4,
+  event_type: "restaurant",
+  start_date: DateTime.new(2023, 7, 20, 12, 30),
+  end_date: DateTime.new(2023, 7, 20),
+  start_location: "Plage du Layet, 83980 Cavaliere",
+  end_location: "Plage du Layet, 83980 Cavaliere"
+)
+Event.create(
+  name: "Back to home",
+  trip: trip4,
+  event_type: "flight",
+  start_date: DateTime.new(2023, 7, 23, 15, 40),
+  end_date: DateTime.new(2023, 7, 16, 23, 17, 25),
+  provider: "Easyjet",
+  seat_number: "12A",
+  start_location: "Aéroport de Toulon-Hyères, Bd de la Marine, 83400 Hyères",
+  end_location: "Aéroport Paris-Charles de Gaulle, 95700 Roissy-en-France"
+)
