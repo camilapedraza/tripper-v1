@@ -1,16 +1,25 @@
 <h1>My Trips</h1>
-<% @trips.each do |trip| %>
-  <strong><%= trip.name %></strong>
-  <ul>
-    <% if trip.events.any? %>
-      <%# This location needs to be run through geocoder so it's prettier %>
-      <%# For multidestination trips, this location makes no sense (my trip says the destination is Madrid) %>
-      <li><%= trip.events.first.end_location %></li>
-      <li>From: <%= trip.events.first.start_date.strftime("%b %d") %> - To: <%= trip.events.last.end_date.strftime("%b %d") %> </li>
-      <li><%= pluralize(trip.events.count, "event")%></li>
-    <% else %>
-      <li>No events for this trip yet</li>
-    <% end %>
-      <li><%= pluralize(trip.collaborators.count + 1, "tripper") %></li>
-  </ul>
+<br>
+<div><a class="btn btn-primary" href="#" role="button">Add a Trip</a><div>
+<br>
+<% if @trips.any? %>
+  <% @trips.each do |trip| %>
+  <div>
+    <strong><%= trip.name %></strong>
+      <% if trip.events.any? %>
+        <%# This location needs to be run through geocoder so it's prettier %>
+        <%# For multidestination trips, this location makes no sense (my trip says the destination is Madrid) %>
+        <br><%= trip.events.first.end_location %>
+        <br>From: <%= trip.events.first.start_date.strftime("%b %d") %> - To: <%= trip.events.last.end_date.strftime("%b %d") %>
+        <br><%= pluralize(trip.events.count, "event")%>
+      <% else %>
+        <br>No events for this trip yet
+      <% end %>
+        <br><%= pluralize(trip.collaborators.count + 1, "tripper") %>
+        <br>
+  </div>
+  <br>
+  <% end %>
+<% else %>
+  Hmm. It's pretty quiet here. Click on "ADD A TRIP" to start!
 <% end %>
