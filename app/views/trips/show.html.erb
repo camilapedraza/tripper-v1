@@ -20,7 +20,7 @@
   </div>
 
   <div>
-  <i class="fa-solid fa-arrow-up-from-bracket"></i>
+   <i class="fa-solid fa-arrow-up-from-bracket"></i>
   </div>
 </div>
 
@@ -33,16 +33,42 @@
     <% @grouped_events = @chron_events.group_by { |e| e.start_date.to_date } %>
     <% @grouped_events.each do |day, events| %>
       <div>
-      <strong><%= day.strftime("%b %d") %></strong>
-      <%= pluralize(events.count, "event") %>
+        <strong><%= day.strftime("%b %d") %></strong>
+        <%= pluralize(events.count, "event") %>
       </div>
+      <div>
       <% events.each do |event| %>
-        <%= event.start_date.strftime("%I:%M") %>
-        <%= event.event_type == "other" ? event.name : event.event_type %>
-        <%= event.end_date.strftime("%I:%M") %>
-        <br>
-      <% end %>
+          <% case event.event_type
+              when "journey" %>
+                <%= event.start_date.strftime("%I:%M") %>
+                <%= event.start_date.strftime("%b %d") %>
+                --- <%= event.event_type.upcase %> ---
+                <%= event.end_date.strftime("%I:%M") %>
+                <%= event.end_date.strftime("%b %d") %>
+                <br>
+                <%= event.start_location %>
+                <% @duration = (event.end_date - event.start_date) %>
+                --- <%= @duration.to_i/6000 %>h <%= @duration.to_i % 60 %>mins ---
+                <%= event.end_location %>
+                <br>
+              <% when "flight", "train", "bus", "boat" %>
+                <%= event.event_type.upcase %>
+              <% when "car_bike" %>
+                "car_bike"
+              <% when "stay" %>
+                "stay"
+              <% when "restaurant", "show", "visit" %>
+                "restaurant / show / visit"
+              <% else %>
+                <%= event.name.upcase %>
+          <% end %>
+          <%# event.start_date.strftime("%I:%M") %>
+          <%# event.event_type == "other" ? event.name.upcase : event.event_type.upcase %>
+          <%# event.end_date.strftime("%I:%M") %>
+          <br>
+        <% end %>
+      </div>
       <br>
-    <% end %>
+    <% end # grouped events do%>
   </div>
 </div>
