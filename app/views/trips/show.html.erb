@@ -38,7 +38,9 @@
       </div>
       <% events.each do |event| %>
         <%= event.start_date.strftime("%I:%M") %>
-        <%= event.event_type == "other" ? event.name : event.event_type %><br>
+        <%= event.event_type == "other" ? event.name : event.event_type %>
+        <%= event.end_date.strftime("%I:%M") %>
+        <br>
       <% end %>
       <br>
     <% end %>

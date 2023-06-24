@@ -6,9 +6,10 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 puts "Cleaning Database"
-Trip.destroy_all
+Collaborator.destroy_all
 Event.destroy_all
 Task.destroy_all
+Trip.destroy_all
 User.destroy_all
 
 puts "Creating users"
@@ -34,19 +35,19 @@ camila.save
 
 puts "Creating trips"
 trip1 = Trip.new(
-  name: "Varigotti with family",
+  name: "Varigotti with Family",
   user: fausto
 )
 trip1.save
 
 trip2 = Trip.new(
-  name: "Family trip accross Europe",
+  name: "Family Eurotrip",
   user: camila
 )
 trip2.save
 
 trip3 = Trip.new(
-  name: "Trip to Croatia with my friends",
+  name: "Trip to Croatia with friends",
   user: alexis
 )
 trip3.save
@@ -64,7 +65,7 @@ trip5 = Trip.new(
 trip5.save
 
 trip6 = Trip.new(
-  name: "Pragua with hubby",
+  name: "Prague with Hubby",
   user: camila
 )
 trip6.save
@@ -92,7 +93,7 @@ Event.create(
   end_location: "Annecy 74000"
 )
 Event.create(
-  name: "Car road with family to Varigotti",
+  name: "Car rid with family to Varigotti",
   trip: trip1,
   event_type: "journey",
   start_date: DateTime.new(2023, 7, 17, 10),
@@ -101,11 +102,11 @@ Event.create(
   end_location: "Varigotti, Savone, Italie"
 )
 Event.create(
-  name: "Bike in family",
+  name: "Biking with family",
   trip: trip1,
   event_type: "other",
-  start_date: DateTime.new(2023, 7, 20, 14),
-  end_date: DateTime.new(2023, 7, 17, 20, 20),
+  start_date: DateTime.new(2023, 7, 17, 16, 00),
+  end_date: DateTime.new(2023, 7, 17, 20, 30),
   start_location: "Varigotti, Savone, Italie",
   end_location: "Varigotti, Savone, Italie"
 )
@@ -119,16 +120,16 @@ Event.create(
   end_location: "Savona, Savone, Italie"
 )
 Event.create(
-  name: "Going to Chamonix",
+  name: "Car ride to Chamonix",
   trip: trip1,
   event_type: "journey",
-  start_date: DateTime.new(2023, 7, 28, 8),
+  start_date: DateTime.new(2023, 7, 24, 8),
   end_date: DateTime.new(2023, 7, 24, 12),
   start_location: "Varigotti, Savone, Italie",
   end_location: "Chamonix-Mont-Blanc"
 )
 Event.create(
-  name: "Going home",
+  name: "Trip home",
   trip: trip1,
   event_type: "journey",
   start_date: DateTime.new(2023, 7, 29, 11),
@@ -147,13 +148,13 @@ Event.create(
   provider: "Transavia"
 )
 Event.create(
-  name: "Madrid Appartment",
+  name: "Madrid Apartment",
   trip: trip2,
   event_type: "stay",
   start_date: DateTime.new(2023, 5, 21),
   end_date: DateTime.new(2023, 5, 23),
-  start_location: "Calle de 2 de May 10, Madrid, Spain",
-  end_location: "Calle de 2 de May 10, Madrid, Spain",
+  start_location: "Calle de 2 de Mayo 10, Madrid, Spain",
+  end_location: "Calle de 2 de Mayo 10, Madrid, Spain",
   notes: "Piso 4"
 )
 Event.create(
@@ -190,7 +191,7 @@ Event.create(
   trip: trip2,
   event_type: "flight",
   start_date: DateTime.new(2023, 5, 28, 8),
-  end_date: DateTime.new(2023, 5, 28),
+  end_date: DateTime.new(2023, 5, 28, 9),
   start_location: "Palma, Spain",
   end_location: "Madrid, Spain",
   provider: "Air Europa",
@@ -200,7 +201,7 @@ Event.create(
   name: "Flight to Lisbon",
   trip: trip2,
   event_type: "flight",
-  start_date: DateTime.new(2023, 5, 28),
+  start_date: DateTime.new(2023, 5, 28, 9, 50),
   end_date: DateTime.new(2023, 5, 28, 10, 50),
   start_location: "Madrid, Spain",
   end_location: "Lisbon, Portugal",
@@ -208,7 +209,7 @@ Event.create(
   reservation_number: "UX1153"
 )
 Event.create(
-  name: "Lisbon Appt",
+  name: "Lisbon Apt",
   trip: trip2,
   event_type: "stay",
   start_date: DateTime.new(2023, 5, 28),
@@ -244,7 +245,7 @@ Event.create(
   trip: trip2,
   event_type: "visit",
   start_date: DateTime.new(2023, 5, 31, 10, 30),
-  end_date: DateTime.new(2023, 5, 31),
+  end_date: DateTime.new(2023, 5, 31, 16, 30),
   start_location: "R. Barbosa du Bocage 5, 2710-567 Sintra, Portugal",
   end_location: "R. Barbosa du Bocage 5, 2710-567 Sintra, Portugal"
 )
@@ -252,8 +253,8 @@ Event.create(
   name: "Pena Palace",
   trip: trip2,
   event_type: "visit",
-  start_date: DateTime.new(2023, 5, 31, 14, 30),
-  end_date: DateTime.new(2023, 5, 31),
+  start_date: DateTime.new(2023, 5, 31, 10, 30),
+  end_date: DateTime.new(2023, 5, 31, 16, 30),
   start_location: "Estrada da Pena, 2710-609 Sintra, Portugal",
   end_location: "Estrada da Pena, 2710-609 Sintra, Portugal"
 )
@@ -262,7 +263,7 @@ Event.create(
   trip: trip2,
   event_type: "visit",
   start_date: DateTime.new(2023, 6, 1, 10),
-  end_date: DateTime.new(2023, 6, 1),
+  end_date: DateTime.new(2023, 6, 1, 13),
   start_location: "Sintra, Portugal",
   end_location: "Sintra, Portugal"
 )
@@ -280,8 +281,8 @@ Event.create(
   name: "Fado show",
   trip: trip2,
   event_type: "show",
-  start_date: DateTime.new(2023, 6, 4),
-  end_date: DateTime.new(2023, 6, 4),
+  start_date: DateTime.new(2023, 6, 4, 20),
+  end_date: DateTime.new(2023, 6, 4, 22),
   start_location: "Porto, Portugal",
   end_location: "Porto, Portugal"
 )
@@ -328,7 +329,7 @@ Event.create(
   trip: trip2,
   event_type: "visit",
   start_date: DateTime.new(2023, 6, 11, 11),
-  end_date: DateTime.new(2023, 6, 11),
+  end_date: DateTime.new(2023, 6, 11, 13),
   start_location: "10 Bd du Palais, 75001 Paris",
   end_location: "10 Bd du Palais, 75001 Paris"
 )
@@ -337,7 +338,7 @@ Event.create(
   trip: trip2,
   event_type: "visit",
   start_date: DateTime.new(2023, 6, 11, 14, 30),
-  end_date: DateTime.new(2023, 6, 11),
+  end_date: DateTime.new(2023, 6, 11, 19, 30),
   start_location: "Place d'Armes, 78000 Versailles",
   end_location: "Place d'Armes, 78000 Versailles"
 )
@@ -346,7 +347,7 @@ Event.create(
   trip: trip2,
   event_type: "visit",
   start_date: DateTime.new(2023, 6, 12, 12, 30),
-  end_date: DateTime.new(2023, 6, 12),
+  end_date: DateTime.new(2023, 6, 12, 17),
   start_location: "84 Rue Claude Monet, 27620 Giverny",
   end_location: "84 Rue Claude Monet, 27620 Giverny"
 )
@@ -355,7 +356,7 @@ Event.create(
   trip: trip2,
   event_type: "visit",
   start_date: DateTime.new(2023, 6, 12, 21, 30),
-  end_date: DateTime.new(2023, 6, 12),
+  end_date: DateTime.new(2023, 6, 12, 23, 30),
   start_location: "Champ de Mars, 5 Av. Anatole France, 75007 Paris",
   end_location: "Champ de Mars, 5 Av. Anatole France, 75007 Paris"
 )
@@ -363,8 +364,8 @@ Event.create(
   name: "Orangerie",
   trip: trip2,
   event_type: "visit",
-  start_date: DateTime.new(2023, 6, 13),
-  end_date: DateTime.new(2023, 6, 13),
+  start_date: DateTime.new(2023, 6, 13, 10),
+  end_date: DateTime.new(2023, 6, 13, 16, 45),
   start_location: "Jardin des Tuileries, 75001 Paris",
   end_location: "Jardin des Tuileries, 75001 Paris"
 )
@@ -373,7 +374,7 @@ Event.create(
   trip: trip2,
   event_type: "visit",
   start_date: DateTime.new(2023, 6, 14, 10),
-  end_date: DateTime.new(2023, 6, 14),
+  end_date: DateTime.new(2023, 6, 14, 18),
   start_location: "75001 Paris",
   end_location: "75001 Paris"
 )
@@ -395,7 +396,7 @@ Event.create(
   provider: "Le Mix",
   provider_phone: "04 89 66 91 85",
   start_date: DateTime.new(2023, 7, 16, 21),
-  end_date: DateTime.new(2023, 7, 17),
+  end_date: DateTime.new(2023, 7, 17, 3),
   start_location: "Quai d'Honneur, 83980 Le Lavandou",
   end_location: "Quai d'Honneur, 83980 Le Lavandou"
 )
@@ -486,4 +487,24 @@ Event.create(
   provider: "Transavia",
   start_location: "Dobrota24, 20213, Čilipi, Croatie",
   end_location: "94390 Orly"
+)
+
+Collaborator.create(
+  trip: trip1,
+  user: alexis
+)
+
+Collaborator.create(
+  trip: trip1,
+  user: camila
+)
+
+Collaborator.create(
+  trip: trip1,
+  user: gaetan
+)
+
+Collaborator.create(
+  trip: trip2,
+  user: fausto
 )
