@@ -1,9 +1,14 @@
 <h1><%= @trip.name %></h1>
 <div>
-  <a><%= link_to 'Edit trip details', edit_trip_path, class: "btn btn-light text-dark" %></a>
-  <a><%= link_to 'Back to trip list', trips_path, class: "btn btn-info" %></a>
+  <%= link_to trips_path do %>
+    <i class="fa-solid fa-arrow-left fa-xl"></i>
+  <% end %>
+  <%= link_to edit_trip_path do %>
+    <i class="fa-solid fa-pen-to-square fa-lg"></i>
+  <% end %>
 </div>
-
+<br>
+<br>
 <div>
   <div>
     <% @trippers.first(3).each do |user| %>
@@ -20,3 +25,22 @@
 </div>
 
 <div>
+  <div>
+    <a href="#" class="btn btn-primary">Add Event</a>
+    <a href="#"> Expand All</a>
+  </div>
+  <div>
+    <% @grouped_events = @chron_events.group_by { |e| e.start_date.to_date } %>
+    <% @grouped_events.each do |day, events| %>
+      <div>
+      <strong><%= day.strftime("%b %d") %></strong>
+      <%= pluralize(events.count, "event") %>
+      </div>
+      <% events.each do |event| %>
+        <%= event.start_date.strftime("%I:%M") %>
+        <%= event.event_type == "other" ? event.name : event.event_type %><br>
+      <% end %>
+      <br>
+    <% end %>
+  </div>
+</div>

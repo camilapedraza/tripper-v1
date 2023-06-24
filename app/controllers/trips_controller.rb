@@ -8,6 +8,7 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @trippers = group_trippers(@trip)
+    @chron_events = @trip.events.order(start_date: :asc)
   end
 
   def new
