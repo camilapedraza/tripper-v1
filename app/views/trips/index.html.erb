@@ -7,11 +7,12 @@
   <div>
     <strong><%= trip.name %></strong>
       <% if trip.events.any? %>
-        <%# This location needs to be run through geocoder so it's prettier %>
+        <% @events = trip.events.order(:start_date) %>
+        <%# This location needs to be run through geocoder so it's prettier (potentially sample list of cities) %>
         <%# For multidestination trips, this location makes no sense (my trip says the destination is Madrid) %>
-        <br><%= trip.events.first.end_location %>
-        <br>From: <%= trip.events.first.start_date.strftime("%b %d") %> - To: <%= trip.events.last.end_date.strftime("%b %d") %>
-        <br><%= pluralize(trip.events.count, "event")%>
+        <br><%= @events.last.end_location %>
+        <br>From: <%= @events.first.start_date.strftime("%b %d") %> - To: <%= @events.last.end_date.strftime("%b %d") %>
+        <br><%= pluralize(@events.count, "event")%>
       <% else %>
         <br>No events for this trip yet
       <% end %>
