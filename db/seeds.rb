@@ -439,6 +439,45 @@ Event.create(
   end_location: "Dobrota24, 20213, Čilipi, Croatie"
 )
 Event.create(
+  name: "Visite panoramique en bus décapotable",
+  trip: trip3,
+  event_type: "visit",
+  start_date: DateTime.new(2023, 7, 22),
+  end_date: DateTime.new(2023, 7, 22),
+  start_location: "Dubrovnik, Croatie",
+  end_location: "Dubrovnk, Croatie"
+)
+Event.create(
+  name: "Grotte bleue",
+  trip: trip3,
+  event_type: "boat",
+  start_date: DateTime.new(2023, 7, 22),
+  end_date: DateTime.new(2023, 7, 22),
+  provider: "Dubrovnik Islands Tours",
+  start_location: "Dubrovnik, Croatie",
+  end_location: "Dubrovnk, Croatie"
+)
+Event.create(
+  name: "Trip to Split",
+  trip: trip3,
+  event_type: "bus",
+  start_date: DateTime.new(2023, 7, 23, 5),
+  end_date: DateTime.new(2023, 7, 23, 9, 32),
+  provider: "Čazmatrans",
+  start_location: "Dubrovnik, Croatie",
+  end_location: "Split, Croatie"
+)
+Event.create(
+  name: "Return to Dubrovnik",
+  trip: trip3,
+  event_type: "bus",
+  start_date: DateTime.new(2023, 7, 23, 22),
+  end_date: DateTime.new(2023, 7, 24, 2),
+  provider: "Samoborček",
+  start_location: "Split, Croatie",
+  end_location: "Dubrovnik, Croatie"
+)
+Event.create(
   name: "Return to Paris",
   trip: trip3,
   event_type: "flight",
