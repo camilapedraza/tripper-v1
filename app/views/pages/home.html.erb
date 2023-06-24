@@ -1,2 +1,19 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container d-grid justify-content-center text-center">
+  <div id="hero">
+    <h1>Tripper</h1>
+    <h4>Making travel easy</h4>
+    <p class="font-italic">All your reservations, flights and travel<br>informations on a single place.</p>
+    <div class="container d-grid justify-content-center text-center">
+      <a><%= link_to "Create an account", new_user_registration_path, class: "btn primary-button"%></a>
+      <a><%= link_to "Login", new_user_session_path, class: "btn secondary-button mt-3"%></a>
+    </div>
+  </div>
+  <div id="swipe-up">
+    <p>Swipe up to learn more!</p>
+  </div>
+  <div id="tuto" class="d-none">
+    <h4>Store all your reservations, travel documents and plans</h4>
+    <h4>Build itineraries that are easy to scan and search</h4>
+    <h4>Fetch anything you need with one single click</h4>
+  </div>
+</div>
