@@ -1,0 +1,20 @@
+<h1><%= @trip.name %></h1>
+
+<div>
+  <div>
+    <% @trippers.first(3).each do |user| %>
+      <img class="rounded-circle" width="30px" height="30px" src="<%= user.photo.attached? ? image_path("user_seeds/#{user.photo.filename}") : image_path('avatar.png') %>" />
+    <% end %>
+    <% if @trippers.count > 3 %>
+      <span class="rounded-pill border border-success p-2">+ <%= pluralize(@trippers.count - 3, "tripper") %></span>
+    <% end %>
+  </div>
+
+  <div>
+  <i class="fa-solid fa-arrow-up-from-bracket"></i>
+  </div>
+</div>
+
+<div>
+
+</div>
