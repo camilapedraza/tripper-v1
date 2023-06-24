@@ -1,4 +1,8 @@
 <h1><%= @trip.name %></h1>
+<div>
+  <a><%= link_to 'Edit trip details', edit_trip_path, class: "btn btn-light text-dark" %></a>
+  <a><%= link_to 'Back to trip list', trips_path, class: "btn btn-info" %></a>
+</div>
 
 <div>
   <div>
@@ -16,5 +20,3 @@
 </div>
 
 <div>
-
-</div>

@@ -422,7 +422,7 @@ Event.create(
   trip: trip4,
   event_type: "flight",
   start_date: DateTime.new(2023, 7, 23, 15, 40),
-  end_date: DateTime.new(2023, 7, 16, 23, 17, 25),
+  end_date: DateTime.new(2023, 7, 23, 17, 25),
   provider: "Easyjet",
   seat_number: "12A",
   start_location: "Aéroport de Toulon-Hyères, Bd de la Marine, 83400 Hyères",
