@@ -23,6 +23,8 @@ class TripsController < ApplicationController
   end
 
   def update
+    @trip.update(trip_params)
+    redirect_to trip_path(@trip)
   end
 
   private
