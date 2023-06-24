@@ -1,0 +1,26 @@
+<h1>My Trips</h1>
+<br>
+<div><a class="btn btn-primary" href="#" role="button">Add a Trip</a><div>
+<br>
+<% if @trips.any? %>
+  <% @trips.each do |trip| %>
+  <div>
+    <strong><%= trip.name %></strong>
+      <% if trip.events.any? %>
+        <% @events = trip.events.order(:start_date) %>
+        <%# This location needs to be run through geocoder so it's prettier (potentially sample list of cities) %>
+        <%# For multidestination trips, this location makes no sense (my trip says the destination is Madrid) %>
+        <br><%= @events.last.end_location %>
+        <br>From: <%= @events.first.start_date.strftime("%b %d") %> - To: <%= @events.last.end_date.strftime("%b %d") %>
+        <br><%= pluralize(@events.count, "event")%>
+      <% else %>
+        <br>No events for this trip yet
+      <% end %>
+        <br><%= pluralize(trip.collaborators.count + 1, "tripper") %>
+        <br>
+  </div>
+  <br>
+  <% end %>
+<% else %>
+  Hmm. It's pretty quiet here. Click on "ADD A TRIP" to start!
+<% end %>
