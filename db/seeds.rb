@@ -428,3 +428,23 @@ Event.create(
   start_location: "Aéroport de Toulon-Hyères, Bd de la Marine, 83400 Hyères",
   end_location: "Aéroport Paris-Charles de Gaulle, 95700 Roissy-en-France"
 )
+Event.create(
+  name: "Flight to Dubrovnik",
+  trip: trip3,
+  event_type: "flight",
+  start_date: DateTime.new(2023, 7, 20, 9, 30),
+  end_date: DateTime.new(2023, 7, 20, 14, 50),
+  provider: "Transavia",
+  start_location: "94390 Orly",
+  end_location: "Dobrota24, 20213, Čilipi, Croatie"
+)
+Event.create(
+  name: "Return to Paris",
+  trip: trip3,
+  event_type: "flight",
+  start_date: DateTime.new(2023, 7, 24, 9, 10),
+  end_date: DateTime.new(2023, 7, 24, 11, 40),
+  provider: "Transavia",
+  start_location: "Dobrota24, 20213, Čilipi, Croatie",
+  end_location: "94390 Orly"
+)
