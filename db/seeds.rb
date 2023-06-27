@@ -143,7 +143,7 @@ Event.create(
   event_type: "flight",
   start_date: DateTime.new(2023, 5, 21, 10, 55),
   end_date: DateTime.new(2023, 5, 21, 13, 05),
-  start_location: "Paris",
+  start_location: "Paris, France",
   end_location: "Madrid, Spain",
   provider: "Transavia"
 )
@@ -153,8 +153,10 @@ Event.create(
   event_type: "stay",
   start_date: DateTime.new(2023, 5, 21),
   end_date: DateTime.new(2023, 5, 23),
-  start_location: "Calle de 2 de Mayo 10, Madrid, Spain",
-  end_location: "Calle de 2 de Mayo 10, Madrid, Spain",
+  start_location: "Madrid, Spain",
+  end_location: "Madrid, Spain",
+  provider: "AirBnB",
+  provider_address: "Calle de 2 de Mayo 10",
   notes: "Piso 4"
 )
 Event.create(
@@ -183,8 +185,10 @@ Event.create(
   event_type: "stay",
   start_date: DateTime.new(2023, 5, 23),
   end_date: DateTime.new(2023, 5, 28),
-  start_location: "Carrer Princesa, 15, Can Picafort, Illes Balears",
-  end_location: "Carrer Princesa, 15, Can Picafort, Illes Balears"
+  provider: "AirBnB",
+  provider_address: "Carrer Princesa, 15, Can Picafort, Illes Balears",
+  start_location: "Mallorca",
+  end_location: "Mallorca"
 )
 Event.create(
   name: "Flight to Madrid",
@@ -215,9 +219,10 @@ Event.create(
   start_date: DateTime.new(2023, 5, 28),
   end_date: DateTime.new(2023, 5, 30),
   provider: "AirBnB",
-  start_location: "Lisbon, Portugal",
-  end_location: "Lisbon, Portugal",
-  notes: "Airbnb - Beco do Maquinez 10 Apartment #4 / Check-in after 3pm // Check-out before 11am"
+  provider_address: "Beco do Maquinez 10",
+  start_location: "Lisbon",
+  end_location: "Lisbon",
+  notes: "Airbnb - Apartment #4 / Check-in after 3pm // Check-out before 11am"
 )
 Event.create(
   name: "Car rental from Lisbon to Porto through Sintra",
@@ -236,8 +241,9 @@ Event.create(
   start_date: DateTime.new(2023, 5, 30),
   end_date: DateTime.new(2023, 6, 1),
   provider: "AirBnB",
-  start_location: "Rua Ferraria 8, Sintra, Portugal",
-  end_location: "Rua Ferraria 8, Sintra, Portugal",
+  provider_address: "Rua Ferraria 8",
+  start_location: "Sintra, Portugal",
+  end_location: "Sintra, Portugal",
   notes: "Check-in after 2pm // Check-out before 11am"
 )
 Event.create(
@@ -274,8 +280,9 @@ Event.create(
   start_date: DateTime.new(2023, 6, 1),
   end_date: DateTime.new(2023, 6, 5),
   provider: "AirBnB",
-  start_location: "Rua da Alegria 120 1º frente, Porto, Portugal",
-  end_location: "Rua da Alegria 120 1º frente, Porto, Portugal"
+  provider_address: "Rua da Alegria 120",
+  start_location: "Porto, Portugal",
+  end_location: "Porto, Portugal"
 )
 Event.create(
   name: "Fado show",
