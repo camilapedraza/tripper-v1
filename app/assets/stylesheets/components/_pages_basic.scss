@@ -1,0 +1,35 @@
+#hero {
+  width: 390px;
+  height: 520px;
+  border-bottom-left-radius: 47px;
+  border-bottom-right-radius: 47px;
+  background: lightgray 50% / cover no-repeat;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+#hero .page-picture {
+  position: relative;
+}
+
+#hero h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.page-flex {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.page-description {
+  width: 60%;
+  text-align: center;
+}
