@@ -1,6 +1,8 @@
 <h1>My Trips</h1>
 <br>
-<div><a class="btn btn-primary" href="#" role="button">Add a Trip</a><div>
+<div>
+  <a><%= link_to "Add a trip",  new_trip_path, class: "btn btn-primary" %></a>
+</div>
 <br>
 <% if @trips.any? %>
   <% @trips.each do |trip| %>

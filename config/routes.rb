@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :trips, only: :index
   get '/components', to: 'pages#components'
+  
+  resources :trips, only: %i[index show new create edit update]
   # Defines the root path route ("/")
   # root "articles#index"
 end
