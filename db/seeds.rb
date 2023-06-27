@@ -145,7 +145,9 @@ Event.create(
   end_date: DateTime.new(2023, 5, 21, 13, 05),
   start_location: "Paris, France",
   end_location: "Madrid, Spain",
-  provider: "Transavia"
+  provider: "Transavia",
+  reservation_number: "YTR89Q",
+  transport_number: "TO4638"
 )
 Event.create(
   name: "Madrid Apartment",
@@ -167,7 +169,9 @@ Event.create(
   end_date: DateTime.new(2023, 5, 23, 10, 55),
   start_location: "Madrid, Spain",
   end_location: "Palma, Spain",
-  provider: "Iberia Express"
+  provider: "Iberia Express",
+  reservation_number: "TY67MC",
+  transport_number: "IB3924"
 )
 Event.create(
   name: "Car rental",
@@ -199,7 +203,8 @@ Event.create(
   start_location: "Palma, Spain",
   end_location: "Madrid, Spain",
   provider: "Air Europa",
-  reservation_number: "UX6012"
+  transport_number: "UX6012",
+  reservation_number: "DCBBCA"
 )
 Event.create(
   name: "Flight to Lisbon",
@@ -210,7 +215,8 @@ Event.create(
   start_location: "Madrid, Spain",
   end_location: "Lisbon, Portugal",
   provider: "Air Europa",
-  reservation_number: "UX1153"
+  reservation_number: "AFF7UY",
+  transport_number: "UX1153"
 )
 Event.create(
   name: "Lisbon Apt",
@@ -232,7 +238,7 @@ Event.create(
   end_date: DateTime.new(2023, 6, 5),
   start_location: "Lisbon, Portugal",
   end_location: "Porto, Portugal",
-  provider: "Sixt"
+  provider: "Alamo"
 )
 Event.create(
   name: "Sintra stay",
@@ -309,8 +315,9 @@ Event.create(
   start_date: DateTime.new(2023, 6, 5),
   end_date: DateTime.new(2023, 6, 8),
   provider: "AirBnB",
-  start_location: "Chem. de Port Leyron, 33880 Baurech, France",
-  end_location: "Chem. de Port Leyron, 33880 Baurech, France"
+  provider_address: "Chem. de Port Leyron, 33880 Baurech, France"
+  start_location: "Bordeaux, France",
+  end_location: "Bordeaux, France"
 )
 Event.create(
   name: "Train to Paris",
@@ -321,6 +328,8 @@ Event.create(
   provider: "Ouigo",
   start_location: "Bordeaux Saint-Jean, France",
   end_location: "Paris Montparnasse, France"
+  transport_number: "7656"
+  reservation_number: "BZB8QY"
 )
 Event.create(
   name: "Restaurant Pain Vin Fromages",
