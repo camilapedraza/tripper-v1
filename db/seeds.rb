@@ -93,7 +93,7 @@ Event.create(
   end_location: "Annecy 74000"
 )
 Event.create(
-  name: "Car rid with family to Varigotti",
+  name: "Car ride with family to Varigotti",
   trip: trip1,
   event_type: "journey",
   start_date: DateTime.new(2023, 7, 17, 10),
@@ -258,6 +258,7 @@ Event.create(
   event_type: "visit",
   start_date: DateTime.new(2023, 5, 31, 10, 30),
   end_date: DateTime.new(2023, 5, 31, 16, 30),
+  provider: "Quinta da Regaleira",
   start_location: "R. Barbosa du Bocage 5, 2710-567 Sintra, Portugal",
   end_location: "R. Barbosa du Bocage 5, 2710-567 Sintra, Portugal"
 )
@@ -267,6 +268,7 @@ Event.create(
   event_type: "visit",
   start_date: DateTime.new(2023, 5, 31, 10, 30),
   end_date: DateTime.new(2023, 5, 31, 16, 30),
+  provider: "Peña Palace",
   start_location: "Estrada da Pena, 2710-609 Sintra, Portugal",
   end_location: "Estrada da Pena, 2710-609 Sintra, Portugal"
 )
@@ -276,6 +278,7 @@ Event.create(
   event_type: "visit",
   start_date: DateTime.new(2023, 6, 1, 10),
   end_date: DateTime.new(2023, 6, 1, 13),
+  provider: "Monserrate",
   start_location: "Sintra, Portugal",
   end_location: "Sintra, Portugal"
 )
@@ -296,8 +299,9 @@ Event.create(
   event_type: "show",
   start_date: DateTime.new(2023, 6, 4, 20),
   end_date: DateTime.new(2023, 6, 4, 22),
-  start_location: "Porto, Portugal",
-  end_location: "Porto, Portugal"
+  provider: "Ideale Clube de Fado",
+  start_location: "Rua do Ateneu Comercial do Porto 32",
+  end_location: "Rua do Ateneu Comercial do Porto 32"
 )
 Event.create(
   name: "Flight to Bordeaux",

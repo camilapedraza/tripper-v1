@@ -51,11 +51,11 @@
                 <%= event.end_date.strftime("%b %d") %>
                 <br>
                 From: <%= event.start_location %>
-                <% @duration = (event.end_date - event.start_date) %>
                 ------
                 In <%= event.end_location %>
                 <br>
-                Duration: <%= @duration.to_i/6000 %>h <%= @duration.to_i % 60 %>mins
+                <% @duration = (event.end_date - event.start_date) %>
+                Duration: <%= (@duration/3600).to_i %>h <%= "#{((@duration % 3600)/60).to_i} mins" if (@duration % 3600) > 0 %>
                 <br>
 
               <% when "rental" %>
@@ -64,27 +64,43 @@
                 <br>
                 Pick up:
                 <%= event.start_location %> at
-                <%= event.start_date.strftime("%I:%M") %> on
+                <%= event.start_date.strftime("%I:%M%P") %> on
                 <%= event.start_date.strftime("%b %d") %>
                 <br>
                 Drop off:
                 <%= event.end_location %> at
-                <%= event.end_date.strftime("%I:%M") %> on
+                <%= event.end_date.strftime("%I:%M%P") %> on
                 <%= event.end_date.strftime("%b %d") %>
                 <br>
                 <% @duration = (event.end_date - event.start_date) %>
-                Rental for <%= pluralize(@duration.to_i/86400, "day") %>
+                Renting for <%= pluralize(@duration.to_i/86400, "day") %>
                 <br>
 
               <% when "stay" %>
                 <%= event.event_type.upcase %>
                 <br>
-
-              <% when "restaurant", "show", "visit" %>
-                "restaurant / show / visit"
+                <%= "#{event.provider} in " if event.provider %><%= event.start_location %>
                 <br>
-              <% else %>
-                <%= event.name.upcase %>
+                <% @duration = (event.end_date - event.start_date) %>
+                Staying  <%= pluralize((@duration.to_i/86400), "night") %>
+                <br>
+                Address: <%= event.provider_address %>
+                <br>
+
+              <% when "restaurant", "visit", "show" %>
+                <%= event.event_type.upcase %>
+                <br>
+                <%= event.name %>
+                <% if event.event_type == "show" %>
+                  at <%= event.provider %>
+                  <br>
+                  Show starts at <%= event.start_date.strftime("%I:%M%P") %>
+                <% else %>
+                  at <%= event.start_date.strftime("%I:%M%P") %>
+                <% end %>
+
+                <br>
+                Address: <%= event.start_location %>
                 <br>
           <% end %>
           <%# event.start_date.strftime("%I:%M") %>
