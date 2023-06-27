@@ -170,7 +170,7 @@ Event.create(
 Event.create(
   name: "Car rental",
   trip: trip2,
-  event_type: "car/bike",
+  event_type: "rental",
   start_date: DateTime.new(2023, 5, 23),
   end_date: DateTime.new(2023, 5, 28),
   start_location: "Palma, Spain",
@@ -222,7 +222,7 @@ Event.create(
 Event.create(
   name: "Car rental from Lisbon to Porto through Sintra",
   trip: trip2,
-  event_type: "car/bike",
+  event_type: "rental",
   start_date: DateTime.new(2023, 5, 28),
   end_date: DateTime.new(2023, 6, 5),
   start_location: "Lisbon, Portugal",
