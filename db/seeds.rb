@@ -105,7 +105,7 @@ Event.create(
   name: "Biking with family",
   trip: trip1,
   event_type: "other",
-  start_date: DateTime.new(2023, 7, 17, 16, 00),
+  start_date: DateTime.new(2023, 7, 17, 16),
   end_date: DateTime.new(2023, 7, 17, 20, 30),
   start_location: "Varigotti, Savone, Italie",
   end_location: "Varigotti, Savone, Italie"
@@ -142,7 +142,7 @@ Event.create(
   trip: trip2,
   event_type: "flight",
   start_date: DateTime.new(2023, 5, 21, 10, 55),
-  end_date: DateTime.new(2023, 5, 21, 13, 05),
+  end_date: DateTime.new(2023, 5, 21, 13, 5),
   start_location: "Paris, France",
   end_location: "Madrid, Spain",
   provider: "Transavia",
@@ -177,8 +177,8 @@ Event.create(
   name: "Car rental",
   trip: trip2,
   event_type: "rental",
-  start_date: DateTime.new(2023, 5, 23),
-  end_date: DateTime.new(2023, 5, 28),
+  start_date: DateTime.new(2023, 5, 23, 12),
+  end_date: DateTime.new(2023, 5, 28, 6, 30),
   start_location: "Palma, Spain",
   end_location: "Palma, Spain",
   provider: "Sixt"
@@ -234,8 +234,8 @@ Event.create(
   name: "Car rental from Lisbon to Porto through Sintra",
   trip: trip2,
   event_type: "rental",
-  start_date: DateTime.new(2023, 5, 28),
-  end_date: DateTime.new(2023, 6, 5),
+  start_date: DateTime.new(2023, 5, 28, 11),
+  end_date: DateTime.new(2023, 6, 5, 14),
   start_location: "Lisbon, Portugal",
   end_location: "Porto, Portugal",
   provider: "Alamo"
@@ -312,10 +312,10 @@ Event.create(
   name: "Bordeaux stay",
   trip: trip2,
   event_type: "stay",
-  start_date: DateTime.new(2023, 6, 5),
-  end_date: DateTime.new(2023, 6, 8),
+  start_date: DateTime.new(2023, 6, 5, 18),
+  end_date: DateTime.new(2023, 6, 8, 10),
   provider: "AirBnB",
-  provider_address: "Chem. de Port Leyron, 33880 Baurech, France"
+  provider_address: "Chem. de Port Leyron, 33880 Baurech, France",
   start_location: "Bordeaux, France",
   end_location: "Bordeaux, France"
 )
@@ -327,8 +327,8 @@ Event.create(
   end_date: DateTime.new(2023, 6, 8, 14, 41),
   provider: "Ouigo",
   start_location: "Bordeaux Saint-Jean, France",
-  end_location: "Paris Montparnasse, France"
-  transport_number: "7656"
+  end_location: "Paris Montparnasse, France",
+  transport_number: "7656",
   reservation_number: "BZB8QY"
 )
 Event.create(
