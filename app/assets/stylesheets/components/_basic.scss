@@ -1,0 +1,46 @@
+body {
+  background-color: rgba(43, 42, 42, 1);
+}
+
+h1 {
+   font-size: 85px;
+   font-family: 'Pt-serif';
+   font-weight: 500;
+   color: white;
+}
+
+h2 {
+  font-size: 20px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  color: white;
+}
+
+h3 {
+  font-size: 13px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  color: white;
+}
+
+p {
+  color: white;
+  font-size: 13px;
+  font-family: 'Roboto';
+  font-weight: 300;
+}
+
+a {
+  text-decoration: none;
+  font-size: 14px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  color: white;
+}
+
+.container {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
