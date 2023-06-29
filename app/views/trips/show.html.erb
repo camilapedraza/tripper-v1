@@ -44,22 +44,23 @@
                 <%= event.event_type.upcase %>
                 <br>
                 <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>
-                Departing: <%= event.start_date.strftime("%I:%M") %>
+                <%# MISSING: USE GEOCDER TO DISPLAY SHORTER START LOCATIONS (CITY NAME, AIRPORT NAME, ETC.) %>
+                Departing: <%= event.start_date.strftime("%I:%M%P") %>
                 <%= event.start_date.strftime("%b %d") %>
                 ------
-                Arriving: <%= event.end_date.strftime("%I:%M") %>
+                Arriving: <%= event.end_date.strftime("%I:%M%P") %>
                 <%= event.end_date.strftime("%b %d") %>
                 <br>
                 From: <%= event.start_location %>
                 ------
-                In <%= event.end_location %>
+                To: <%= event.end_location %>
                 <br>
                 <% @duration = (event.end_date - event.start_date) %>
                 Duration: <%= (@duration/3600).to_i %>h <%= "#{((@duration % 3600)/60).to_i} mins" if (@duration % 3600) > 0 %>
                 <br>
 
               <% when "rental" %>
-                <%# THIS NEEDS TO BE BROKEN DOWN INTO TWO EVENTS: Pick up vs Drop off %>
+                <%# MISSING: THIS NEEDS TO BE BROKEN DOWN INTO TWO EVENTS: Pick up vs Drop off %>
                 <%= event.event_type.upcase %>
                 <br>
                 Pick up:
@@ -98,18 +99,28 @@
                 <% else %>
                   at <%= event.start_date.strftime("%I:%M%P") %>
                 <% end %>
-
                 <br>
                 Address: <%= event.start_location %>
                 <br>
+
+              <% else %>
+              CUSTOM EVENT
+              <br>
+              <%= event.name %>
+              <br>
+              Starts at <%= event.start_date.strftime("%I:%M%P") %>
+              Location: <%= event.start_location %>
+              <br>
+              Ends at <%= event.end_date.strftime("%I:%M%P") %>
+              <% if event.end_location != event.start_location %>
+              Location: <%= event.end_location %>
+              <% end %>
+              <br>
           <% end %>
-          <%# event.start_date.strftime("%I:%M") %>
-          <%# event.event_type == "other" ? event.name.upcase : event.event_type.upcase %>
-          <%# event.end_date.strftime("%I:%M") %>
           <br>
         <% end %>
       </div>
       <br>
-    <% end # grouped events do%>
+    <% end %>
   </div>
 </div>
