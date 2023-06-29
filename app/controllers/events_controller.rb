@@ -16,7 +16,8 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.trip = @trip
     if @event.save
-      redirect_to trip_event_path(@trip, @event)
+      # redirect_to trip_event_path(@trip, @event)
+      redirect_to trip_path(@trip)
     else
       render :new, status: :unprocessable_entity
     end
