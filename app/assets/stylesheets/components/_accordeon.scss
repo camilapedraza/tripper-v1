@@ -1,0 +1,42 @@
+.accordion {
+  width: 90%;
+  background-color: rgba(43, 42, 42, 1);
+  margin-top: 15px;
+  border-bottom: solid 1px white;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.flex-container h2 {
+  /* Styles pour le h2 */
+  margin: 0;
+  /* Ajoutez ici les autres styles personnalisés pour le h2 */
+}
+
+.day-overview {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.panel {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.accordion.active .panel {
+  max-height: 2500px;
+  transition: max-height 0.4s ease;
+}

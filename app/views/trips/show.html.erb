@@ -1,0 +1,16 @@
+<%# Gaetan's part %>
+<h1><%= @trip.name %></h1>
+<div>
+  <a><%= link_to "Add event",  new_trip_event_path(@trip), class: "btn btn-primary" %></a>
+</div>
+<% if @trip.events.any? %>
+  <p>j'ai des évènements mais je ne suis pas encore codé sniff 🥲</p>
+<% else %>
+  <p>Mmh, it’s pretty quiet there... Tap on “ADD EVENT" to start</p>
+<% end %>
+<%# Gaetan's part %>
+<%# Code to add to your show.html.erb  %>
+<div>
+  <a><%= link_to 'Edit trip details', edit_trip_path, class: "btn btn-light text-dark" %></a>
+  <a><%= link_to 'Back to trip list', trips_path, class: "btn btn-info" %></a>
+</div>
