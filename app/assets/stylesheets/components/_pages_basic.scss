@@ -45,5 +45,13 @@
 }
 
 .page-title {
+  margin-top: 90px;
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.page-title h2{
+  margin: 0;
 }
