@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   resources :trips, only: %i[index show new create edit update] do
     resources :events, only: %i[index show new create]
   end
-  
-  get '/components', to: 'pages#components'
 
+  get '/components', to: 'pages#components'
+  get '/uikitt', to: 'pages#uikitt'
   # Defines the root path route ("/")
   # root "articles#index"
 end
