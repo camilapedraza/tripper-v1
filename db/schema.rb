@@ -54,8 +54,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_193335) do
   create_table "events", force: :cascade do |t|
     t.bigint "trip_id", null: false
     t.string "event_type"
-    t.date "start_date"
-    t.date "end_date"
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.string "start_location"
     t.string "end_location"
     t.string "reservation_number"
@@ -68,6 +68,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_27_193335) do
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider_address"
+    t.string "transport_number"
     t.float "start_latitude"
     t.float "start_longitude"
     t.float "end_latitude"
