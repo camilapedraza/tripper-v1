@@ -1,8 +1,13 @@
-<h1>My Trips</h1>
-<br>
-<div>
-  <a><%= link_to "Add a trip",  new_trip_path, class: "btn btn-primary" %></a>
+<div class="container">
+
+  <div class="page-title">
+    <h2>My Trips</h2>
+    <a><%= link_to "ADD A TRIP",  new_trip_path, class: "primary-pill-button" %></a>
+  </div>
+
 </div>
+
+
 <br>
 <% if @trips.any? %>
   <% @trips.each do |trip| %>

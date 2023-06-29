@@ -27,9 +27,23 @@
   align-items: center;
   flex-wrap: nowrap;
   justify-content: center;
+  transition: opacity 0.3s ease;
+  opacity: 1;
 }
 
 .page-description {
   width: 60%;
   text-align: center;
+}
+
+#scroll-text {
+  animation: flicker 2s infinite;
+}
+
+#tuto {
+  margin-top: 800px;
+}
+
+.page-title {
+  display: flex;
 }

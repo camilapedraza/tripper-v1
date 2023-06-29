@@ -5,15 +5,52 @@
 
 <div class="page-flex">
   <h2>Making travel easy</h2>
-  <p class="page-description" style="margin-bottom: 40px">All your reservations, flights and travel informations on a single place.</p>
+  <p class="page-description" style="margin-bottom: 30px">All your reservations, flights and travel informations on a single place.</p>
   <a><%= link_to "Create an account", new_user_registration_path, class: "primary-button", style: "margin-bottom: 15px"%></a>
   <a><%= link_to "Login", new_user_session_path, class: "secondary-button"%></a>
-  <i class="fa-solid fa-chevron-down" style="color: #ffffff; margin-top: 20px; margin-bottom: 10px"></i>
-  <p>scroll down to learn more</p>
+  <p style="margin-top: 20px; margin-bottom: 10px" id="scroll-text">scroll down to learn more</p>
+  <i class="fa-solid fa-chevron-down" style="color: #ffffff;"></i>
 </div>
 
-<div id="tuto" class="d-none">
+<div id="tuto">
+
   <h4>Store all your reservations, travel documents and plans</h4>
   <h4>Build itineraries that are easy to scan and search</h4>
   <h4>Fetch anything you need with one single click</h4>
+</div>
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/app/assets/images/pictures/venise.png" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h4>Store all your reservations, travel documents and plans</h4>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h4>Build itineraries that are easy to scan and search</h4>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h4>Fetch anything you need with one single click</h4>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
