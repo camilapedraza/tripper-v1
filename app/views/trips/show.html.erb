@@ -20,107 +20,111 @@
   </div>
 
   <div>
-   <i class="fa-solid fa-arrow-up-from-bracket"></i>
+  <i class="fa-solid fa-arrow-up-from-bracket"></i>
   </div>
 </div>
 
 <div>
   <div>
-    <a href="#" class="btn btn-primary">Add Event</a>
+    <%= link_to "Add event",  new_trip_event_path(@trip), class: "btn btn-primary" %>
     <a href="#"> Expand All</a>
   </div>
-  <div>
-    <% @grouped_events = @chron_events.group_by { |e| e.start_date.to_date } %>
-    <% @grouped_events.each do |day, events| %>
-      <div>
-        <strong><%= day.strftime("%b %d") %></strong>
-        &nbsp; &nbsp; &nbsp;<%= pluralize(events.count, "event") %>
-      </div>
-      <div>
-      <% events.each do |event| %>
+  <% if @trip.events.any? %>
+    <div>
+      <% @grouped_events = @chron_events.group_by { |e| e.start_date.to_date } %>
+      <% @grouped_events.each do |day, events| %>
+        <div>
+          <strong><%= day.strftime("%b %d") %></strong>
+          &nbsp; &nbsp; &nbsp;<%= pluralize(events.count, "event") %>
+        </div>
+        <div>
+        <% events.each do |event| %>
 
-          <% case event.event_type
-              when "journey", "flight", "train", "bus", "boat" %>
-                <%= event.event_type.upcase %>
-                <br>
-                <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>
-                <%# MISSING: USE GEOCDER TO DISPLAY SHORTER START LOCATIONS (CITY NAME, AIRPORT NAME, ETC.) %>
-                Departing: <%= event.start_date.strftime("%I:%M%P") %>
-                <%= event.start_date.strftime("%b %d") %>
-                ------
-                Arriving: <%= event.end_date.strftime("%I:%M%P") %>
-                <%= event.end_date.strftime("%b %d") %>
-                <br>
-                From: <%= event.start_location %>
-                ------
-                To: <%= event.end_location %>
-                <br>
-                <% @duration = (event.end_date - event.start_date) %>
-                Duration: <%= (@duration/3600).to_i %>h <%= "#{((@duration % 3600)/60).to_i} mins" if (@duration % 3600) > 0 %>
-                <br>
+            <% case event.event_type
+                when "journey", "flight", "train", "bus", "boat" %>
+                  <%= event.event_type.upcase %>
+                  <br>
+                  <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>
+                  <%# MISSING: USE GEOCDER TO DISPLAY SHORTER START LOCATIONS (CITY NAME, AIRPORT NAME, ETC.) %>
+                  Departing: <%= event.start_date.strftime("%I:%M%P") %>
+                  <%= event.start_date.strftime("%b %d") %>
+                  ------
+                  Arriving: <%= event.end_date.strftime("%I:%M%P") %>
+                  <%= event.end_date.strftime("%b %d") %>
+                  <br>
+                  From: <%= event.start_location %>
+                  ------
+                  To: <%= event.end_location %>
+                  <br>
+                  <% @duration = (event.end_date - event.start_date) %>
+                  Duration: <%= (@duration/3600).to_i %>h <%= "#{((@duration % 3600)/60).to_i} mins" if (@duration % 3600) > 0 %>
+                  <br>
 
-              <% when "rental" %>
-                <%# MISSING: THIS NEEDS TO BE BROKEN DOWN INTO TWO EVENTS: Pick up vs Drop off %>
-                <%= event.event_type.upcase %>
-                <br>
-                Pick up:
-                <%= event.start_location %> at
-                <%= event.start_date.strftime("%I:%M%P") %> on
-                <%= event.start_date.strftime("%b %d") %>
-                <br>
-                Drop off:
-                <%= event.end_location %> at
-                <%= event.end_date.strftime("%I:%M%P") %> on
-                <%= event.end_date.strftime("%b %d") %>
-                <br>
-                <% @duration = (event.end_date - event.start_date) %>
-                Renting for <%= pluralize(@duration.to_i/86400, "day") %>
-                <br>
+                <% when "rental" %>
+                  <%# MISSING: THIS NEEDS TO BE BROKEN DOWN INTO TWO EVENTS: Pick up vs Drop off %>
+                  <%= event.event_type.upcase %>
+                  <br>
+                  Pick up:
+                  <%= event.start_location %> at
+                  <%= event.start_date.strftime("%I:%M%P") %> on
+                  <%= event.start_date.strftime("%b %d") %>
+                  <br>
+                  Drop off:
+                  <%= event.end_location %> at
+                  <%= event.end_date.strftime("%I:%M%P") %> on
+                  <%= event.end_date.strftime("%b %d") %>
+                  <br>
+                  <% @duration = (event.end_date - event.start_date) %>
+                  Renting for <%= pluralize(@duration.to_i/86400, "day") %>
+                  <br>
 
-              <% when "stay" %>
-                <%= event.event_type.upcase %>
-                <br>
-                <%= "#{event.provider} in " if event.provider %><%= event.start_location %>
-                <br>
-                <% @duration = (event.end_date - event.start_date) %>
-                Staying  <%= pluralize((@duration.to_i/86400), "night") %>
-                <br>
-                Address: <%= event.provider_address %>
-                <br>
+                <% when "stay" %>
+                  <%= event.event_type.upcase %>
+                  <br>
+                  <%= "#{event.provider} in " if event.provider %><%= event.start_location %>
+                  <br>
+                  <% @duration = (event.end_date - event.start_date) %>
+                  Staying  <%= pluralize((@duration.to_i/86400), "night") %>
+                  <br>
+                  Address: <%= event.provider_address %>
+                  <br>
 
-              <% when "restaurant", "visit", "show" %>
-                <%= event.event_type.upcase %>
+                <% when "restaurant", "visit", "show" %>
+                  <%= event.event_type.upcase %>
+                  <br>
+                  <%= event.name %>
+                  <% if event.event_type == "show" %>
+                    at <%= event.provider %>
+                    <br>
+                    Show starts at <%= event.start_date.strftime("%I:%M%P") %>
+                  <% else %>
+                    at <%= event.start_date.strftime("%I:%M%P") %>
+                  <% end %>
+                  <br>
+                  Address: <%= event.start_location %>
+                  <br>
+
+                <% else %>
+                CUSTOM EVENT
                 <br>
                 <%= event.name %>
-                <% if event.event_type == "show" %>
-                  at <%= event.provider %>
-                  <br>
-                  Show starts at <%= event.start_date.strftime("%I:%M%P") %>
-                <% else %>
-                  at <%= event.start_date.strftime("%I:%M%P") %>
+                <br>
+                Starts at <%= event.start_date.strftime("%I:%M%P") %>
+                Location: <%= event.start_location %>
+                <br>
+                Ends at <%= event.end_date.strftime("%I:%M%P") %>
+                <% if event.end_location != event.start_location %>
+                Location: <%= event.end_location %>
                 <% end %>
                 <br>
-                Address: <%= event.start_location %>
-                <br>
-
-              <% else %>
-              CUSTOM EVENT
-              <br>
-              <%= event.name %>
-              <br>
-              Starts at <%= event.start_date.strftime("%I:%M%P") %>
-              Location: <%= event.start_location %>
-              <br>
-              Ends at <%= event.end_date.strftime("%I:%M%P") %>
-              <% if event.end_location != event.start_location %>
-              Location: <%= event.end_location %>
-              <% end %>
-              <br>
+            <% end %>
+            <br>
           <% end %>
-          <br>
-        <% end %>
-      </div>
-      <br>
-    <% end %>
-  </div>
+        </div>
+        <br>
+      <% end %>
+    </div>
+  <% else %>
+    <p>Mmh, it’s pretty quiet there... Tap on “ADD EVENT" to start</p>
+  <% end %>
 </div>
