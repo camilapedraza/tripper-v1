@@ -1,6 +1,5 @@
 <div>
-  <% case @event.event_type
-  when "journey", "flight", "train", "bus", "boat" %>
+  <% case @event.event_type when "journey", "flight", "train", "bus", "boat" %>
     <h2>Details for this journey</h2>
     <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>
     <%# MISSING: USE GEOCDER TO DISPLAY SHORTER START LOCATIONS (CITY NAME, AIRPORT NAME, ETC.) %>
