@@ -7,13 +7,14 @@ import { application } from "./application"
 import EndLocationAutocompleteController from "./end_location_autocomplete_controller"
 application.register("end-location-autocomplete", EndLocationAutocompleteController)
 
-
-import StartLocationAutocompleteController from "./start_location_autocomplete_controller"
-application.register("start-location-autocomplete", StartLocationAutocompleteController)
-
+import EventTypeSelectionController from "./event_type_selection_controller"
+application.register("event-type-selection", EventTypeSelectionController)
 
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import StartLocationAutocompleteController from "./start_location_autocomplete_controller"
+application.register("start-location-autocomplete", StartLocationAutocompleteController)
