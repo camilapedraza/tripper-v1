@@ -33,7 +33,7 @@ class Event < ApplicationRecord
     event_type == "boat"
   end
 
-  def car_bike?
+  def rental?
     event_type == "rental"
   end
 
@@ -57,9 +57,43 @@ class Event < ApplicationRecord
     event_type == "other"
   end
 
+  def format_start_time
+    start_date.strftime("%I:%M%P")
+  end
+
+  def format_start_date
+    start_date.strftime("%b %d")
+  end
+
+  def format_end_time
+    end_date.strftime("%I:%M%P")
+  end
+
+  def format_end_date
+    end_date.strftime("%b %d")
+  end
+
+  def format_duration_h_min
+    duration
+    hours = (duration/3600).to_i
+    minutes = ((duration % 3600)/60).to_i
+    # MISSING: refacto these three lines:
+    formatted = "#{hours}h"
+    formatted << (" #{minutes}min") if (duration % 3600).positive?
+    formatted
+  end
+
+  def format_duration_d
+    duration.to_i / 86_400
+  end
+
   private
 
-# Method to add coordinates for both location from an event
+  def duration
+    end_date - start_date
+  end
+
+  # Method to add coordinates for both location from an event
   def geocode_endpoints
     if start_location_changed?
       geocoded = Geocoder.search(start_location).first
