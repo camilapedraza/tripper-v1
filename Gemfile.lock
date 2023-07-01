@@ -135,6 +135,8 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.2)
+    materialize-sass (1.0.0.1)
+      autoprefixer-rails (>= 6.0.3)
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
@@ -268,6 +270,7 @@ DEPENDENCIES
   geocoder
   jbuilder
   jsbundling-rails
+  materialize-sass
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.5)
