@@ -11,17 +11,24 @@ label {
   border: 2px solid #7F7EFF;
   border-radius: 11px;
   width: 90%;
-  background-color:#4A4949;
+  background-color:#4A4949 !important;
   color: #7F7EFF;
 }
 
 form {
   margin-top: 25px;
-  background-color: #4A4949;
+  background-color: #4A4949 !important;
   color: white;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: flex-start;
   padding: 6%;
+}
+
+.form-control:focus {
+  color: white;
+    background-color: red !important;
+    border-color: #86b7fe;
+    outline: 0;
 }
