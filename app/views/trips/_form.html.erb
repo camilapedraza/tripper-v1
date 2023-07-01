@@ -1,6 +1,6 @@
 <%= simple_form_for(@trip) do |f| %>
-  <%= f.input :name %>
-  <%= f.button :submit, class: "btn btn-info" %>
+  <div class="input-wrapper">
+    <%= f.input :name, input_html: { placeholder: "Enter a trip name", style: "width: 338px; font-size: 18px;" } %>
+  </div>
+  <%= f.button :submit, "Go!", class: "primary-button" %>
 <% end %>
-<br>
-<%= link_to 'Back to trips', trips_path, class: "btn btn-secondary" %>

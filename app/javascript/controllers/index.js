@@ -17,3 +17,9 @@ application.register("flatpickr", FlatpickrController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import { Application } from "stimulus"
+import Carousel from "stimulus-carousel"
+
+const application = Application.start()
+application.register("carousel", Carousel)
