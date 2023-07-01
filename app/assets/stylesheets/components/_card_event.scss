@@ -2,15 +2,21 @@
     width: 25%;
     background-color: #4A4949;
     border-radius: 14px;
-    padding: 6px;
+    padding: 8px;
 }
 
 .illustration {
     height: 40px;
     background-color: #696565;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
+.illustration p{
+  font-size: 30px;
+  margin-bottom: 0px;
+}
 
 .name {
   display: flex;
@@ -23,6 +29,7 @@
 
 .name p {
   margin-bottom: 0px;
+  font-size: 20px;
 }
 
 
