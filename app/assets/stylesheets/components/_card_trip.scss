@@ -4,7 +4,8 @@
   border-radius: 18px;
   width: 90%;
   height: 100%;
-  padding: 11px
+  padding: 11px;
+  margin-bottom: 16px;
 }
 
 .name_cities {
@@ -94,3 +95,28 @@
 .calendar p {
   margin-left: 7px;
 }
+
+.down-card {
+  height: 417px;
+  flex-shrink: 0;
+  border-top-left-radius: 47px;
+  border-top-right-radius: 47px;
+  background: rgba(246, 246, 246, 0.10);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 32px;
+}
+
+.new-trip {
+  margin-top: 56px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .input-wrapper {
+    margin-bottom: 48px;
+  }
+}
+
