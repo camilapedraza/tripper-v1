@@ -1,6 +1,6 @@
 <%= simple_form_for(@trip) do |f| %>
   <div class="input-wrapper">
-    <%= f.input :name %>
+    <%= f.input :name, input_html: { placeholder: "Enter a trip name", style: "width: 338px; font-size: 18px;" } %>
   </div>
-  <%= f.button :submit, "Go !", class: "primary-button" %>
+  <%= f.button :submit, "Go!", class: "primary-button" %>
 <% end %>
