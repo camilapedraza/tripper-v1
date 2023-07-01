@@ -3,5 +3,3 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 import "bootstrap"
 import "./accordion.js"
-import "./carousel_controller.js"
-import 'swiper/swiper-bundle.min.css'
