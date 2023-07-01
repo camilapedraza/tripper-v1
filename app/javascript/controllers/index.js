@@ -12,3 +12,6 @@ application.register("flatpickr", FlatpickrController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import MaterialdesignController from "./materialdesign_controller"
+application.register("materialdesign", MaterialdesignController)
