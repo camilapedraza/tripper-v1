@@ -56,3 +56,17 @@
 .page-title h2{
   margin: 0;
 }
+
+.left-align {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 90%;
+  margin-top: 16px;
+  margin-bottom: 36px;
+}
+
+.documents {
+  display: flex;
+}
