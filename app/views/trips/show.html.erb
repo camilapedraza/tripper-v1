@@ -39,59 +39,60 @@
         </div>
         <div>
         <% events.each do |event| %>
-            <%= event.other? ?  "CUSTOM EVENT" : event.event_type.upcase %> <br>
-            <% case event.event_type
-                when "journey", "flight", "train", "bus", "boat" %>
-                  <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>
-                  <%# MISSING: USE GEOCDER TO DISPLAY SHORTER START LOCATIONS (CITY NAME, AIRPORT NAME, ETC.) %>
-                  Departing: <%= event.format_start_time %> <%= event.format_start_date %>
-                  ------
-                  Arriving: <%= event.format_end_time %> <%= event.format_end_date %>
-                  <br>
-                  From: <%= event.start_location %>
-                  ------
-                  To: <%= event.end_location %>
-                  <br>
-                  Duration: <%= event.format_duration_h_min %>
-                  <br>
+            <%= link_to trip_event_path(@trip, event), class: "text-decoration-none" do %>
+              <%= event.other? ?  "CUSTOM EVENT" : event.event_type.upcase %> <br>
+              <% case event.event_type
+              when "journey", "flight", "train", "bus", "boat" %>
+                <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>
+                <%# MISSING: USE GEOCDER TO DISPLAY SHORTER START LOCATIONS (CITY NAME, AIRPORT NAME, ETC.) %>
+                Departing: <%= event.format_start_time %> <%= event.format_start_date %>
+                ------
+                Arriving: <%= event.format_end_time %> <%= event.format_end_date %>
+                <br>
+                From: <%= event.start_location %>
+                ------
+                To: <%= event.end_location %>
+                <br>
+                Duration: <%= event.format_duration_h_min %>
+                <br>
 
-                <% when "rental" %>
-                  <%# MISSING: THIS NEEDS TO BE BROKEN DOWN INTO TWO EVENTS: Pick up vs Drop off %>
-                  Pick up:
-                  <%= event.start_location %> at
-                  <%= event.format_start_time %> on
-                  <%= event.start_date.strftime("%b %d") %>
-                  <br>
-                  Drop off:
-                  <%= event.end_location %> at
-                  <%= event.format_end_time %> on
-                  <%= event.format_end_date %>
-                  <br>
-                  Renting for <%= pluralize(event.format_duration_d, "day") %>
-                  <br>
+              <% when "rental" %>
+                <%# MISSING: THIS NEEDS TO BE BROKEN DOWN INTO TWO EVENTS: Pick up vs Drop off %>
+                Pick up:
+                <%= event.start_location %> at
+                <%= event.format_start_time %> on
+                <%= event.start_date.strftime("%b %d") %>
+                <br>
+                Drop off:
+                <%= event.end_location %> at
+                <%= event.format_end_time %> on
+                <%= event.format_end_date %>
+                <br>
+                Renting for <%= pluralize(event.format_duration_d, "day") %>
+                <br>
 
-                <% when "stay" %>
-                  <%= "#{event.provider} in " if event.provider %><%= event.start_location %>
-                  <br>
-                  Staying <%= pluralize(event.format_duration_d, "night") %>
-                  <br>
-                  Address: <%= event.provider_address %>
-                  <br>
+              <% when "stay" %>
+                <%= "#{event.provider} in " if event.provider %><%= event.start_location %>
+                <br>
+                Staying <%= pluralize(event.format_duration_d, "night") %>
+                <br>
+                Address: <%= event.provider_address %>
+                <br>
 
-                <% when "restaurant", "visit", "show" %>
-                  <%= event.name %>
-                  <% if event.event_type == "show" %>
-                    at <%= event.provider %>
-                    <br>
-                    Show starts at <%= event.format_start_time %>
-                  <% else %>
-                    at <%= event.format_start_time %>
-                  <% end %>
+              <% when "restaurant", "visit", "show" %>
+                <%= event.name %>
+                <% if event.event_type == "show" %>
+                  at <%= event.provider %>
                   <br>
-                  Address: <%= event.start_location %>
-                  <br>
-
+                  Show starts at <%= event.format_start_time %>
                 <% else %>
+                  at <%= event.format_start_time %>
+                <% end %>
+                <br>
+                Address: <%= event.start_location %>
+                <br>
+
+              <% else %>
                 <%= event.name %>
                 <br>
                 Starts at <%= event.format_start_time %>
@@ -101,6 +102,7 @@
                 <% if event.end_location != event.start_location %>
                   Location: <%= event.end_location %>
                 <% end %>
+              <% end %>
                 <br>
             <% end %>
             <br>
