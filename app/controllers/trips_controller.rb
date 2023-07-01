@@ -6,6 +6,9 @@ class TripsController < ApplicationController
   end
 
   def show
+    @trip = Trip.find(params[:id])
+    @trippers = group_trippers(@trip)
+    @chron_events = @trip.events.order(start_date: :asc)
   end
 
   def new
@@ -38,5 +41,12 @@ class TripsController < ApplicationController
 
   def trip_params
     params.require(:trip).permit(:name)
+  end
+
+  def group_trippers(trip)
+    trippers = []
+    trippers << trip.user
+    trip.collaborators.each { |collaborator| trippers << collaborator.user }
+    trippers
   end
 end

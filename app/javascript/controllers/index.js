@@ -4,8 +4,13 @@
 
 import { application } from "./application"
 
-import AddressAutocompleteController from "./address_autocomplete_controller"
-application.register("address-autocomplete", AddressAutocompleteController)
+import EndLocationAutocompleteController from "./end_location_autocomplete_controller"
+application.register("end-location-autocomplete", EndLocationAutocompleteController)
+
+
+import StartLocationAutocompleteController from "./start_location_autocomplete_controller"
+application.register("start-location-autocomplete", StartLocationAutocompleteController)
+
 
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
