@@ -1,8 +1,9 @@
 <div class="container" data-controller="event-type-selection">
   <%= simple_form_for [@trip, @event] do |f| %>
-    <%= f.input :event_type, collection: Event::EVENT_TYPES, input_html:{data: { event_type_selection_target: "type" }}, id:"selector", onchange:"myFunction()"%>
+    <%= f.input :event_type, collection: Event::EVENT_TYPES, input_html:{data: { event_type_selection_target: "type" }}, include_blank: false, id:"selector" %>
     <%= f.input :name %>
-    <p>Your favorite browser is: <input type="text" id="demo" size="20"></p>
+    <p id="result"></p>
+    <button onclick="onClick()">Bouton</button>
     <div id="journey" class="d-none">
       <div class="row">
         <div class="col">
