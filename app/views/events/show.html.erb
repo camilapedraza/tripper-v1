@@ -76,6 +76,31 @@
 <div>
   <h2>Checklist</h2>
     <div>
-    <%= link_to "Add task",  "#", class: "btn btn-primary" %>
+      <ul>
+        <% @event.tasks.each do |task| %>
+          <li style="list-style-type:none">
+            <% if task.is_complete %>
+              <i class='fa-solid fa-circle-check fa-lg'></i> <span style="text-decoration:line-through"><%= task.content %></span>
+            <% else %>
+              <i class="fa-regular fa-circle fa-lg"></i> <%= task.content %>
+            <% end %>
+            <%= link_to task_path(task), data: {turbo_method: :delete, turbo_confirm: "Delete?"} do %>
+              <i class="fa-solid fa-xmark"></i>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div>
+      <%= simple_form_for [@event, @task] do |f| %>
+        <div class="row">
+          <div class="col">
+            <%= f.input :content %>
+          </div>
+          <div class="col">
+            <%= f.submit %>
+          </div>
+        </div>
+      <% end %>
     </div>
 </div>
