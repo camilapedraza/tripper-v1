@@ -84,7 +84,7 @@
             <% else %>
               <i class="fa-regular fa-circle fa-lg"></i> <%= task.content %>
             <% end %>
-            <%= link_to task_path(task), data: {turbo_method: :delete, turbo_confirm: "Delete?"} do %>
+            <%= link_to task_path(task), data: {turbo_method: :delete} do %>
               <i class="fa-solid fa-xmark"></i>
             <% end %>
           </li>

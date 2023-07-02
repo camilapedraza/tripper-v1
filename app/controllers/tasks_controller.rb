@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_event, only: %i[create edit update destroy]
-  before_action :set_task, only: :destroy
+  before_action :set_event, only: %i[create]
 
   def create
     @task = Task.new(task_params)
@@ -15,15 +14,14 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    @task = Task.find(params[:id])
+    @event = @task.event
+    @trip = @event.trip
     @task.destroy
     redirect_to trip_event_path(@trip, @event), status: :see_other
   end
 
   private
-
-  def set_task
-    @task = Task.find(params[:task_id])
-  end
 
   def set_event
     @event = Event.find(params[:event_id])
