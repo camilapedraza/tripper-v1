@@ -24,5 +24,5 @@ Rails.application.routes.draw do
     resources :tasks, only: %i[index new create]
   end
 
-  resources :tasks, only: :destroy
+  resources :tasks, only: %i[update destroy]
 end

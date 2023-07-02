@@ -80,9 +80,15 @@
         <% @event.tasks.each do |task| %>
           <li style="list-style-type:none">
             <% if task.is_complete %>
-              <i class='fa-solid fa-circle-check fa-lg'></i> <span style="text-decoration:line-through"><%= task.content %></span>
+              <%= link_to task_path(task, params: {task: {is_complete: false}}), data: {turbo_method: :patch} do %>
+                <i class='fa-solid fa-circle-check fa-lg'></i>
+              <% end %>
+                <span style="text-decoration:line-through"><%= task.content %></span>
             <% else %>
-              <i class="fa-regular fa-circle fa-lg"></i> <%= task.content %>
+              <%= link_to task_path(task, params: {task: {is_complete: true}}), data: {turbo_method: :patch} do %>
+                <i class="fa-regular fa-circle fa-lg"></i>
+              <% end %>
+              <%= task.content %>
             <% end %>
             <%= link_to task_path(task), data: {turbo_method: :delete} do %>
               <i class="fa-solid fa-xmark"></i>
