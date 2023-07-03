@@ -1,8 +1,21 @@
+form {
+  margin-top: 25px;
+  background-color: #4A4949 !important;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  padding: 6%;
+}
+
 label {
   position: relative;
   right: -13px;
   top: 19px;
-  width: 114px;
+  padding-right: 8px;
+  padding-left: 8px;
+  // width: 114px;
   background-color: #4A4949;
   color: #7F7EFF;
 }
@@ -15,20 +28,35 @@ label {
   color: #7F7EFF;
 }
 
-form {
-  margin-top: 25px;
-  background-color: #4A4949 !important;
+.form-control:focus {
   color: white;
+  background-color: #4A4949 !important;
+  border-color: #86b7fe;
+  outline: 0;
+}
+
+.form-control::placeholder {
+  color: #a5a3a3;
+}
+
+#add-task-form {
+  margin-top: 0px;
+  margin-top: 0px;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: flex-start;
-  padding: 6%;
+  padding: 0%;
 }
 
-.form-control:focus {
-  color: white;
-    background-color: red !important;
-    border-color: #86b7fe;
-    outline: 0;
+.add-task-input {
+  border: none;
+  border-bottom: 2px solid #7F7EFF;
+  border-radius: 0%;
+}
+.add-task-button {
+  border: none;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
 }
