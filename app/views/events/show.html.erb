@@ -57,6 +57,7 @@
     Renting for <%= pluralize(event.format_duration_d, "day") %>
     <br>
   <% when "stay" %>
+
     <%= "#{@event.provider} in " if @event.provider %><%= @event.start_location %>
     <br>
     Staying <%= pluralize(@event.format_duration_d, "night") %>
@@ -86,10 +87,13 @@
       Location: <%= @event.end_location %>
     <% end %>
   <br>
+
+
   <% end %>
   <div class="left-align">
     <h2>My Documents</h2>
       <div class="documents">
+      <%= link_to "ADD DOC",  "#", class: "primary-pill-button" %>
       <%= link_to "ADD DOC",  "#", class: "primary-pill-button" %>
       </div>
   </div>
