@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 
   get '/components', to: 'pages#components'
   get '/uikitt', to: 'pages#uikitt'
-  get '/events_type', to: 'pages#events_type'
+  get '/eventstype', to: 'pages#eventstype'
+
   resources :trips, only: %i[index show new create edit update] do
     resources :events, only: %i[index show new create]
   end

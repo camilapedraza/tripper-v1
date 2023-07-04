@@ -1,8 +1,9 @@
 .card-event {
-    width: 25%;
-    background-color: #4A4949;
-    border-radius: 14px;
-    padding: 8px;
+  background-color: #4A4949;
+  border-radius: 14px;
+  padding: 8px;
+  width: 7rem;
+  margin: 2%;
 }
 
 .illustration {
@@ -35,4 +36,11 @@
 
 input:-internal-autofill-selected {
   background-color: red !important;
+}
+
+.container_event {
+  display: flex;
+    flex-wrap: wrap;
+    padding: 5%;
+    justify-content: center;
 }
