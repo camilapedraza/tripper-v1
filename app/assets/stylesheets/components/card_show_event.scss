@@ -1,0 +1,43 @@
+.card_trip_show {
+  border-top-left-radius: 44px;
+  border-top-right-radius: 44px;
+  background-color: #2b2a2a;
+  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.trip_viewall {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tripper_share {
+display: flex;
+margin-bottom: 20px;
+margin-left: 20px;
+}
+
+.trippers {
+  margin-right: 20px;
+}
+
+.trip_name {
+  padding: 30px;
+  margin-top: -67px;
+}
+
+.trip_name h1{
+font-size: 85px;
+margin-top: 50px;
+}
+
+.previous {
+    width: 50px;
+    height: 50px;
+    border-radius: 97px;
+    background-color: black;
+    padding: 13px;
+    margin-left: 10px;
+    margin-top: 0px;
+}
