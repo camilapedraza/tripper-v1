@@ -112,7 +112,9 @@
                 Starts at <%= event.start_date.strftime("%I:%M%P") %>
                 Location: <%= event.start_location %>
                 <br>
-                Ends at <%= event.end_date.strftime("%I:%M%P") %>
+                <% if event.end_date.present? %>
+                  Ends at <%= event.end_date.strftime("%I:%M%P") %>
+                <% end %>
                 <% if event.end_location != event.start_location %>
                 Location: <%= event.end_location %>
                 <% end %>

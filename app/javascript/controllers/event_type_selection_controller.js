@@ -5,32 +5,17 @@ export default class extends Controller {
 
   connect() {
 
-    const journey = document.getElementById("journey")
-
-    this.typeTarget.addEventListener("change", () => console.log(this.typeTarget.value))
-
-
-    if (this.typeTarget.addEventListener("input", () => this.typeTarget.value) == "Journey") {
-      document.classList.toggle("d-none")
+  }
+  change(e) {
+    const selectedValue = e.srcElement.value.toLowerCase()
+    document.querySelectorAll(".input-wrapper").forEach(element => {
+      element.classList.add("d-none")
+    })
+    const inputWrapper = document.getElementById(selectedValue)
+    inputWrapper.classList.remove("d-none")
+    if (selectedValue == "restaurant" || "visit") {
+      console.log(document.querySelector(".event_end_date"))
+      inputWrapper.querySelector(".event_end_date").classList.add("d-none")
     }
-
-    // this.typeTarget.addEventListener("input", () => document.getElementById(this.typeTarget.value).classList.toggle("d-none"));
-
-    // if (this.typeTarget.addEventListener("input", () => document.getElementById(this.typeTarge.value).classList.toggle("d-none"))) {
-    // }
   }
-  change() {
-    let select = document.querySelector('#selector');
-        let result = document.querySelector('#result');
-        select.addEventListener('input', function () {
-            result.textContent = this.typeTarget.value;
-        });
-  }
-    // if (journey == this.typeTarget.innerText) {
-    //   journey.classList.toggle("d-none")
-    // }
-
-    // if (this.typeTarget.innerText == ["Journey", "Flight", "Train", "Bus", "Boat"]) {
-    //   this.typeTarget.classList.toggle(".d-none")
-    // }
 }

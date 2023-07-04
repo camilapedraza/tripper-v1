@@ -1,31 +1,37 @@
 <div class="container" data-controller="event-type-selection">
   <%= simple_form_for [@trip, @event] do |f| %>
-    <%= f.input :event_type, collection: Event::EVENT_TYPES, input_html:{data: { event_type_selection_target: "type" }}, include_blank: false, id:"selector" %>
+    <%= f.input :event_type, collection: Event::EVENT_TYPES, input_html:{data: { event_type_selection_target: "type", action: "change->event-type-selection#change"}}, id:"selector" %>
     <%= f.input :name %>
-    <p id="result"></p>
-    <button onclick="onClick()">Bouton</button>
-    <div id="journey" class="d-none">
-      <div class="row">
-        <div class="col">
-          <%= f.input :start_date, as: :string,
-                      wrapper_html: { class: "mb-4" },
-                      label_html: { class: "form-label text-secondary fw-bold" },
-                      input_html: { data: { controller: "flatpickr" } } %>
-        </div>
-        <div class="col">
-          <%= f.input :end_date, as: :string,
-                      wrapper_html: { class: "mb-4" },
-                      label_html: { class: "form-label text-secondary fw-bold" },
-                      input_html: { data: { controller: "flatpickr" } } %>
-        </div>
+    <div class="row">
+      <div class="col">
+        <%= f.input :start_date, as: :string,
+                    wrapper_html: { class: "mb-4" },
+                    label_html: { class: "form-label text-secondary fw-bold" },
+                    input_html: { data: { controller: "flatpickr" } } %>
       </div>
-      <%= f.input :start_location,
-                  input_html: {data: {start_location_autocomplete_target: "start_location"}, class: "d-none"},
-                  wrapper_html: {data: {controller: "start-location-autocomplete", start_location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
-      <%= f.input :end_location,
-                  input_html: {data: {end_location_autocomplete_target: "end_location"}, class: "d-none"},
-                  wrapper_html: {data: {controller: "end-location-autocomplete", end_location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
-      <%= f.submit %>
     </div>
+    <div class="row">
+      <div class="col">
+        <%= f.input :start_location,
+                    input_html: {data: {start_location_autocomplete_target: "start_location"}, class: "d-none"},
+                    wrapper_html: {data: {controller: "start-location-autocomplete", start_location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
+      </div>
+      <div class="col">
+        <%= f.input :end_location,
+                    input_html: {data: {end_location_autocomplete_target: "end_location"}, class: "d-none"},
+                    wrapper_html: {data: {controller: "end-location-autocomplete", end_location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
+      </div>
+    </div>
+    <%= render partial: "events/fields/journey_fields", locals: { f: f} %>
+    <%= render partial: "events/fields/flight_fields", locals: { f: f} %>
+    <%= render partial: "events/fields/restaurant_fields", locals: { f: f} %>
+    <%= render partial: "events/fields/visit_fields", locals: { f: f} %>
+    <%= render partial: "events/fields/show_fields", locals: { f: f} %>
+    <%= render partial: "events/fields/stay_fields", locals: { f: f} %>
+    <%= render partial: "events/fields/rental_fields", locals: { f: f} %>
+    <%= render partial: "events/fields/boat_fields", locals: { f: f} %>
+    <%= render partial: "events/fields/bus_fields", locals: { f: f} %>
+    <%= render partial: "events/fields/train_fields", locals: { f: f} %>
+    <%= render partial: "events/fields/other_fields", locals: { f: f} %>
   <% end %>
 </div>

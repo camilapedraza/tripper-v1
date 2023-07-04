@@ -7,7 +7,7 @@ class Event < ApplicationRecord
   has_many :tasks, dependent: :destroy
 
   validates :event_type, inclusion: { in: EVENT_TYPES }
-  validates :start_date, :end_date, :start_location, :end_location, presence: true
+  validates :start_date, presence: true
   validates :name, presence: true, if: :other?
 
   # with_options if: :flight? do
