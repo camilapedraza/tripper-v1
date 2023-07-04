@@ -1,132 +1,128 @@
-<h1><%= @trip.name %></h1>
-<div>
-  <%= link_to trips_path do %>
-    <i class="fa-solid fa-arrow-left fa-xl"></i>
-  <% end %>
-  <%= link_to edit_trip_path do %>
-    <i class="fa-solid fa-pen-to-square fa-lg"></i>
-  <% end %>
-</div>
-<br>
-<br>
-<div>
+<div class= "show_page" style="background-image: url('https://live.staticflickr.com/2162/1534505052_f571970f2c_b.jpg')">
+
+  <div class="trip_name">
+  <h1><%= @trip.name %></h1>
+  </div>
   <div>
-    <% @trippers.first(3).each do |user| %>
-      <img class="rounded-circle" width="30px" height="30px" src="<%= user.photo.attached? ? image_path("user_seeds/#{user.photo.filename}") : image_path('avatar.png') %>" />
-    <% end %>
-    <% if @trippers.count > 3 %>
-      <span class="rounded-pill border border-success p-2">+ <%= pluralize(@trippers.count - 3, "tripper") %></span>
+    <%= link_to edit_trip_path do %>
+      <i class="fa-solid fa-pen-to-square fa-lg"></i>
     <% end %>
   </div>
-
-  <div>
-  <i class="fa-solid fa-arrow-up-from-bracket"></i>
-  </div>
-</div>
-
-<div>
-  <div>
-    <%= link_to "Add event",  new_trip_event_path(@trip), class: "btn btn-primary" %>
-    <a href="#"> Expand All</a>
-  </div>
-  <% if @trip.events.any? %>
-    <div>
-      <% @grouped_events = @chron_events.group_by { |e| e.start_date.to_date } %>
-      <% @grouped_events.each do |day, events| %>
-        <div>
-          <strong><%= day.strftime("%b %d") %></strong>
-          &nbsp; &nbsp; &nbsp;<%= pluralize(events.count, "event") %>
-        </div>
-        <div>
-        <% events.each do |event| %>
-
-            <% case event.event_type
-                when "journey", "flight", "train", "bus", "boat" %>
-                  <%= event.event_type.upcase %>
-                  <br>
-                  <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>
-                  <%# MISSING: USE GEOCDER TO DISPLAY SHORTER START LOCATIONS (CITY NAME, AIRPORT NAME, ETC.) %>
-                  Departing: <%= event.start_date.strftime("%I:%M%P") %>
-                  <%= event.start_date.strftime("%b %d") %>
-                  ------
-                  Arriving: <%= event.end_date.strftime("%I:%M%P") %>
-                  <%= event.end_date.strftime("%b %d") %>
-                  <br>
-                  From: <%= event.start_location %>
-                  ------
-                  To: <%= event.end_location %>
-                  <br>
-                  <% @duration = (event.end_date - event.start_date) %>
-                  Duration: <%= (@duration/3600).to_i %>h <%= "#{((@duration % 3600)/60).to_i} mins" if (@duration % 3600) > 0 %>
-                  <br>
-
-                <% when "rental" %>
-                  <%# MISSING: THIS NEEDS TO BE BROKEN DOWN INTO TWO EVENTS: Pick up vs Drop off %>
-                  <%= event.event_type.upcase %>
-                  <br>
-                  Pick up:
-                  <%= event.start_location %> at
-                  <%= event.start_date.strftime("%I:%M%P") %> on
-                  <%= event.start_date.strftime("%b %d") %>
-                  <br>
-                  Drop off:
-                  <%= event.end_location %> at
-                  <%= event.end_date.strftime("%I:%M%P") %> on
-                  <%= event.end_date.strftime("%b %d") %>
-                  <br>
-                  <% @duration = (event.end_date - event.start_date) %>
-                  Renting for <%= pluralize(@duration.to_i/86400, "day") %>
-                  <br>
-
-                <% when "stay" %>
-                  <%= event.event_type.upcase %>
-                  <br>
-                  <%= "#{event.provider} in " if event.provider %><%= event.start_location %>
-                  <br>
-                  <% @duration = (event.end_date - event.start_date) %>
-                  Staying  <%= pluralize((@duration.to_i/86400), "night") %>
-                  <br>
-                  Address: <%= event.provider_address %>
-                  <br>
-
-                <% when "restaurant", "visit", "show" %>
-                  <%= event.event_type.upcase %>
-                  <br>
-                  <%= event.name %>
-                  <% if event.event_type == "show" %>
-                    at <%= event.provider %>
-                    <br>
-                    Show starts at <%= event.start_date.strftime("%I:%M%P") %>
-                  <% else %>
-                    at <%= event.start_date.strftime("%I:%M%P") %>
-                  <% end %>
-                  <br>
-                  Address: <%= event.start_location %>
-                  <br>
-
-                <% else %>
-                CUSTOM EVENT
-                <br>
-                <%= event.name %>
-                <br>
-                Starts at <%= event.start_date.strftime("%I:%M%P") %>
-                Location: <%= event.start_location %>
-                <br>
-                <% if event.end_date.present? %>
-                  Ends at <%= event.end_date.strftime("%I:%M%P") %>
-                <% end %>
-                <% if event.end_location != event.start_location %>
-                Location: <%= event.end_location %>
-                <% end %>
-                <br>
-            <% end %>
-            <br>
-          <% end %>
-        </div>
-        <br>
+  <br>
+  <br>
+  <div class="tripper_share">
+    <div class="trippers">
+      <% @trippers.first(3).each do |user| %>
+        <img class="rounded-circle" width="30px" height="30px" src="<%= user.photo.attached? ? image_path("user_seeds/#{user.photo.filename}") : image_path('avatar.png') %>" />
+      <% end %>
+      <% if @trippers.count > 3 %>
+        <span class="rounded-pill border border-success p-2">+ <%= pluralize(@trippers.count - 3, "tripper") %></span>
       <% end %>
     </div>
-  <% else %>
-    <p>Mmh, it’s pretty quiet there... Tap on “ADD EVENT" to start</p>
-  <% end %>
+
+    <div>
+    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+    </div>
+  </div>
+
+  <div class="card_trip_show">
+    <div class="trip_viewall">
+
+      <div class="secondary-pill-button">
+        <%= link_to "ADD EVENT",  new_trip_event_path(@trip) %>
+      </div>
+
+      <h3 id="expand-all-button">VIEW ALL</h3>
+    </div>
+    <% if @trip.events.any? %>
+      <div>
+        <% @grouped_events = @chron_events.group_by { |e| e.start_date.to_date } %>
+
+          <% @grouped_events.each do |day, events| %>
+
+            <div class="accordion">
+              <div class="flex-container">
+                <h2><%= day.strftime("%b %d") %></h2>
+                  <div class="event-button">
+                    <p><%= pluralize(events.count, "event").upcase %></p>
+                  </div>
+                  <i class="fa-solid fa-chevron-down" style="color: #ffffff;"></i>
+              </div>
+
+                <div class="panel">
+                  <% events.each do |event| %>
+                  <%= event.other? ?  "CUSTOM EVENT" : event.event_type.upcase %> <br>
+                  <% case event.event_type
+                    when "journey", "flight", "train", "bus", "boat" %>
+                      <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>
+                      <%# MISSING: USE GEOCDER TO DISPLAY SHORTER START LOCATIONS (CITY NAME, AIRPORT NAME, ETC.) %>
+                      Departing: <%= event.format_start_time %> <%= event.format_start_date %>
+                      ------
+                      Arriving: <%= event.format_end_time %> <%= event.format_end_date %>
+                      <br>
+                      From: <%= event.start_location %>
+                      ------
+                      To: <%= event.end_location %>
+                      <br>
+                      Duration: <%= event.format_duration_h_min %>
+                      <br>
+                      <br>
+
+                    <% when "rental" %>
+                      <%# MISSING: THIS NEEDS TO BE BROKEN DOWN INTO TWO EVENTS: Pick up vs Drop off %>
+                      Pick up:
+                      <%= event.start_location %> at
+                      <%= event.format_start_time %> on
+                      <%= event.start_date.strftime("%b %d") %>
+                      <br>
+                      Drop off:
+                      <%= event.end_location %> at
+                      <%= event.format_end_time %> on
+                      <%= event.format_end_date %>
+                      <br>
+                      Renting for <%= pluralize(event.format_duration_d, "day") %>
+                      <br>
+                      <br>
+                    <% when "stay" %>
+                      <%= "#{event.provider} in " if event.provider %><%= event.start_location %>
+                      <br>
+                      Staying <%= pluralize(event.format_duration_d, "night") %>
+                      <br>
+                      Address: <%= event.provider_address %>
+                      <br>
+                      <br>
+                    <% when "restaurant", "visit", "show" %>
+                      <%= event.name %>
+                      <% if event.event_type == "show" %>
+                        at <%= event.provider %>
+                        <br>
+                        Show starts at <%= event.format_start_time %>
+                      <% else %>
+                        at <%= event.format_start_time %>
+                      <% end %>
+                      <br>
+                      Address: <%= event.start_location %>
+                      <br>
+
+                    <% else %>
+                    <%= event.name %>
+                    <br>
+                    Starts at <%= event.format_start_time %>
+                    Location: <%= event.start_location %>
+                    <br>
+                    <% if event.end_date.present? %>
+                      Ends at <%= event.format_end_time %>
+                    <% end %>
+                    <% if event.end_location != event.start_location %>
+                      Location: <%= event.end_location %>
+                    <% end %>
+                    <br>
+                  <% end %>
+                </div>
+            </div>
+          <% end %>
+        <% else %>
+      <p>Mmh, it’s pretty quiet there... Tap on “ADD EVENT" to start</p>
+    <% end %>
+  </div>
 </div>
