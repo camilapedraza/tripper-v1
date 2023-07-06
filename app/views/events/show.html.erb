@@ -85,7 +85,9 @@
     Starts at <%= @event.format_start_time %>
     Location: <%= @event.start_location %>
     <br>
-    Ends at <%= @event.format_end_time %>
+    <% if @event.end_date.present? %>
+      Ends at <%= @event.format_end_time %>
+    <% end %>
     <% if @event.end_location != @event.start_location %>
       Location: <%= @event.end_location %>
     <% end %>
