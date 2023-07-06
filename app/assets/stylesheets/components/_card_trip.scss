@@ -128,3 +128,10 @@
   display: flex;
   flex-direction: column;
 }
+
+.button-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 10px; /* Ajustez ce margin-top selon vos besoins */
+}

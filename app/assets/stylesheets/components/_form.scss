@@ -28,7 +28,9 @@ form {
 
 .form-control:focus {
   color: white;
-    background-color: red !important;
-    border-color: #86b7fe;
     outline: 0;
+}
+
+.input-wrapper input::placeholder {
+  color: #7F7EFF;
 }
