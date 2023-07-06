@@ -2,5 +2,7 @@
   <div class="input-wrapper">
     <%= f.input :name, label: false, placeholder: "Enter a trip name", input_html: { style: "width: 338px; font-size: 18px; color: #7F7EFF;" } %>
   </div>
-  <%= f.button :submit, "Go!", class: "primary-button" %>
+  <div class="button-wrapper">
+    <%= f.button :submit, "Go!", class: "primary-button" %>
+  </div>
 <% end %>

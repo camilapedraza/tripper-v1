@@ -49,6 +49,11 @@ label {
   padding: 0%;
 }
 
+
+.form-control:focus {
+  color: white;
+    outline: 0;
+
 .add-task-input {
   border: none;
   border-radius: 0%;
@@ -58,4 +63,9 @@ label {
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
+
+}
+
+.input-wrapper input::placeholder {
+  color: #7F7EFF;
 }
