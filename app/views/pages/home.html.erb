@@ -1,13 +1,15 @@
-<div id="hero">
-  <img class="page-picture" src="/assets/pictures/capadoccia.png" alt="balloons in a blue sky in Capadocia">
-  <h1>Tripper</h1>
-</div>
+<div class="container">
+  <div id="hero">
+    <%= image_tag "pictures/capadoccia.png", class:"page-picture", alt:"balloons in a blue sky in Capadocia"%>
+    <h1>Tripper</h1>
+  </div>
 
-<div class="page-flex">
-  <h2>Making travel easy</h2>
-  <p class="page-description" style="margin-bottom: 30px">All your reservations, flights and travel informations on a single place.</p>
-  <a><%= link_to "Create an account", new_user_registration_path, class: "primary-button", style: "margin-bottom: 15px"%></a>
-  <a><%= link_to "Login", new_user_session_path, class: "secondary-button"%></a>
-  <p style="margin-top: 20px; margin-bottom: 10px" id="scroll-text">scroll down to learn more</p>
-  <i class="fa-solid fa-chevron-down" style="color: #ffffff;"></i>
+  <div class="page-flex">
+    <h2>Making travel easy</h2>
+    <p class="page-description" style="margin-bottom: 30px">All your reservations, flights and travel informations on a single place.</p>
+    <a><%= link_to "Create an account", new_user_registration_path, class: "primary-button", style: "margin-bottom: 15px"%></a>
+    <a><%= link_to "Login", new_user_session_path, class: "secondary-button"%></a>
+    <p style="margin-top: 20px; margin-bottom: 10px" id="scroll-text">scroll down to learn more</p>
+    <i class="fa-solid fa-chevron-down" style="color: #ffffff;"></i>
+  </div>
 </div>
