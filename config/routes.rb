@@ -16,4 +16,14 @@ Rails.application.routes.draw do
   resources :trips, only: %i[index show new create edit update] do
     resources :events, only: %i[index show new create]
   end
+
+  # MISSING: Delete trip
+  # MISSING: Update event
+  # MISSING: Delete event
+
+  resources :events do
+    resources :tasks, only: %i[index new create]
+  end
+
+  resources :tasks, only: %i[update destroy]
 end

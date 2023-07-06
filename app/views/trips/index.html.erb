@@ -1,8 +1,7 @@
-  <div class="page-title">
-    <h2>My Trips</h2>
-    <a><%= link_to "ADD A TRIP",  new_trip_path, class: "primary-pill-button" %></a>
-  </div>
-
+<div class="page-title">
+  <h2>My Trips</h2>
+  <a id="add-trip-link" class="primary-pill-button" data-target="new-trip-card">ADD A TRIP</a>
+</div>
 
 <div class="container">
   <% if @trips.any? %>
@@ -38,7 +37,6 @@
             </div>
           </div>
 
-          
           <div class="bottom">
             <div class="trippers_events" style="display: flex;">
               <div class="event-button" style="margin-right: 5px;">
@@ -65,3 +63,16 @@
     <p style="margin-top: 95px">Hmm. It's pretty quiet here. Click on "ADD A TRIP" to start ✌️</p>
   <% end %>
 </div>
+
+
+<div class="down-card" id="new-trip-card" style="display: none;">
+  <div style="margin-top: 12px">
+    <h2>Let’s create a new trip</h2>
+    <p>Because life is a beach.</p>
+  </div>
+  <div class="new-trip">
+    <%= render "form", trip: @trip %>
+  </div>
+</div>
+
+<div id="placeholder-card" style="height: 0; overflow: hidden;"></div>

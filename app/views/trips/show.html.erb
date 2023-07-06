@@ -51,6 +51,7 @@
 
                 <div class="panel">
                   <% events.each do |event| %>
+
                   <%= event.other? ?  "CUSTOM EVENT" : event.event_type.upcase %> <br>
                   <% case event.event_type
                     when "journey", "flight", "train", "bus", "boat" %>
@@ -161,28 +162,10 @@
                       <%= event.name %>
                       <% if event.event_type == "show" %>
                         at <%= event.provider %>
-                        <br>
-                        Show starts at <%= event.format_start_time %>
-                      <% else %>
-                        at <%= event.format_start_time %>
-                      <% end %>
-                      <br>
-                      Address: <%= event.start_location %>
-                      <br>
 
-                    <% else %>
-                    <%= event.name %>
-                    <br>
-                    Starts at <%= event.format_start_time %>
-                    Location: <%= event.start_location %>
-                    <br>
-                    Ends at <%= event.format_end_time %>
-                    <% if event.end_location != event.start_location %>
-                      Location: <%= event.end_location %>
+                        <br>
+                      <% end %>
                     <% end %>
-                    <br>
-                    <br>
-                  <% end %>
                   <% end %>
                 </div>
             </div>

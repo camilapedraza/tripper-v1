@@ -43,6 +43,7 @@
   </div>
 
   <% when "rental" %>
+    <h2>Details for this rental</h2>
     <%# MISSING: THIS NEEDS TO BE BROKEN DOWN INTO TWO EVENTS: Pick up vs Drop off %>
     Pick up:
     <%= @event.start_location %> at
@@ -57,7 +58,7 @@
     Renting for <%= pluralize(event.format_duration_d, "day") %>
     <br>
   <% when "stay" %>
-
+    <h2>Details for this stay</h2>
     <%= "#{@event.provider} in " if @event.provider %><%= @event.start_location %>
     <br>
     Staying <%= pluralize(@event.format_duration_d, "night") %>
@@ -65,7 +66,8 @@
     Address: <%= @event.provider_address %>
     <br>
   <% when "restaurant", "visit", "show" %>
-    <%= @event.name %>
+    <h2>Details for this event</h2>
+    <%= @event.event_type.capitalize %>: <%= @event.name %>
     <% if @event.event_type == "show" %>
       at <%= @event.provider %>
       <br>
@@ -77,6 +79,7 @@
     Address: <%= @event.start_location %>
     <br>
   <% else %>
+    <h2>Details for this event</h2>
     <%= @event.name %>
     <br>
     Starts at <%= @event.format_start_time %>
@@ -87,22 +90,53 @@
       Location: <%= @event.end_location %>
     <% end %>
   <br>
+<% end%>
+<div>
+  <h2>Files</h2>
+    <div>
+    <%= link_to "Add file",  "#", class: "btn btn-primary" %>
+    </div>
+</div>
+<br>
 
-
-  <% end %>
-  <div class="left-align">
-    <h2>My Documents</h2>
-      <div class="documents">
-      <%= link_to "ADD DOC",  "#", class: "primary-pill-button" %>
-      <%= link_to "ADD DOC",  "#", class: "primary-pill-button" %>
-      </div>
-  </div>
-  <br>
-
-  <div>
-    <h2>Checklist</h2>
-      <div>
-      <%= link_to "Add task",  "#", class: "btn btn-primary" %>
-      </div>
-  </div>
+<div>
+  <h2>Checklist</h2>
+  <%# MISSING: Inline edit a task %>
+    <div>
+      <ul>
+        <% @event.tasks.each do |task| %>
+          <li style="list-style-type:none">
+            <% if task.is_complete %>
+              <%= link_to task_path(task, params: {task: {is_complete: false}}), data: {turbo_method: :patch} do %>
+                <i class='fa-solid fa-circle-check fa-lg'></i>
+              <% end %>
+                <span style="text-decoration:line-through"><%= task.content %></span>
+            <% else %>
+              <%= link_to task_path(task, params: {task: {is_complete: true}}), data: {turbo_method: :patch} do %>
+                <i class="fa-regular fa-circle fa-lg"></i>
+              <% end %>
+              <%= task.content %>
+            <% end %>
+            &nbsp;
+            <%= link_to task_path(task), data: {turbo_method: :delete} do %>
+              <i class="fa-solid fa-xmark"></i>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div>
+      <%= simple_form_for [@event, @task], html: { id: 'add-task-form' } do |f| %>
+        <div class="row">
+          <div class="col-2">
+            <%= f.button :button, class: "add-task-button" do %>
+              <i class="fa-solid fa-plus" style="color: #7f7eff;"></i>
+            <% end %>
+          </div>
+          <div class="col-10">
+            <%= f.input :content, label: false, placeholder: 'add a task to the list…', input_html: { class: 'add-task-input' } %>
+          </div>
+        </div>
+      <% end %>
+    </div>
 </div>
