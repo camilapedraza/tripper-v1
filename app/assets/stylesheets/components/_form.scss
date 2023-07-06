@@ -53,12 +53,12 @@ label {
 .form-control:focus {
   color: white;
     outline: 0;
-
-.add-task-input {
+}
+  .add-task-input {
   border: none;
   border-radius: 0%;
 }
-.add-task-button {
+  .add-task-button {
   border: none;
   text-decoration: none;
   margin: 4px 2px;
@@ -66,6 +66,6 @@ label {
 
 }
 
-.input-wrapper input::placeholder {
+  .input-wrapper input::placeholder {
   color: #7F7EFF;
 }
