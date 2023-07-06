@@ -7,8 +7,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 puts "Cleaning Database"
 Collaborator.destroy_all
-Event.destroy_all
 Task.destroy_all
+Event.destroy_all
 Trip.destroy_all
 User.destroy_all
 
@@ -137,7 +137,7 @@ Event.create(
   start_location: "Chamonix-Mont-Blanc",
   end_location: "Paris 75007"
 )
-Event.create(
+event1 = Event.create(
   name: "Flight to Madrid",
   trip: trip2,
   event_type: "flight",
@@ -149,12 +149,12 @@ Event.create(
   reservation_number: "YTR89Q",
   transport_number: "TO4638"
 )
-Event.create(
+event2 = Event.create(
   name: "Madrid Apartment",
   trip: trip2,
   event_type: "stay",
-  start_date: DateTime.new(2023, 5, 21),
-  end_date: DateTime.new(2023, 5, 23),
+  start_date: DateTime.new(2023, 5, 21, 14),
+  end_date: DateTime.new(2023, 5, 23, 6, 30),
   start_location: "Madrid, Spain",
   end_location: "Madrid, Spain",
   provider: "AirBnB",
@@ -183,12 +183,12 @@ Event.create(
   end_location: "Palma, Spain",
   provider: "Sixt"
 )
-Event.create(
+event3 = Event.create(
   name: "Stay in Palma",
   trip: trip2,
   event_type: "stay",
-  start_date: DateTime.new(2023, 5, 23),
-  end_date: DateTime.new(2023, 5, 28),
+  start_date: DateTime.new(2023, 5, 23, 15),
+  end_date: DateTime.new(2023, 5, 28, 6, 30),
   provider: "AirBnB",
   provider_address: "Carrer Princesa, 15, Can Picafort, Illes Balears",
   start_location: "Mallorca",
@@ -222,8 +222,8 @@ Event.create(
   name: "Lisbon Apt",
   trip: trip2,
   event_type: "stay",
-  start_date: DateTime.new(2023, 5, 28),
-  end_date: DateTime.new(2023, 5, 30),
+  start_date: DateTime.new(2023, 5, 28, 14, 30),
+  end_date: DateTime.new(2023, 5, 30, 10),
   provider: "AirBnB",
   provider_address: "Beco do Maquinez 10",
   start_location: "Lisbon",
@@ -244,8 +244,8 @@ Event.create(
   name: "Sintra stay",
   trip: trip2,
   event_type: "stay",
-  start_date: DateTime.new(2023, 5, 30),
-  end_date: DateTime.new(2023, 6, 1),
+  start_date: DateTime.new(2023, 5, 30, 17),
+  end_date: DateTime.new(2023, 6, 1, 11),
   provider: "AirBnB",
   provider_address: "Rua Ferraria 8",
   start_location: "Sintra, Portugal",
@@ -527,4 +527,35 @@ Collaborator.create(
 Collaborator.create(
   trip: trip2,
   user: fausto
+)
+
+Task.create(
+  event: event1,
+  content: "Get travel insurance",
+  is_complete: true
+)
+
+Task.create(
+  event: event1,
+  content: "Buy carry-on bag"
+)
+
+Task.create(
+  event: event1,
+  content: "Check in and get boarding pass"
+)
+
+Task.create(
+  event: event2,
+  content: "Confirm check-in and check-out time"
+)
+
+Task.create(
+  event: event2,
+  content: "Ask what nearest metro stop is"
+)
+
+Task.create(
+  event: event3,
+  content: "Book parking spot nearby"
 )
