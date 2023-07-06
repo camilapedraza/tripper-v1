@@ -1,23 +1,15 @@
-<div class="container d-grid justify-content-center text-center">
+<div class="container">
   <div id="hero">
+    <%= image_tag "pictures/capadoccia.png", class:"page-picture", alt:"balloons in a blue sky in Capadocia"%>
     <h1>Tripper</h1>
-    <h4>Making travel easy</h4>
-    <p class="font-italic">All your reservations, flights and travel<br>informations on a single place.</p>
-    <% if user_signed_in? %>
-      <%= link_to "Log out", destroy_user_session_path, method: :delete%>
-    <% else %>
-    <div class="container d-grid justify-content-center text-center">
-      <a><%= link_to "Create an account", new_user_registration_path, class: "btn primary-button"%></a>
-      <a><%= link_to "Login", new_user_session_path, class: "btn secondary-button mt-3"%></a>
-    </div>
-    <% end %>
   </div>
-  <div id="swipe-up">
-    <p>Swipe up to learn more!</p>
+
+  <div class="page-flex">
+    <h2>Making travel easy</h2>
+    <p class="page-description" style="margin-bottom: 30px">All your reservations, flights and travel informations on a single place.</p>
+    <a><%= link_to "Create an account", new_user_registration_path, class: "primary-button", style: "margin-bottom: 15px"%></a>
+    <a><%= link_to "Login", new_user_session_path, class: "secondary-button"%></a>
+    <p style="margin-top: 20px; margin-bottom: 10px" id="scroll-text">scroll down to learn more</p>
+    <i class="fa-solid fa-chevron-down" style="color: #ffffff;"></i>
   </div>
-  <div id="tuto" class="d-none">
-    <h4>Store all your reservations, travel documents and plans</h4>
-    <h4>Build itineraries that are easy to scan and search</h4>
-    <h4>Fetch anything you need with one single click</h4>
-    </div>
 </div>

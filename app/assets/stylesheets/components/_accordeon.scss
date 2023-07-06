@@ -1,5 +1,5 @@
 .accordion {
-  width: 90%;
+  width: 100%;
   background-color: rgba(43, 42, 42, 1);
   margin-top: 15px;
   border-bottom: solid 1px white;
@@ -39,4 +39,8 @@
 .accordion.active .panel {
   max-height: 2500px;
   transition: max-height 0.4s ease;
+}
+
+.card_trip_show h3 {
+  font-size: 20px;
 }
