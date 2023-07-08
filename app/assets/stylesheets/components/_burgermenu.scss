@@ -85,7 +85,7 @@
   margin: 6px 0 0 0;
   padding: 37px;
   padding-top: 33px;
-  right: -21px;
+  right: -118px;
   background-color: #444444;
   border: 2px solid rgba(127, 126, 255, 1);
   box-shadow: 5px 5px 100px rgba(127, 126, 255, 1);
@@ -107,6 +107,7 @@
 {
   transform: none;
   display: block;
+  right: -21px;
 }
 
 @media screen and (max-width: 768px) {
