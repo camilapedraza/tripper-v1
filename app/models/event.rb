@@ -67,10 +67,12 @@ class Event < ApplicationRecord
   end
 
   def format_end_time
+    # MISSING: MOVE THE TRY METHOD TO SHOW
     end_date&.strftime("%I:%M%P")
   end
 
   def format_end_date
+    # MISSING: MOVE TRY METHOD TO SHOW
     end_date&.strftime("%b %d")
   end
 
@@ -88,9 +90,16 @@ class Event < ApplicationRecord
     duration.to_i / 86_400
   end
 
+  def start_location_city
+    coordinates = "#{start_latitude},#{start_longitude}"
+    response = Geocoder.search(coordinates).first
+    response.city if response.present?
+  end
+
   private
 
   def duration
+    # MISSING: REVIEW THIS AND MOVE TO SHOW
     return 0 unless end_date && start_date
 
     end_date - start_date
