@@ -106,15 +106,13 @@
 #menuToggle input:checked ~ ul
 {
   transform: none;
-  opacity: 1;
+  display: block;
 }
 
 @media screen and (max-width: 768px) {
   #menu {
     transform: none;
-    opacity: 0;
-
-    transition: opacity 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    display: none;
   }
 }
 
