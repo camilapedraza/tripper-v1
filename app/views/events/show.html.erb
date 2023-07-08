@@ -1,8 +1,8 @@
 <div class="container">
   <% case @event.event_type
     when "journey", "flight", "train", "bus", "boat" %>
-    <div class="left-align">
-      <h2>Booking details</h2>
+    <div class="left-align" style="margin-top: 30px">
+      <h2>Informations about<br>your reservation</h2>
     </div>
     <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>
     <%# MISSING: USE GEOCDER TO DISPLAY SHORTER START LOCATIONS (CITY NAME, AIRPORT NAME, ETC.) %>
@@ -104,62 +104,64 @@
       <% end %>
     <br>
     <% end%>
-  <br>
-  <br>
-  <br>
-  <div>
-    <div class="left-align">
-      <h2>Files</h2>
-    </div>
-    <div>
-    <%= link_to "Add file",  "#", class: "btn btn-primary" %>
+
+  <div class="left-align">
+    <div class="documents">
+      <h2>My Documents</h2>
+        <div>
+        <%= link_to "ADD DOC",  "#", class: "primary-pill-button" %>
+        </div>
     </div>
   </div>
-  <br>
-  <br>
-  <br>
 
-  <div>
-    <div class="left-align">
+
+  <div class="left-align">
+    <div class="documents">
       <h2>Checklist</h2>
-    </div>
-    <%# MISSING: Inline edit a task %>
-    <div>
-      <ul>
-        <% @event.tasks.each do |task| %>
-          <li style="list-style-type:none">
-            <% if task.is_complete %>
-              <%= link_to task_path(task, params: {task: {is_complete: false}}), data: {turbo_method: :patch} do %>
-                <i class='fa-solid fa-circle-check fa-lg'></i>
-              <% end %>
-                <span style="text-decoration:line-through"><%= task.content %></span>
-            <% else %>
-              <%= link_to task_path(task, params: {task: {is_complete: true}}), data: {turbo_method: :patch} do %>
-                <i class="fa-regular fa-circle fa-lg"></i>
-              <% end %>
-              <%= task.content %>
+        <div class="checklist-items">
+          <ul>
+            <% @event.tasks.each do |task| %>
+              <li style="list-style-type:none">
+                <% if task.is_complete %>
+                  <%= link_to task_path(task, params: {task: {is_complete: false}}), data: {turbo_method: :patch} do %>
+                    <svg style="margin-right: 12px" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="11" cy="11" r="10.5" fill="#7F7EFF" stroke="#7F7EFF"/>
+                      <path d="M7 12L10 14.5L15 8" stroke="white" stroke-linecap="round"/>
+                    </svg>
+                  <% end %>
+                    <span><%= task.content %></span>
+                <% else %>
+                  <%= link_to task_path(task, params: {task: {is_complete: true}}), data: {turbo_method: :patch} do %>
+                  <svg style="margin-right: 12px" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle id="Ellipse 10" cx="11" cy="11" r="10.5" stroke="#7F7EFF"/>
+                  </svg>
+                  <% end %>
+                  <%= task.content %>
+                <% end %>
+                &nbsp;
+                <%= link_to task_path(task), data: {turbo_method: :delete} do %>
+                  <i class="fa-solid fa-xmark"></i>
+                <% end %>
+              </li>
             <% end %>
-            &nbsp;
-            <%= link_to task_path(task), data: {turbo_method: :delete} do %>
-              <i class="fa-solid fa-xmark"></i>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-    <div>
-      <%= simple_form_for [@event, @task], html: { id: 'add-task-form' } do |f| %>
-        <div class="row">
-          <div class="col-2">
-            <%= f.button :button, class: "add-task-button" do %>
-              <i class="fa-solid fa-plus" style="color: #7f7eff;"></i>
-            <% end %>
-          </div>
-          <div class="col-10">
-            <%= f.input :content, label: false, placeholder: 'add a task to the list…', input_html: { class: 'add-task-input' } %>
-          </div>
+          </ul>
         </div>
-      <% end %>
+        <div>
+          <%= simple_form_for [@event, @task], html: { id: 'add-task-form' } do |f| %>
+            <div class="checklist">
+              <div class="add-task-button">
+                <%= f.button :button, class: "add-task-button" do %>
+                  <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path id="Vector 6" d="M7.5 1V7.75M7.5 14.5V7.75M7.5 7.75H14H1" stroke="#7F7EFF" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                <% end %>
+                <%= f.input :content, label: false, placeholder: 'add something...', input_html: { class: 'add-task-input' }%>
+              </div>
+              <div class="col-10">
+              </div>
+            </div>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>
