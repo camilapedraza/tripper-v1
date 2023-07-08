@@ -1,8 +1,10 @@
 <div class="container" data-controller="event-type-selection">
   <%= simple_form_for [@trip, @event] do |f| %>
     <%= f.input :event_type, collection: Event::EVENT_TYPES, input_html:{data: { event_type_selection_target: "type", action: "change->event-type-selection#change"}}, id:"selector" %>
-    <%= f.input :name %>
-    <div class="row">
+    <div id="name-input" class="d-none">
+      <%= f.input :name %>
+    </div>
+    <div class="row d-none" id="date-input">
       <div class="col">
         <%= f.input :start_date, as: :string,
                     wrapper_html: { class: "mb-4" },
@@ -14,7 +16,7 @@
                     input_html: { data: { controller: "flatpickr" } } %>
       </div>
     </div>
-    <div class="row">
+    <div class="row d-none" id="location-input">
       <div class="col">
         <%= f.input :start_location,
                     input_html: {data: {start_location_autocomplete_target: "start_location"}, class: "d-none"},
@@ -26,16 +28,24 @@
                     wrapper_html: {data: {controller: "end-location-autocomplete", end_location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
       </div>
     </div>
-    <%= render partial: "events/fields/journey_fields", locals: { f: f} %>
-    <%= render partial: "events/fields/flight_fields", locals: { f: f} %>
-    <%= render partial: "events/fields/restaurant_fields", locals: { f: f} %>
-    <%= render partial: "events/fields/visit_fields", locals: { f: f} %>
-    <%= render partial: "events/fields/show_fields", locals: { f: f} %>
-    <%= render partial: "events/fields/stay_fields", locals: { f: f} %>
-    <%= render partial: "events/fields/rental_fields", locals: { f: f} %>
-    <%= render partial: "events/fields/boat_fields", locals: { f: f} %>
-    <%= render partial: "events/fields/bus_fields", locals: { f: f} %>
-    <%= render partial: "events/fields/train_fields", locals: { f: f} %>
-    <%= render partial: "events/fields/other_fields", locals: { f: f} %>
+    <div id="provider-input" class="d-none">
+      <%= f.input :provider %>
+    </div>
+    <div id="provider-details-input" class="d-none">
+      <%= f.input :provider_phone %>
+      <%= f.input :provider_email %>
+    </div>
+    <div id="reservation-nr-input" class="d-none">
+        <%= f.input :reservation_number %>
+    </div>
+    <div id="seat-nr-input" class="d-none">
+      <%= f.input :seat_number %>
+    </div>
+    <div id="notes-input" class="d-none">
+      <%= f.input :notes %>
+    </div>
+    <div id="submit-input" class="d-none">
+      <%= f.submit %>
+    </div>
   <% end %>
 </div>
