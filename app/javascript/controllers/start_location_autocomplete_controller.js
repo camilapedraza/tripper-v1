@@ -23,9 +23,6 @@ export default class extends Controller {
 
   #clearInputValue() {
     this.start_locationTarget.value = ""
-  }
-
-  disconnect() {
-    this.geocoder.onRemove()
+    this.geocoder.clear()
   }
 }

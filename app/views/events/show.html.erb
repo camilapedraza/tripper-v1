@@ -88,20 +88,22 @@
       <br>
 
     <% else %>
-    <div class="left-align">
-      <h2>Custom Event Details</h2>
-    </div>
-    <%= @event.name %>
+      <div class="left-align">
+        <h2>Custom Event Details</h2>
+      </div>
+      <%= @event.name %>
+      <br>
+      Starts at <%= @event.format_start_time %>
+      Location: <%= @event.start_location %>
+      <br>
+      <% if @event.end_date.present? %>
+        Ends at <%= @event.format_end_time %>
+      <% end %>
+      <% if @event.end_location != @event.start_location %>
+        Location: <%= @event.end_location %>
+      <% end %>
     <br>
-    Starts at <%= @event.format_start_time %>
-    Location: <%= @event.start_location %>
-    <br>
-    Ends at <%= @event.format_end_time %>
-    <% if @event.end_location != @event.start_location %>
-      Location: <%= @event.end_location %>
-    <% end %>
-    <br>
-  <% end%>
+    <% end%>
   <br>
   <br>
   <br>
