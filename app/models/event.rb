@@ -7,7 +7,8 @@ class Event < ApplicationRecord
   has_many :tasks, dependent: :destroy
 
   validates :event_type, inclusion: { in: EVENT_TYPES }
-  validates :start_date, :end_date, :start_location, :end_location, presence: true
+  validates :start_date, presence: true
+  # validates :end_date, presence: true, if: :journey? || :flight? || :train? || :bus? || :boat? || :stay?
   validates :name, presence: true, if: :other?
 
   # with_options if: :flight? do
@@ -66,11 +67,11 @@ class Event < ApplicationRecord
   end
 
   def format_end_time
-    end_date.strftime("%I:%M%P")
+    end_date&.strftime("%I:%M%P")
   end
 
   def format_end_date
-    end_date.strftime("%b %d")
+    end_date&.strftime("%b %d")
   end
 
   def format_duration_h_min
@@ -90,6 +91,8 @@ class Event < ApplicationRecord
   private
 
   def duration
+    return 0 unless end_date && start_date
+
     end_date - start_date
   end
 

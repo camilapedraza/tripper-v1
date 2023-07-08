@@ -32,7 +32,9 @@
               </svg>
               <div>
                 <p><%= @events.first.start_date.strftime("%d %b") %></p>
-                <p><%= @events.last.end_date.strftime("%d %b") %></p>
+                <% if @events.last.end_date.present? %>
+                  <p><%= @events.last.end_date.strftime("%d %b") %></p>
+                <% end %>
               </div>
             </div>
           </div>

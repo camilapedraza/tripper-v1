@@ -47,7 +47,7 @@
                     <div class="event-card-container">
                       <div class="event-button">
                         <%= event.other? ?  "CUSTOM EVENT" : event.event_type.upcase %> <br>
-                       </div>
+                      </div>
                       <% case event.event_type
                         when "journey", "flight", "train", "bus", "boat" %>
                         <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>

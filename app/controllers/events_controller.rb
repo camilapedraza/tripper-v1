@@ -16,7 +16,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.trip = @trip
-    if @event.save
+    if @event.save!
       # redirect_to trip_event_path(@trip, @event)
       redirect_to trip_path(@trip)
     else
@@ -31,6 +31,17 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :event_type, :start_date, :end_date, :start_location, :end_location)
+    params.require(:event).permit(:name,
+                                  :event_type,
+                                  :start_date,
+                                  :end_date,
+                                  :start_location,
+                                  :end_location,
+                                  :provider,
+                                  :reservation_number,
+                                  :seat_number,
+                                  :notes,
+                                  :provider_phone,
+                                  :provider_email)
   end
 end
