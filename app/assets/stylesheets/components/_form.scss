@@ -67,3 +67,39 @@ form .add-task-button {
 form .input-wrapper input::placeholder {
   color: #7F7EFF;
 }
+
+.category-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  background-color: #4A4949;
+  border-radius: 14px;
+  padding: 8px;
+  width: 7rem;
+  margin: 2%;
+}
+
+.category-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.category-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 12px;
+  text-align: left;
+  padding: 10px 10px 30px 10px;
+  border: 1px solid #920a0a;
+  border-radius: 4px;
+  background-color: rgb(165, 20, 20);
+}
+
+.category-selector:checked + label {
+  color: white !important;
+}

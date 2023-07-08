@@ -1,6 +1,12 @@
 <div class="container" data-controller="event-type-selection">
   <%= simple_form_for [@trip, @event] do |f| %>
-    <%= f.input :event_type, collection: Event::EVENT_TYPES, input_html:{data: { event_type_selection_target: "type", action: "change->event-type-selection#change"}}, id:"selector" %>
+    <%= f.input :event_type,
+                as: :radio_buttons,
+                collection: Event::EVENT_TYPES,
+                collection_wrapper_tag: 'div',
+                collection_wrapper_class: 'category-wrapper',
+                item_wrapper_class: 'category-item',
+                input_html:{data: { event_type_selection_target: "type", action: "change->event-type-selection#change"}, id:"selector", class: 'category-selector' }%>
     <div id="name-input" class="d-none">
       <%= f.input :name %>
     </div>
