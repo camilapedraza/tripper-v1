@@ -529,6 +529,7 @@ Collaborator.create(
   user: fausto
 )
 
+puts "Creating tasks"
 Task.create(
   event: event1,
   content: "Get travel insurance",
