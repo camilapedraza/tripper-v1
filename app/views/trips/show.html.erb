@@ -43,11 +43,13 @@
               </div>
               <div class="panel">
                 <% events.each do |event| %>
-                  <%= link_to trip_event_path(@trip, event), class: "text-decoration-none" do %>
+                  <%= link_to trip_event_path(@trip, event), class: "event-card-container text-decoration-none" do %>
                     <div class="event-card-container">
+                      <div class="event-button-center">
                       <div class="event-button">
                         <%= event.other? ?  "CUSTOM EVENT" : event.event_type.upcase %> <br>
                        </div>
+                    </div>
                       <% case event.event_type
                         when "journey", "flight", "train", "bus", "boat" %>
                         <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>
@@ -62,7 +64,8 @@
                               <p><%= event.format_end_date%></p>
                             </div>
                           </div>
-                          <div class="journey-container">
+                          <div class="journey-center">
+                            <div class="journey-container">
                             <div class="journey-overview">
                               <% case event.event_type
                               when "flight" %>
@@ -94,6 +97,7 @@
                               <p><%= event.start_location %></p>
                               <p><%= event.format_duration_h_min %></p>
                               <p><%= event.end_location %></p>
+                            </div>
                             </div>
                           </div>
                         <%# Departing: <%= event.format_start_time <%= event.format_start_date %>
