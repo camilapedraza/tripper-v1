@@ -89,21 +89,21 @@
                                 <% end%>
                               </div>
                               <div class="destination-name">
-                                <p><%= event.start_location %></p>
+                                <p><%= event.start_location_city %></p>
                                 <p><%= event.format_duration_h_min %></p>
-                                <p><%= event.end_location %></p>
+                                <p><%= event.end_location_city %></p>
                               </div>
                             </div>
                           </div>
                         <% when "rental" %>
                           <%# MISSING: THIS NEEDS TO BE BROKEN DOWN INTO TWO EVENTS: Pick up vs Drop off %>
                             Pick up:
-                            <%= event.start_location %> at
+                            <%= event.start_location_city %> at
                             <%= event.format_start_time %> on
                             <%= event.start_date.strftime("%b %d") %>
                             <br>
                             Drop off:
-                            <%= event.end_location %> at
+                            <%= event.end_location_city %> at
                             <%= event.format_end_time %> on
                             <%= event.format_end_date %>
                             <br>
@@ -112,7 +112,7 @@
                             <br>
                         <% when "stay" %>
                               <div class="event-information" style="margin-bottom: 21px">
-                                <h2><%= "#{event.provider} in " if event.provider %><%= event.start_location %><h2>
+                                <h2><%= "#{event.provider} in " if event.provider %><%= event.start_location_city %><h2>
                               </div>
                               <div class="event-information">
                                 <div class="horizontal-display">
