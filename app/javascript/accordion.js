@@ -1,22 +1,3 @@
-// const accordions = document.querySelectorAll(".accordion");
-
-// accordions.forEach((accordion) => {
-//   accordion.addEventListener("click", () => {
-//     accordion.classList.toggle("active");
-//   });
-// });
-
-// const accordions = document.querySelectorAll(".accordion");
-
-// accordions.forEach((accordion) => {
-//   const content = accordion.nextElementSibling;
-
-//   accordion.addEventListener("click", () => {
-//     accordion.classList.toggle("active");
-//     content.style.maxHeight = accordion.classList.contains("active") ? `${content.scrollHeight}px` : 0;
-//   });
-// });
-
 const accordions = document.querySelectorAll(".accordion");
 
 accordions.forEach((accordion) => {
