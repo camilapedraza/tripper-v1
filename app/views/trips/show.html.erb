@@ -44,14 +44,14 @@
               <div class="panel">
                 <% events.each do |event| %>
                   <%= link_to trip_event_path(@trip, event), class: "text-decoration-none" do %>
+                    <div class="event-card-container">
+                      <div class="event-button">
+                        <%= event.other? ?  "CUSTOM EVENT" : event.event_type.upcase %> <br>
+                       </div>
                       <% case event.event_type
                         when "journey", "flight", "train", "bus", "boat" %>
                         <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>
                         <%# MISSING: USE GEOCDER TO DISPLAY SHORTER START LOCATIONS (CITY NAME, AIRPORT NAME, ETC.) %>
-                        <div class="journey-card-container">
-                          <div class="event-button">
-                            <%= event.other? ?  "CUSTOM EVENT" : event.event_type.upcase %> <br>
-                          </div>
                           <div class="journey-time">
                             <div class="event-hour">
                               <h2><%= event.format_start_time %></h2>
@@ -96,7 +96,6 @@
                               <p><%= event.end_location %></p>
                             </div>
                           </div>
-                        </div>
                         <%# Departing: <%= event.format_start_time <%= event.format_start_date %>
                         <%# ------ %>
                         <%# Arriving: <%= event.format_end_time <%= event.format_end_date %>
@@ -110,7 +109,6 @@
                         <%# <br> %>
                         <% when "rental" %>
                           <%# MISSING: THIS NEEDS TO BE BROKEN DOWN INTO TWO EVENTS: Pick up vs Drop off %>
-                          <div class="other-event-card-container">
                             Pick up:
                             <%= event.start_location %> at
                             <%= event.format_start_time %> on
@@ -124,9 +122,7 @@
                             Renting for <%= pluralize(event.format_duration_d, "day") %>
                             <br>
                             <br>
-                          </div>
                         <% when "stay" %>
-                          <div class="other-event-card-container">
                             <div>
                               <div class="event-information" style="margin-bottom: 21px">
                                 <h2><%= "#{event.provider} in " if event.provider %><%= event.start_location %><h2>
@@ -147,9 +143,7 @@
                                 </div>
                               </div>
                             </div>
-                          </div>
                         <% when "restaurant", "visit", "show" %>
-                          <div class="other-event-card-container">
                             <%= event.name %>
                             <% if event.event_type == "show" %>
                               at <%= event.provider %>
@@ -161,10 +155,8 @@
                             <br>
                             Address: <%= event.start_location %>
                             <br>
-                          </div>
                         <% else %>
                         <%= event.name %>
-                        <div class="other-event-card-container">
                           <br>
                           Starts at <%= event.format_start_time %>
                           <br>
@@ -177,8 +169,8 @@
                             Location: <%= event.end_location %>
                           <% end %>
                           <br>
-                        </div>
                       <% end %>
+                    </div>
                   <% end %>
                 <% end %>
               </div>
