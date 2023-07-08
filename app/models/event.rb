@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  EVENT_TYPES = %w[Journey Flight Train Bus Boat Rental Stay Restaurant Show Visit Other]
+  EVENT_TYPES = %w[journey flight train bus boat rental stay restaurant show visit other]
 
   before_save :geocode_endpoints
   belongs_to :trip
@@ -14,23 +14,23 @@ class Event < ApplicationRecord
   #   validates :
   # end
   def journey?
-    event_type == "Journey"
+    event_type == "journey"
   end
 
   def flight?
-    event_type == "Flight"
+    event_type == "flight"
   end
 
   def train?
-    event_type == "Train"
+    event_type == "train"
   end
 
   def bus?
-    event_type == "Bus"
+    event_type == "bus"
   end
 
   def boat?
-    event_type == "Boat"
+    event_type == "boat"
   end
 
   def rental?
@@ -38,23 +38,23 @@ class Event < ApplicationRecord
   end
 
   def stay?
-    event_type == "Stay"
+    event_type == "stay"
   end
 
   def restaurant?
-    event_type == "Restaurant"
+    event_type == "restaurant"
   end
 
   def show?
-    event_type == "Show"
+    event_type == "show"
   end
 
   def visit?
-    event_type == "Visit"
+    event_type == "visit"
   end
 
   def other?
-    event_type == "Other"
+    event_type == "other"
   end
 
   def format_start_time

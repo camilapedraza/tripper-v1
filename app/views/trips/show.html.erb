@@ -38,8 +38,8 @@
         <% @grouped_events = @chron_events.group_by { |e| e.start_date.to_date } %>
 
           <% @grouped_events.each do |day, events| %>
-
             <div class="accordion">
+
               <div class="flex-container">
                 <h2><%= day.strftime("%b %d") %></h2>
                 <div class="event-button">
@@ -50,9 +50,9 @@
               <div class="panel">
                 <% events.each do |event| %>
 
-                <%= event.other? ?  "CUSTOM EVENT" : event.event_type.upcase %> <br>
-                <% case event.event_type
-                  when "journey", "flight", "train", "bus", "boat" %>
+                  <%= event.other? ?  "CUSTOM EVENT" : event.event_type.upcase %> <br>
+                    <% case event.event_type
+                    when "journey", "flight", "train", "bus", "boat" %>
                     <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>
                     <%# MISSING: USE GEOCDER TO DISPLAY SHORTER START LOCATIONS (CITY NAME, AIRPORT NAME, ETC.) %>
                     <div class="plane-card-container">
@@ -66,9 +66,9 @@
                           <p><%= event.format_end_date%></p>
                         </div>
                       </div>
-                    <div class="plane-container">
-                      <div class="plane-part">
-                        <% case event.event_type
+                      <div class="plane-container">
+                        <div class="plane-part">
+                          <% case event.event_type
                           when "flight" %>
                             <svg width="261" height="80%" viewBox="0 0 261 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path d="M7.24829 6.5H253.116" stroke="white" stroke-opacity="0.37" stroke-linecap="round"/>
@@ -92,7 +92,8 @@
                               <path d="M259.748 10C259.748 11.5772 258.327 13 256.387 13C254.448 13 253.026 11.5772 253.026 10C253.026 8.42279 254.448 7 256.387 7C258.327 7 259.748 8.42279 259.748 10Z" stroke="#7F7EFF" stroke-width="2"/>
                               <path d="M131 1C135.2 1 138 2.16875 138 3.65625V4.1875V5.25C138.553 5.25 139 5.7248 139 6.3125V8.4375C139 9.0252 138.553 9.5 138 9.5V14.8125C138 15.4002 137.553 15.875 137 15.875V16.9375C137 17.5252 136.553 18 136 18H135C134.447 18 134 17.5252 134 16.9375V15.875H128V16.9375C128 17.5252 127.553 18 127 18H126C125.447 18 125 17.5252 125 16.9375V15.875C124.447 15.875 124 15.4002 124 14.8125V9.5C123.447 9.5 123 9.0252 123 8.4375V6.3125C123 5.7248 123.447 5.25 124 5.25V4.1875V3.65625C124 2.16875 126.8 1 131 1ZM126 6.3125V9.5C126 10.0877 126.447 10.5625 127 10.5625H130.5V5.25H127C126.447 5.25 126 5.7248 126 6.3125ZM131.5 10.5625H135C135.553 10.5625 136 10.0877 136 9.5V6.3125C136 5.7248 135.553 5.25 135 5.25H131.5V10.5625ZM126.5 14.2812C126.765 14.2812 127.02 14.1693 127.207 13.9701C127.395 13.7708 127.5 13.5005 127.5 13.2188C127.5 12.937 127.395 12.6667 127.207 12.4674C127.02 12.2682 126.765 12.1562 126.5 12.1562C126.235 12.1562 125.98 12.2682 125.793 12.4674C125.605 12.6667 125.5 12.937 125.5 13.2188C125.5 13.5005 125.605 13.7708 125.793 13.9701C125.98 14.1693 126.235 14.2812 126.5 14.2812ZM135.5 14.2812C135.765 14.2812 136.02 14.1693 136.207 13.9701C136.395 13.7708 136.5 13.5005 136.5 13.2188C136.5 12.937 136.395 12.6667 136.207 12.4674C136.02 12.2682 135.765 12.1562 135.5 12.1562C135.235 12.1562 134.98 12.2682 134.793 12.4674C134.605 12.6667 134.5 12.937 134.5 13.2188C134.5 13.5005 134.605 13.7708 134.793 13.9701C134.98 14.1693 135.235 14.2812 135.5 14.2812ZM134 3.65625C134 3.36406 133.775 3.125 133.5 3.125H128.5C128.225 3.125 128 3.36406 128 3.65625C128 3.94844 128.225 4.1875 128.5 4.1875H133.5C133.775 4.1875 134 3.94844 134 3.65625Z" fill="#7F7EFF"/>
                             </svg>
-                        <% end%>
+                          <% end%>
+                        </div>
                         <div class="destination-name">
                           <p><%= event.start_location %></p>
                           <p><%= event.format_duration_h_min %></p>
@@ -105,8 +106,6 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-
                     <%# Departing: <%= event.format_start_time <%= event.format_start_date %>
                     <%# ------ %>
                     <%# Arriving: <%= event.format_end_time <%= event.format_end_date %>
@@ -182,7 +181,7 @@
                     <% end %>
                     <br>
                   <% end %>
-              <% end %>
+              </div>
             </div>
           <% end %>
         <% end %>
