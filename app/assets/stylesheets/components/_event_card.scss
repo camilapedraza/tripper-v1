@@ -49,7 +49,7 @@
 
 .event-card-container {
   width: 100%;
-  height: 150px;
+  height: 190px;
   padding: 14px;
   margin-bottom: 10px;
   margin-top: 10px;
@@ -78,7 +78,6 @@
   border-radius: 18px;
   border: 3.5px solid rgba(255, 254, 254, 0.00);
   background: rgba(255, 255, 255, 0.01);
-  box-shadow: 0px 0px 50px 2px rgba(0, 0, 0, 0.15);
 }
 
 .journey-time {
@@ -107,9 +106,8 @@
 
 .journey-container {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  align-items: center;
+  width: 271px;
 }
 
 .journey-container p {
@@ -148,5 +146,18 @@
 
 .event-information {
   display: flex;
+  flex-direction: column;
+  margin-bottom: 0px !important;
+}
+
+.event-button-center {
+  width:100%;
+  display: flex;
+  justify-content: center;
+}
+
+.journey-center {
+  display: flex;
+  justify-content: center
 }
 /* --------------------------------------------- */
