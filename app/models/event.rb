@@ -90,22 +90,18 @@ class Event < ApplicationRecord
     duration.to_i / 86_400
   end
 
-  def start_location_city
-    response = geocoder_backward_search(start_coordinates)
-    response.city if response.present?
+  # get start_location_data.city or start_location_data.country, etc.
+  # start_location_data needs to be full json response
+  def start_location_data
+    coordinates = "#{start_latitude},#{start_longitude}"
+    response = geocoder_backward_search(coordinates)
+    response if response.present?
   end
 
-  def end_location_city
-    response = geocoder_backward_search(end_coordinates)
-    response.city if response.present?
-  end
-
-  def start_coordinates
-    "#{start_latitude},#{start_longitude}"
-  end
-
-  def end_coordinates
-    "#{end_latitude},#{end_longitude}"
+  def end_location_data
+    coordinates = "#{end_latitude},#{end_longitude}"
+    response = geocoder_backward_search(coordinates)
+    response if response.present?
   end
 
   def geocoder_backward_search(coordinates)

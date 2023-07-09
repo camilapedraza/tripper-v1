@@ -28,9 +28,9 @@
             </g>
           </svg>
           <div class="destination-name">
-            <p><%= @event.start_location_city %></p>
+            <p><%= @event.start_location_data.city %></p>
             <p><%= @event.format_duration_h_min %></p>
-            <p><%= @event.end_location_city %></p>
+            <p><%= @event.end_location_data.city%></p>
           </div>
         </div>
         <% if @event.seat_number %>
@@ -42,6 +42,8 @@
         <% end %>
       </div>
     </div>
+    <br>
+    <%= "Notes: #{@event.notes}" if @event.notes %>
 
     <% when "rental" %>xº
       <div class="left-align">
@@ -51,40 +53,49 @@
       Pick up:
       <%= @event.start_location %> at
       <%= @event.format_start_time %> on
-      <%= @event.start_date.strftime("%b %d") %>
+      <%= @event.format_start_date %>
       <br>
       Drop off:
       <%= @event.end_location %> at
       <%= @event.format_end_time %> on
       <%= @event.format_end_date %>
       <br>
+      <%# MISSING: FORMAT SO IT'S 1 DAY WHEN LESS THAN 1 DAY %>
       Renting for <%= pluralize(event.format_duration_d, "day") %>
+      <br>
+      <%= "Notes: #{@event.notes}" if @event.notes %>
       <br>
 
     <% when "stay" %>
       <div class="left-align">
         <h2>Details for your stay</h2>
       </div>
-      <%= "#{@event.provider} in " if @event.provider %><%= @event.start_location %>
+      <%= "#{@event.provider} in " if @event.provider %><%= @event.start_location_data.city %>
       <br>
-      Staying <%= pluralize(@event.format_duration_d, "night") %>
+      Check in: <%= @event.format_start_date %> at <%= @event.format_start_time %>
       <br>
-      Address: <%= @event.provider_address %>
+      Check out: <%= @event.format_end_date %> at <%= @event.format_end_time %>
       <br>
+      Staying for <%= pluralize(@event.format_duration_d, "night") %>
+      <br>
+      Address: <%= @event.start_location %>
+      <br>
+      <%= "Notes: #{@event.notes}" if @event.notes %>
+
     <% when "restaurant", "visit", "show" %>
       <div class="left-align">
         <h2>Event details</h2>
       </div>
-      <%= @event.event_type.capitalize %>: <%= @event.name %>
+      <%= @event.name %>
+      <br><%= @event.format_start_time %>
       <% if @event.event_type == "show" %>
-        at <%= @event.provider %>
-        <br>
-        Show starts at <%= @event.format_start_time %>
-      <% else %>
-        at <%= @event.format_start_time %>
+        <br><%= "Venue: #{@event.provider}" if @event.provider %>
       <% end %>
       <br>
       Address: <%= @event.start_location %>
+      <br>
+      <%= "Notes: #{@event.notes}" if @event.notes %>
+      <br>
       <br>
 
     <% else %>
@@ -94,15 +105,17 @@
       <%= @event.name %>
       <br>
       Starts at <%= @event.format_start_time %>
-      Location: <%= @event.start_location %>
       <br>
+      Location: <%= @event.start_location %>
       <% if @event.end_date.present? %>
-        Ends at <%= @event.format_end_time %>
+        <br>Ends at <%= @event.format_end_time %>
       <% end %>
       <% if @event.end_location != @event.start_location %>
-        Location: <%= @event.end_location %>
+        <br>Location: <%= @event.end_location %>
       <% end %>
-    <br>
+      <br>
+      <%= "Notes: #{@event.notes}" if @event.notes %>
+      <br>
     <% end%>
   <br>
   <br>
