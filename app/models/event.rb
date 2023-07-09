@@ -91,18 +91,25 @@ class Event < ApplicationRecord
   end
 
   def start_location_city
-    coordinates = "#{start_latitude},#{start_longitude}"
-    geocoder_city(coordinates)
+    response = geocoder_backward_search(start_coordinates)
+    response.city if response.present?
   end
 
   def end_location_city
-    coordinates = "#{end_latitude},#{end_longitude}"
-    geocoder_city(coordinates)
+    response = geocoder_backward_search(end_coordinates)
+    response.city if response.present?
   end
 
-  def geocoder_city(coordinates)
-    response = Geocoder.search(coordinates).first
-    response.city if response.present?
+  def start_coordinates
+    "#{start_latitude},#{start_longitude}"
+  end
+
+  def end_coordinates
+    "#{end_latitude},#{end_longitude}"
+  end
+
+  def geocoder_backward_search(coordinates)
+    Geocoder.search(coordinates).first
   end
 
   private
