@@ -1,5 +1,6 @@
 .checklist-container {
   display: flex;
+  align-items: flex-start;
 }
 
 .checklist {
@@ -8,8 +9,29 @@
 
 .add-task-button {
   display: flex;
+  background-color: #2b2a2a;
 }
 
-.checklist-items {
+.add-task-input:focus {
+  box-shadow: none;
+  outline: none;
+  border: 0.1px solid transparent;
+}
+
+div.checklist-items ul {
+  padding-left: 0 !important;
+  margin-top: 8px;
+}
+
+.checklist-item {
+  margin-top: 4px;
+}
+
+.add-task-button button {
   margin: 0;
+}
+
+.add-task-button-down {
+  margin-top: -16px !important;
+  margin-left: -9px !important;
 }

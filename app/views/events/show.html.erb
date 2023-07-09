@@ -1,6 +1,46 @@
 <div class="container">
+  <div class="left-align" style="margin-top: 35px">
+    <h2>Informations about<br>your reservation</h2>
+  </div>
   <% case @event.event_type
-    when "journey", "flight", "train", "bus", "boat" %>
+    when "journey"%>
+    <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>
+    <%# MISSING: USE GEOCDER TO DISPLAY SHORTER START LOCATIONS (CITY NAME, AIRPORT NAME, ETC.) %>
+    <div class="event-card-container">
+      <div class="journey-time">
+        <div class="event-hour">
+          <h2><%= @event.format_start_time %></h2>
+          <p><%= @event.format_start_date %></p>
+        </div>
+        <div class="event-hour">
+          <h2><%= @event.format_end_time %></h2>
+          <p><%= @event.format_end_date %></p>
+        </div>
+      </div>
+      <div class="journey-container">
+        <div class="journey-overview">
+          <svg width="261" height="14" viewBox="0 0 261 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.24829 6.5H253.116" stroke="white" stroke-opacity="0.37" stroke-linecap="round"/>
+          <path d="M7.88371 7C7.88371 8.57721 6.46197 10 4.52242 10C2.58287 10 1.16113 8.57721 1.16113 7C1.16113 5.42279 2.58287 4 4.52242 4C6.46197 4 7.88371 5.42279 7.88371 7Z" stroke="#7F7EFF" stroke-width="2"/>
+          <path d="M259.748 7C259.748 8.57721 258.327 10 256.387 10C254.448 10 253.026 8.57721 253.026 7C253.026 5.42279 254.448 4 256.387 4C258.327 4 259.748 5.42279 259.748 7Z" stroke="#7F7EFF" stroke-width="2"/>
+          </svg>
+          <div class="destination-name">
+            <p><%= @event.start_location %></p>
+            <p><%= @event.format_duration_h_min %></p>
+            <p><%= @event.end_location %></p>
+          </div>
+        </div>
+        <% if @event.seat_number %>
+          <div class="journey-extra-details">
+            <div class="event-button">
+              <p><%= @event&.seat_number %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <% when "flight"%>
     <div class="left-align" style="margin-top: 30px">
       <h2>Informations about<br>your reservation</h2>
     </div>
@@ -43,36 +83,225 @@
       </div>
     </div>
 
-    <% when "rental" %>
-      <div class="left-align">
-        <h2>Rental details</h2>
+    <% when "train"%>
+    <div class="left-align" style="margin-top: 30px">
+      <h2>Informations about<br>your reservation</h2>
+    </div>
+    <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>
+    <%# MISSING: USE GEOCDER TO DISPLAY SHORTER START LOCATIONS (CITY NAME, AIRPORT NAME, ETC.) %>
+    <div class="event-card-container">
+      <div class="journey-time">
+        <div class="event-hour">
+          <h2><%= @event.format_start_time %></h2>
+          <p><%= @event.format_start_date %></p>
+        </div>
+        <div class="event-hour">
+          <h2><%= @event.format_end_time %></h2>
+          <p><%= @event.format_end_date %></p>
+        </div>
       </div>
-      <%# MISSING: THIS NEEDS TO BE BROKEN DOWN INTO TWO EVENTS: Pick up vs Drop off %>
-      Pick up:
-      <%= @event.start_location %> at
-      <%= @event.format_start_time %> on
-      <%= @event.start_date.strftime("%b %d") %>
-      <br>
-      Drop off:
-      <%= @event.end_location %> at
-      <%= @event.format_end_time %> on
-      <%= @event.format_end_date %>
-      <br>
-      Renting for <%= pluralize(event.format_duration_d, "day") %>
-      <br>
+      <div class="journey-container">
+        <div class="journey-overview">
+            <svg width="261" height="17" viewBox="0 0 261 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.24829 9.5H253.116" stroke="white" stroke-opacity="0.37" stroke-linecap="round"/>
+            <path d="M7.88371 10C7.88371 11.5772 6.46197 13 4.52242 13C2.58287 13 1.16113 11.5772 1.16113 10C1.16113 8.42279 2.58287 7 4.52242 7C6.46197 7 7.88371 8.42279 7.88371 10Z" stroke="#7F7EFF" stroke-width="2"/>
+            <path d="M259.748 10C259.748 11.5772 258.327 13 256.387 13C254.448 13 253.026 11.5772 253.026 10C253.026 8.42279 254.448 7 256.387 7C258.327 7 259.748 8.42279 259.748 10Z" stroke="#7F7EFF" stroke-width="2"/>
+            <path d="M126.429 0C124.536 0 123 1.42773 123 3.1875V11.6875C123 13.2812 124.257 14.5994 125.896 14.8385L124.254 16.3658C124.004 16.5982 124.182 17 124.536 17H125.954C126.257 17 126.546 16.8871 126.761 16.6879L128.714 14.875H133.286L135.236 16.6879C135.45 16.8871 135.739 17 136.043 17H137.464C137.821 17 138 16.5982 137.746 16.3658L136.104 14.8385C137.746 14.6027 139 13.2812 139 11.6875V3.1875C139 1.42773 137.464 0 135.571 0H126.429ZM125.286 3.1875C125.286 2.5998 125.796 2.125 126.429 2.125H135.571C136.204 2.125 136.714 2.5998 136.714 3.1875V6.375C136.714 6.9627 136.204 7.4375 135.571 7.4375H126.429C125.796 7.4375 125.286 6.9627 125.286 6.375V3.1875ZM131 9.5625C131.455 9.5625 131.891 9.73041 132.212 10.0293C132.534 10.3282 132.714 10.7336 132.714 11.1562C132.714 11.5789 132.534 11.9843 132.212 12.2832C131.891 12.5821 131.455 12.75 131 12.75C130.545 12.75 130.109 12.5821 129.788 12.2832C129.466 11.9843 129.286 11.5789 129.286 11.1562C129.286 10.7336 129.466 10.3282 129.788 10.0293C130.109 9.73041 130.545 9.5625 131 9.5625Z" fill="#7F7EFF"/>
+            </svg>
+          <div class="destination-name">
+            <p><%= @event.start_location %></p>
+            <p><%= @event.format_duration_h_min %></p>
+            <p><%= @event.end_location %></p>
+          </div>
+        </div>
+        <% if @event.seat_number %>
+          <div class="journey-extra-details">
+            <div class="event-button">
+              <p><%= @event&.seat_number %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
-    <% when "stay" %>
-      <div class="left-align">
-        <h2>Details for your stay</h2>
+    <% when "bus" %>
+    <div class="left-align" style="margin-top: 30px">
+      <h2>Informations about<br>your reservation</h2>
+    </div>
+    <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>
+    <%# MISSING: USE GEOCDER TO DISPLAY SHORTER START LOCATIONS (CITY NAME, AIRPORT NAME, ETC.) %>
+    <div class="event-card-container">
+      <div class="journey-time">
+        <div class="event-hour">
+          <h2><%= @event.format_start_time %></h2>
+          <p><%= @event.format_start_date %></p>
+        </div>
+        <div class="event-hour">
+          <h2><%= @event.format_end_time %></h2>
+          <p><%= @event.format_end_date %></p>
+        </div>
       </div>
-      <%= "#{@event.provider} in " if @event.provider %><%= @event.start_location %>
-      <br>
-      Staying <%= pluralize(@event.format_duration_d, "night") %>
-      <br>
-      Address: <%= @event.provider_address %>
-      <br>
+      <div class="journey-container">
+        <div class="journey-overview">
+          <svg width="261" height="17" viewBox="0 0 261 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.24829 9.5H253.116" stroke="white" stroke-opacity="0.37" stroke-linecap="round"/>
+          <path d="M7.88371 10C7.88371 11.5772 6.46197 13 4.52242 13C2.58287 13 1.16113 11.5772 1.16113 10C1.16113 8.42279 2.58287 7 4.52242 7C6.46197 7 7.88371 8.42279 7.88371 10Z" stroke="#7F7EFF" stroke-width="2"/>
+          <path d="M259.748 10C259.748 11.5772 258.327 13 256.387 13C254.448 13 253.026 11.5772 253.026 10C253.026 8.42279 254.448 7 256.387 7C258.327 7 259.748 8.42279 259.748 10Z" stroke="#7F7EFF" stroke-width="2"/>
+          <path d="M125 0C129.2 0 132 1.16875 132 2.65625V3.1875V4.25C132.553 4.25 133 4.7248 133 5.3125V7.4375C133 8.0252 132.553 8.5 132 8.5V13.8125C132 14.4002 131.553 14.875 131 14.875V15.9375C131 16.5252 130.553 17 130 17H129C128.447 17 128 16.5252 128 15.9375V14.875H122V15.9375C122 16.5252 121.553 17 121 17H120C119.447 17 119 16.5252 119 15.9375V14.875C118.447 14.875 118 14.4002 118 13.8125V8.5C117.447 8.5 117 8.0252 117 7.4375V5.3125C117 4.7248 117.447 4.25 118 4.25V3.1875V2.65625C118 1.16875 120.8 0 125 0ZM120 5.3125V8.5C120 9.0877 120.447 9.5625 121 9.5625H124.5V4.25H121C120.447 4.25 120 4.7248 120 5.3125ZM125.5 9.5625H129C129.553 9.5625 130 9.0877 130 8.5V5.3125C130 4.7248 129.553 4.25 129 4.25H125.5V9.5625ZM120.5 13.2812C120.765 13.2812 121.02 13.1693 121.207 12.9701C121.395 12.7708 121.5 12.5005 121.5 12.2188C121.5 11.937 121.395 11.6667 121.207 11.4674C121.02 11.2682 120.765 11.1562 120.5 11.1562C120.235 11.1562 119.98 11.2682 119.793 11.4674C119.605 11.6667 119.5 11.937 119.5 12.2188C119.5 12.5005 119.605 12.7708 119.793 12.9701C119.98 13.1693 120.235 13.2812 120.5 13.2812ZM129.5 13.2812C129.765 13.2812 130.02 13.1693 130.207 12.9701C130.395 12.7708 130.5 12.5005 130.5 12.2188C130.5 11.937 130.395 11.6667 130.207 11.4674C130.02 11.2682 129.765 11.1562 129.5 11.1562C129.235 11.1562 128.98 11.2682 128.793 11.4674C128.605 11.6667 128.5 11.937 128.5 12.2188C128.5 12.5005 128.605 12.7708 128.793 12.9701C128.98 13.1693 129.235 13.2812 129.5 13.2812ZM128 2.65625C128 2.36406 127.775 2.125 127.5 2.125H122.5C122.225 2.125 122 2.36406 122 2.65625C122 2.94844 122.225 3.1875 122.5 3.1875H127.5C127.775 3.1875 128 2.94844 128 2.65625Z" fill="#7F7EFF"/>
+          </svg>
+          <div class="destination-name">
+            <p><%= @event.start_location %></p>
+            <p><%= @event.format_duration_h_min %></p>
+            <p><%= @event.end_location %></p>
+          </div>
+        </div>
+        <% if @event.seat_number %>
+          <div class="journey-extra-details">
+            <div class="event-button">
+              <p><%= @event&.seat_number %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <% when "boat" %>
+    <div class="left-align" style="margin-top: 30px">
+      <h2>Informations about<br>your reservation</h2>
+    </div>
+    <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>
+    <%# MISSING: USE GEOCDER TO DISPLAY SHORTER START LOCATIONS (CITY NAME, AIRPORT NAME, ETC.) %>
+    <div class="event-card-container">
+      <div class="journey-time">
+        <div class="event-hour">
+          <h2><%= @event.format_start_time %></h2>
+          <p><%= @event.format_start_date %></p>
+        </div>
+        <div class="event-hour">
+          <h2><%= @event.format_end_time %></h2>
+          <p><%= @event.format_end_date %></p>
+        </div>
+      </div>
+      <div class="journey-container">
+        <div class="journey-overview">
+            <svg width="261" height="21" viewBox="0 0 261 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.24829 13.5H253.116" stroke="white" stroke-opacity="0.37" stroke-linecap="round"/>
+            <path d="M7.88371 14C7.88371 15.5772 6.46197 17 4.52242 17C2.58287 17 1.16113 15.5772 1.16113 14C1.16113 12.4228 2.58287 11 4.52242 11C6.46197 11 7.88371 12.4228 7.88371 14Z" stroke="#7F7EFF" stroke-width="2"/>
+            <path d="M259.748 14C259.748 15.5772 258.327 17 256.387 17C254.448 17 253.026 15.5772 253.026 14C253.026 12.4228 254.448 11 256.387 11C258.327 11 259.748 12.4228 259.748 14Z" stroke="#7F7EFF" stroke-width="2"/>
+            <g clip-path="url(#clip0_423_7)">
+            <path d="M119.333 0.656226C119.333 0.369116 119.497 0.114819 119.742 0.0286864C119.986 -0.0574464 120.248 0.0450927 120.394 0.278882L128.561 13.4039C128.685 13.6049 128.699 13.8674 128.601 14.0847C128.503 14.3021 128.302 14.4375 128.083 14.4375H119.917C119.596 14.4375 119.333 14.1422 119.333 13.7812V0.656226ZM117.733 3.95798C117.988 4.03591 118.167 4.29431 118.167 4.59373V13.7812C118.167 14.1422 117.904 14.4375 117.583 14.4375H112.917C112.709 14.4375 112.516 14.3144 112.414 14.1093C112.311 13.9043 112.308 13.6582 112.41 13.4531L117.077 4.2656C117.208 4.0072 117.478 3.88005 117.733 3.95798ZM110.208 16.5826C110.102 16.1642 110.383 15.75 110.769 15.75H130.231C130.617 15.75 130.898 16.1642 130.792 16.5826L130.646 17.1691C130.078 19.4373 128.244 21 126.151 21H114.849C112.756 21 110.922 19.4373 110.354 17.1732L110.208 16.5867V16.5826Z" fill="#7F7EFF"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_423_7">
+            <rect width="21" height="21" fill="white" transform="translate(110)"/>
+            </clipPath>
+            </defs>
+            </svg>
+          <div class="destination-name">
+            <p><%= @event.start_location %></p>
+            <p><%= @event.format_duration_h_min %></p>
+            <p><%= @event.end_location %></p>
+          </div>
+        </div>
+        <% if @event.seat_number %>
+          <div class="journey-extra-details">
+            <div class="event-button">
+              <p><%= @event&.seat_number %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <% when "rental" %>
+      <div class="event-card-container">
+        <div class="other-event-card-container">
+          <div class="event-information">
+             <h2>Rental details</h2>
+          </div>
+          <div class="event-information">
+            <div class="horizontal-display">
+              <svg style="margin-right: 9px" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 16.3125C0 17.2441 0.671875 18 1.5 18H12.5C13.3281 18 14 17.2441 14 16.3125V6.75H0V16.3125ZM10 9.42188C10 9.18984 10.1688 9 10.375 9H11.625C11.8312 9 12 9.18984 12 9.42188V10.8281C12 11.0602 11.8312 11.25 11.625 11.25H10.375C10.1688 11.25 10 11.0602 10 10.8281V9.42188ZM10 13.9219C10 13.6898 10.1688 13.5 10.375 13.5H11.625C11.8312 13.5 12 13.6898 12 13.9219V15.3281C12 15.5602 11.8312 15.75 11.625 15.75H10.375C10.1688 15.75 10 15.5602 10 15.3281V13.9219ZM6 9.42188C6 9.18984 6.16875 9 6.375 9H7.625C7.83125 9 8 9.18984 8 9.42188V10.8281C8 11.0602 7.83125 11.25 7.625 11.25H6.375C6.16875 11.25 6 11.0602 6 10.8281V9.42188ZM6 13.9219C6 13.6898 6.16875 13.5 6.375 13.5H7.625C7.83125 13.5 8 13.6898 8 13.9219V15.3281C8 15.5602 7.83125 15.75 7.625 15.75H6.375C6.16875 15.75 6 15.5602 6 15.3281V13.9219ZM2 9.42188C2 9.18984 2.16875 9 2.375 9H3.625C3.83125 9 4 9.18984 4 9.42188V10.8281C4 11.0602 3.83125 11.25 3.625 11.25H2.375C2.16875 11.25 2 11.0602 2 10.8281V9.42188ZM2 13.9219C2 13.6898 2.16875 13.5 2.375 13.5H3.625C3.83125 13.5 4 13.6898 4 13.9219V15.3281C4 15.5602 3.83125 15.75 3.625 15.75H2.375C2.16875 15.75 2 15.5602 2 15.3281V13.9219ZM12.5 2.25H11V0.5625C11 0.253125 10.775 0 10.5 0H9.5C9.225 0 9 0.253125 9 0.5625V2.25H5V0.5625C5 0.253125 4.775 0 4.5 0H3.5C3.225 0 3 0.253125 3 0.5625V2.25H1.5C0.671875 2.25 0 3.00586 0 3.9375V5.625H14V3.9375C14 3.00586 13.3281 2.25 12.5 2.25Z" fill="#7F7EFF"/>
+              </svg>
+              <p><%= @event.format_start_time %> on <%= @event.start_date.strftime("%b %d") %></p>
+            </div>
+            <div class="horizontal-display">
+                <svg style="margin-right: 9px" width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_494_2)">
+                <path d="M1 0C1.55313 0 2 0.558594 2 1.25V1.875L4.15625 1.20312C5.34687 0.832031 6.60312 1.00391 7.70312 1.69141C9.15 2.59766 10.8531 2.59766 12.3 1.69141L12.6 1.50391C13.2438 1.09766 14 1.68359 14 2.58203V13.5078C14 14.0273 13.7406 14.4961 13.35 14.6797L12.2656 15.1875C10.8219 15.8633 9.21563 15.7578 7.8375 14.8984C6.65313 14.1562 5.29688 13.9727 4.00938 14.375L2 15V18.75C2 19.4414 1.55313 20 1 20C0.446875 20 0 19.4414 0 18.75V15.625V13.0469V2.5V1.25C0 0.558594 0.446875 0 1 0ZM2 7.30859L4 6.76562V9.32422L2 9.86719V12.4219L3.525 11.9453C3.68438 11.8945 3.84063 11.8516 4 11.8164V9.32422L5.21562 8.99609C5.475 8.92578 5.7375 8.89844 6 8.91406V6.41406C6.425 6.42969 6.85 6.51563 7.2625 6.66406L8 6.93359V9.53906L6.69688 9.05859C6.46875 8.97656 6.23438 8.92578 6 8.91016V11.6992C6.68125 11.7734 7.35312 11.9609 8 12.2617V9.53906L8.70938 9.80078C9.13125 9.95703 9.5625 10.0508 10 10.0898V7.57812C9.75625 7.54687 9.5125 7.48828 9.275 7.40234L8 6.93359V4.51172C7.59375 4.36328 7.19375 4.16797 6.80625 3.92578C6.55 3.76563 6.27812 3.65234 6 3.58203V6.41016C5.59375 6.39453 5.1875 6.44141 4.79063 6.55078L4 6.76562V3.82812L2 4.45312V7.30859ZM10 13.1133C10.525 13.1719 11.0594 13.0859 11.5625 12.8477L12 12.6445V9.83984L11.7531 9.91016C11.1781 10.0781 10.5875 10.1328 10 10.0859V13.1094V13.1133ZM12 7.27734V4.50781C11.3469 4.74609 10.675 4.86328 10 4.86328V7.57812C10.4344 7.63281 10.875 7.59766 11.3031 7.47656L12 7.27344V7.27734Z" fill="#7F7EFF"/>
+                </g>
+                <defs>
+                <clipPath id="clip0_494_2">
+                <rect width="14" height="20" fill="white"/>
+                </clipPath>
+                </defs>
+                </svg>
+              <p><%= @event.format_end_time %> on <%= @event.format_end_date %></p>
+            </div>
+            <%# MISSING: THE LOCATION ICON IS WAY TOO BIG %>
+            <div class="horizontal-display">
+              <svg style="margin-right: 11px" width="14" height="24" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.44444 14.8569V22.2018L6.51486 23.7497C6.74576 24.0834 7.25472 24.0834 7.48563 23.7497L8.55556 22.2018V14.8569C8.05049 14.9469 7.53181 15.0003 7 15.0003C6.46819 15.0003 5.94951 14.9469 5.44444 14.8569ZM7 0C3.13396 0 0 3.02209 0 6.75013C0 10.4782 3.13396 13.5003 7 13.5003C10.866 13.5003 14 10.4782 14 6.75013C14 3.02209 10.866 0 7 0ZM7 3.56257C5.17708 3.56257 3.69444 4.99229 3.69444 6.75013C3.69444 7.06045 3.43292 7.31264 3.11111 7.31264C2.78931 7.31264 2.52778 7.06045 2.52778 6.75013C2.52778 4.37212 4.53444 2.43755 7 2.43755C7.32181 2.43755 7.58333 2.68974 7.58333 3.00006C7.58333 3.31038 7.32181 3.56257 7 3.56257Z" fill="#7F7EFF"/>
+              </svg>
+              <p><%= @event.start_location %></p>
+            </div>
+            <div class="horizontal-display">
+              <svg style="margin-right: 11px" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_490_15)">
+              <path d="M1.16667 0C0.521354 0 0 0.502734 0 1.125C0 1.74727 0.521354 2.25 1.16667 2.25V2.63672C1.16667 4.12734 1.78281 5.5582 2.87656 6.61289L5.34844 9L2.87656 11.3871C1.78281 12.4418 1.16667 13.8727 1.16667 15.3633V15.75C0.521354 15.75 0 16.2527 0 16.875C0 17.4973 0.521354 18 1.16667 18H2.33333H11.6667H12.8333C13.4786 18 14 17.4973 14 16.875C14 16.2527 13.4786 15.75 12.8333 15.75V15.3633C12.8333 13.8727 12.2172 12.4418 11.1234 11.3871L8.65156 9L11.1271 6.61289C12.2208 5.5582 12.837 4.12734 12.837 2.63672V2.25C13.4823 2.25 14.0036 1.74727 14.0036 1.125C14.0036 0.502734 13.4823 0 12.837 0H11.6667H2.33333H1.16667ZM10.5 15.3633V15.75H3.5V15.3633C3.5 14.4668 3.86823 13.609 4.52448 12.9762L7 10.5926L9.47552 12.9797C10.1318 13.6125 10.5 14.4703 10.5 15.3668V15.3633Z" fill="#7F7EFF"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_490_15">
+              <rect width="14" height="18" fill="white"/>
+              </clipPath>
+              </defs>
+              </svg>
+              <p><%= pluralize(@event.format_duration_d, "day") %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <% when "stay" %>
+      <div class="event-card-container">
+        <div class="other-event-card-container">
+          <div class="event-information" style="margin-bottom: 21px">
+            <h2><%= "#{@event.provider} in " if @event.provider %><%= @event.start_location %><h2>
+          </div>
+          <div class="event-information">
+            <div class="horizontal-display">
+              <svg style="margin-right: 9px" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 16.3125C0 17.2441 0.671875 18 1.5 18H12.5C13.3281 18 14 17.2441 14 16.3125V6.75H0V16.3125ZM10 9.42188C10 9.18984 10.1688 9 10.375 9H11.625C11.8312 9 12 9.18984 12 9.42188V10.8281C12 11.0602 11.8312 11.25 11.625 11.25H10.375C10.1688 11.25 10 11.0602 10 10.8281V9.42188ZM10 13.9219C10 13.6898 10.1688 13.5 10.375 13.5H11.625C11.8312 13.5 12 13.6898 12 13.9219V15.3281C12 15.5602 11.8312 15.75 11.625 15.75H10.375C10.1688 15.75 10 15.5602 10 15.3281V13.9219ZM6 9.42188C6 9.18984 6.16875 9 6.375 9H7.625C7.83125 9 8 9.18984 8 9.42188V10.8281C8 11.0602 7.83125 11.25 7.625 11.25H6.375C6.16875 11.25 6 11.0602 6 10.8281V9.42188ZM6 13.9219C6 13.6898 6.16875 13.5 6.375 13.5H7.625C7.83125 13.5 8 13.6898 8 13.9219V15.3281C8 15.5602 7.83125 15.75 7.625 15.75H6.375C6.16875 15.75 6 15.5602 6 15.3281V13.9219ZM2 9.42188C2 9.18984 2.16875 9 2.375 9H3.625C3.83125 9 4 9.18984 4 9.42188V10.8281C4 11.0602 3.83125 11.25 3.625 11.25H2.375C2.16875 11.25 2 11.0602 2 10.8281V9.42188ZM2 13.9219C2 13.6898 2.16875 13.5 2.375 13.5H3.625C3.83125 13.5 4 13.6898 4 13.9219V15.3281C4 15.5602 3.83125 15.75 3.625 15.75H2.375C2.16875 15.75 2 15.5602 2 15.3281V13.9219ZM12.5 2.25H11V0.5625C11 0.253125 10.775 0 10.5 0H9.5C9.225 0 9 0.253125 9 0.5625V2.25H5V0.5625C5 0.253125 4.775 0 4.5 0H3.5C3.225 0 3 0.253125 3 0.5625V2.25H1.5C0.671875 2.25 0 3.00586 0 3.9375V5.625H14V3.9375C14 3.00586 13.3281 2.25 12.5 2.25Z" fill="#7F7EFF"/>
+              </svg>
+              <p><%= @event.start_date.strftime("%b %d") %>, <%= @event.end_date.strftime("%b %d")%></p>
+            </div>
+            <%# MISSING: THE LOCATION ICON IS WAY TOO BIG %>
+            <div class="horizontal-display">
+              <svg style="margin-right: 11px" width="14" height="24" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.44444 14.8569V22.2018L6.51486 23.7497C6.74576 24.0834 7.25472 24.0834 7.48563 23.7497L8.55556 22.2018V14.8569C8.05049 14.9469 7.53181 15.0003 7 15.0003C6.46819 15.0003 5.94951 14.9469 5.44444 14.8569ZM7 0C3.13396 0 0 3.02209 0 6.75013C0 10.4782 3.13396 13.5003 7 13.5003C10.866 13.5003 14 10.4782 14 6.75013C14 3.02209 10.866 0 7 0ZM7 3.56257C5.17708 3.56257 3.69444 4.99229 3.69444 6.75013C3.69444 7.06045 3.43292 7.31264 3.11111 7.31264C2.78931 7.31264 2.52778 7.06045 2.52778 6.75013C2.52778 4.37212 4.53444 2.43755 7 2.43755C7.32181 2.43755 7.58333 2.68974 7.58333 3.00006C7.58333 3.31038 7.32181 3.56257 7 3.56257Z" fill="#7F7EFF"/>
+              </svg>
+              <p> <%= @event.provider_address %></p>
+            </div>
+            <div class="horizontal-display">
+              <svg style="margin-right: 11px" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_490_15)">
+              <path d="M1.16667 0C0.521354 0 0 0.502734 0 1.125C0 1.74727 0.521354 2.25 1.16667 2.25V2.63672C1.16667 4.12734 1.78281 5.5582 2.87656 6.61289L5.34844 9L2.87656 11.3871C1.78281 12.4418 1.16667 13.8727 1.16667 15.3633V15.75C0.521354 15.75 0 16.2527 0 16.875C0 17.4973 0.521354 18 1.16667 18H2.33333H11.6667H12.8333C13.4786 18 14 17.4973 14 16.875C14 16.2527 13.4786 15.75 12.8333 15.75V15.3633C12.8333 13.8727 12.2172 12.4418 11.1234 11.3871L8.65156 9L11.1271 6.61289C12.2208 5.5582 12.837 4.12734 12.837 2.63672V2.25C13.4823 2.25 14.0036 1.74727 14.0036 1.125C14.0036 0.502734 13.4823 0 12.837 0H11.6667H2.33333H1.16667ZM10.5 15.3633V15.75H3.5V15.3633C3.5 14.4668 3.86823 13.609 4.52448 12.9762L7 10.5926L9.47552 12.9797C10.1318 13.6125 10.5 14.4703 10.5 15.3668V15.3633Z" fill="#7F7EFF"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_490_15">
+              <rect width="14" height="18" fill="white"/>
+              </clipPath>
+              </defs>
+              </svg>
+              <p><%= pluralize(@event.format_duration_d, "night") %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <% when "restaurant", "visit", "show" %>
-      <div class="left-align">
+      <div class="left-align" style="margin-bottom: 5px">
         <h2>Event details</h2>
       </div>
       <%= @event.event_type.capitalize %>: <%= @event.name %>
@@ -86,6 +315,42 @@
       <br>
       Address: <%= @event.start_location %>
       <br>
+
+      <div class="event-card-container">
+        <div class="other-event-card-container">
+          <div class="event-information" style="margin-bottom: 21px">
+            <h2><%= "#{@event.provider} details"<h2>
+          </div>
+          <div class="event-information">
+            <div class="horizontal-display">
+              <svg style="margin-right: 9px" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 16.3125C0 17.2441 0.671875 18 1.5 18H12.5C13.3281 18 14 17.2441 14 16.3125V6.75H0V16.3125ZM10 9.42188C10 9.18984 10.1688 9 10.375 9H11.625C11.8312 9 12 9.18984 12 9.42188V10.8281C12 11.0602 11.8312 11.25 11.625 11.25H10.375C10.1688 11.25 10 11.0602 10 10.8281V9.42188ZM10 13.9219C10 13.6898 10.1688 13.5 10.375 13.5H11.625C11.8312 13.5 12 13.6898 12 13.9219V15.3281C12 15.5602 11.8312 15.75 11.625 15.75H10.375C10.1688 15.75 10 15.5602 10 15.3281V13.9219ZM6 9.42188C6 9.18984 6.16875 9 6.375 9H7.625C7.83125 9 8 9.18984 8 9.42188V10.8281C8 11.0602 7.83125 11.25 7.625 11.25H6.375C6.16875 11.25 6 11.0602 6 10.8281V9.42188ZM6 13.9219C6 13.6898 6.16875 13.5 6.375 13.5H7.625C7.83125 13.5 8 13.6898 8 13.9219V15.3281C8 15.5602 7.83125 15.75 7.625 15.75H6.375C6.16875 15.75 6 15.5602 6 15.3281V13.9219ZM2 9.42188C2 9.18984 2.16875 9 2.375 9H3.625C3.83125 9 4 9.18984 4 9.42188V10.8281C4 11.0602 3.83125 11.25 3.625 11.25H2.375C2.16875 11.25 2 11.0602 2 10.8281V9.42188ZM2 13.9219C2 13.6898 2.16875 13.5 2.375 13.5H3.625C3.83125 13.5 4 13.6898 4 13.9219V15.3281C4 15.5602 3.83125 15.75 3.625 15.75H2.375C2.16875 15.75 2 15.5602 2 15.3281V13.9219ZM12.5 2.25H11V0.5625C11 0.253125 10.775 0 10.5 0H9.5C9.225 0 9 0.253125 9 0.5625V2.25H5V0.5625C5 0.253125 4.775 0 4.5 0H3.5C3.225 0 3 0.253125 3 0.5625V2.25H1.5C0.671875 2.25 0 3.00586 0 3.9375V5.625H14V3.9375C14 3.00586 13.3281 2.25 12.5 2.25Z" fill="#7F7EFF"/>
+              </svg>
+              <p><%= @event.start_date.strftime("%b %d") %>, <%= @event.end_date.strftime("%b %d")%></p>
+            </div>
+            <%# MISSING: THE LOCATION ICON IS WAY TOO BIG %>
+            <div class="horizontal-display">
+              <svg style="margin-right: 11px" width="14" height="24" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.44444 14.8569V22.2018L6.51486 23.7497C6.74576 24.0834 7.25472 24.0834 7.48563 23.7497L8.55556 22.2018V14.8569C8.05049 14.9469 7.53181 15.0003 7 15.0003C6.46819 15.0003 5.94951 14.9469 5.44444 14.8569ZM7 0C3.13396 0 0 3.02209 0 6.75013C0 10.4782 3.13396 13.5003 7 13.5003C10.866 13.5003 14 10.4782 14 6.75013C14 3.02209 10.866 0 7 0ZM7 3.56257C5.17708 3.56257 3.69444 4.99229 3.69444 6.75013C3.69444 7.06045 3.43292 7.31264 3.11111 7.31264C2.78931 7.31264 2.52778 7.06045 2.52778 6.75013C2.52778 4.37212 4.53444 2.43755 7 2.43755C7.32181 2.43755 7.58333 2.68974 7.58333 3.00006C7.58333 3.31038 7.32181 3.56257 7 3.56257Z" fill="#7F7EFF"/>
+              </svg>
+              <p> <%= @event.provider_address %></p>
+            </div>
+            <div class="horizontal-display">
+              <svg style="margin-right: 11px" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_490_15)">
+              <path d="M1.16667 0C0.521354 0 0 0.502734 0 1.125C0 1.74727 0.521354 2.25 1.16667 2.25V2.63672C1.16667 4.12734 1.78281 5.5582 2.87656 6.61289L5.34844 9L2.87656 11.3871C1.78281 12.4418 1.16667 13.8727 1.16667 15.3633V15.75C0.521354 15.75 0 16.2527 0 16.875C0 17.4973 0.521354 18 1.16667 18H2.33333H11.6667H12.8333C13.4786 18 14 17.4973 14 16.875C14 16.2527 13.4786 15.75 12.8333 15.75V15.3633C12.8333 13.8727 12.2172 12.4418 11.1234 11.3871L8.65156 9L11.1271 6.61289C12.2208 5.5582 12.837 4.12734 12.837 2.63672V2.25C13.4823 2.25 14.0036 1.74727 14.0036 1.125C14.0036 0.502734 13.4823 0 12.837 0H11.6667H2.33333H1.16667ZM10.5 15.3633V15.75H3.5V15.3633C3.5 14.4668 3.86823 13.609 4.52448 12.9762L7 10.5926L9.47552 12.9797C10.1318 13.6125 10.5 14.4703 10.5 15.3668V15.3633Z" fill="#7F7EFF"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_490_15">
+              <rect width="14" height="18" fill="white"/>
+              </clipPath>
+              </defs>
+              </svg>
+              <p><%= pluralize(@event.format_duration_d, "night") %></p>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <% else %>
       <div class="left-align">
@@ -121,7 +386,7 @@
         <div class="checklist-items">
           <ul>
             <% @event.tasks.each do |task| %>
-              <li style="list-style-type:none">
+              <li style="list-style-type:none" class="checklist-item">
                 <% if task.is_complete %>
                   <%= link_to task_path(task, params: {task: {is_complete: false}}), data: {turbo_method: :patch} do %>
                     <svg style="margin-right: 12px" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -145,22 +410,20 @@
               </li>
             <% end %>
           </ul>
-        </div>
-        <div>
-          <%= simple_form_for [@event, @task], html: { id: 'add-task-form' } do |f| %>
-            <div class="checklist">
-              <div class="add-task-button">
-                <%= f.button :button, class: "add-task-button" do %>
+          <div class="checklist">
+            <%= simple_form_for [@event, @task], html: { id: 'add-task-form' } do |f| %>
+              <div class="add-task-button m-0">
+                <%= f.button :button, class: "add-task-button-down" do %>
                   <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path id="Vector 6" d="M7.5 1V7.75M7.5 14.5V7.75M7.5 7.75H14H1" stroke="#7F7EFF" stroke-width="2" stroke-linecap="round"/>
                   </svg>
                 <% end %>
-                <%= f.input :content, label: false, placeholder: 'add something...', input_html: { class: 'add-task-input' }%>
+                <%= f.input :content, label: false, placeholder: 'add something...', input_html: { class: 'add-task-input' } %>
               </div>
-              <div class="col-10">
-              </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div>
         </div>
     </div>
   </div>
