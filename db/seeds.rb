@@ -89,8 +89,8 @@ Event.create(
   event_type: "train",
   start_date: DateTime.new(2023, 7, 15, 18, 45),
   end_date: DateTime.new(2023, 7, 15, 22, 30),
-  start_location: "Paris 75007",
-  end_location: "Annecy 74000"
+  start_location: "Paris Gare de Lyon",
+  end_location: "Annecy Gare"
 )
 Event.create(
   name: "Car ride with family to Varigotti",
@@ -98,7 +98,7 @@ Event.create(
   event_type: "journey",
   start_date: DateTime.new(2023, 7, 17, 10),
   end_date: DateTime.new(2023, 7, 17, 15, 30),
-  start_location: "Annecy 74000",
+  start_location: "Annecy",
   end_location: "Varigotti, Savone, Italie"
 )
 Event.create(
@@ -107,8 +107,8 @@ Event.create(
   event_type: "other",
   start_date: DateTime.new(2023, 7, 17, 16),
   end_date: DateTime.new(2023, 7, 17, 20, 30),
-  start_location: "Varigotti, Savone, Italie",
-  end_location: "Varigotti, Savone, Italie"
+  start_location: "Varigotti, Savona, Italy",
+  end_location: "Varigotti, Savona, Italy"
 )
 Event.create(
   name: "Scuba Diving",
@@ -116,8 +116,8 @@ Event.create(
   event_type: "other",
   start_date: DateTime.new(2023, 7, 24, 16),
   end_date: DateTime.new(2023, 7, 24, 18, 30),
-  start_location: "Savona, Savone, Italie",
-  end_location: "Savona, Savone, Italie"
+  start_location: "Savona, Italy",
+  end_location: "Savona, Italy"
 )
 Event.create(
   name: "Car ride to Chamonix",
@@ -125,7 +125,7 @@ Event.create(
   event_type: "journey",
   start_date: DateTime.new(2023, 7, 24, 8),
   end_date: DateTime.new(2023, 7, 24, 12),
-  start_location: "Varigotti, Savone, Italie",
+  start_location: "Varigotti, Savona, Italy",
   end_location: "Chamonix-Mont-Blanc"
 )
 Event.create(
@@ -135,7 +135,7 @@ Event.create(
   start_date: DateTime.new(2023, 7, 29, 11),
   end_date: DateTime.new(2023, 7, 29, 18),
   start_location: "Chamonix-Mont-Blanc",
-  end_location: "Paris 75007"
+  end_location: "Paris"
 )
 event1 = Event.create(
   name: "Flight to Madrid",
@@ -190,7 +190,7 @@ event3 = Event.create(
   end_date: DateTime.new(2023, 5, 28, 6, 30),
   provider: "AirBnB",
   start_location: "Carrer Princesa, 15, Can Picafort, Illes Balears",
-  end_location: "Mallorca"
+  end_location: "Carrer Princesa, 15, Can Picafort, Illes Balears"
 )
 Event.create(
   name: "Flight to Madrid",
@@ -223,8 +223,8 @@ Event.create(
   start_date: DateTime.new(2023, 5, 28, 14, 30),
   end_date: DateTime.new(2023, 5, 30, 10),
   provider: "AirBnB",
-  start_location: "Beco do Maquinez 10",
-  end_location: "Beco do Maquinez 10",
+  start_location: "Beco do Maquinez 10, Lisbon, Portugal",
+  end_location: "Beco do Maquinez 10, Lisbon, Portugal",
   notes: "Airbnb - Apartment #4 / Check-in after 3pm // Check-out before 11am"
 )
 Event.create(
@@ -295,8 +295,8 @@ Event.create(
   start_date: DateTime.new(2023, 6, 4, 20),
   end_date: DateTime.new(2023, 6, 4, 22),
   provider: "Ideale Clube de Fado",
-  start_location: "Rua do Ateneu Comercial do Porto 32",
-  end_location: "Rua do Ateneu Comercial do Porto 32"
+  start_location: "Rua do Ateneu Comercial do Porto 32, Porto, Portugal",
+  end_location: "Rua do Ateneu Comercial do Porto 32, Porto, Portugal"
 )
 Event.create(
   name: "Flight to Bordeaux",
@@ -324,8 +324,8 @@ Event.create(
   start_date: DateTime.new(2023, 6, 8, 12, 20),
   end_date: DateTime.new(2023, 6, 8, 14, 41),
   provider: "Ouigo",
-  start_location: "Gare Bordeaux Saint-Jean, France",
-  end_location: "Gare Paris Montparnasse, France",
+  start_location: "Gare Bordeaux Saint-Jean, Bordeaux, France",
+  end_location: "Gare Paris Montparnasse, Paris, France",
   transport_number: "7656",
   reservation_number: "BZB8QY"
 )
@@ -389,8 +389,8 @@ Event.create(
   event_type: "visit",
   start_date: DateTime.new(2023, 6, 14, 10),
   end_date: DateTime.new(2023, 6, 14, 18),
-  start_location: "75001 Paris",
-  end_location: "75001 Paris"
+  start_location: "Louvre Museum, 75001 Paris",
+  end_location: "Louvre Museum, 75001 Paris"
 )
 Event.create(
   name: "Vol vers le Lavandou",
@@ -450,8 +450,8 @@ Event.create(
   start_date: DateTime.new(2023, 7, 20, 9, 30),
   end_date: DateTime.new(2023, 7, 20, 14, 50),
   provider: "Transavia",
-  start_location: "94390 Orly",
-  end_location: "Dobrota24, 20213, Čilipi, Croatia"
+  start_location: "Orly Airport",
+  end_location: "Dubrovnik Airport, Čilipi, Croatia"
 )
 Event.create(
   name: "Visite panoramique en bus décapotable",
@@ -499,8 +499,8 @@ Event.create(
   start_date: DateTime.new(2023, 7, 24, 9, 10),
   end_date: DateTime.new(2023, 7, 24, 11, 40),
   provider: "Transavia",
-  start_location: "Dobrota, 20215 Konavle, Croatia",
-  end_location: "94390 Orly"
+  start_location: "Dubrovnik Airport, Čilipi, Croatia",
+  end_location: "Orly Airport"
 )
 
 Collaborator.create(
