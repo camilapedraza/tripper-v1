@@ -155,8 +155,8 @@ event2 = Event.create(
   event_type: "stay",
   start_date: DateTime.new(2023, 5, 21, 14),
   end_date: DateTime.new(2023, 5, 23, 6, 30),
-  start_location: "Calle de 2 de Mayo 10",
-  end_location: "Calle de 2 de Mayo 10",
+  start_location: "Calle de 2 de Mayo 10, Madrid, Spain",
+  end_location: "Calle de 2 de Mayo 10, Madrid, Spain",
   provider: "AirBnB",
   notes: "Piso 4"
 )
@@ -411,8 +411,8 @@ Event.create(
   provider_phone: "04 89 66 91 85",
   start_date: DateTime.new(2023, 7, 16, 21),
   end_date: DateTime.new(2023, 7, 17, 3),
-  start_location: "Quai d'Honneur, 83980 Le Lavandou",
-  end_location: "Quai d'Honneur, 83980 Le Lavandou"
+  start_location: "Le Mix Bar Lounge, Le Nouveau Port Du Lavandou, Le Lavandou, Var 83980, France",
+  end_location: "Le Mix Bar Lounge, Le Nouveau Port Du Lavandou, Le Lavandou, Var 83980, France"
 )
 Event.create(
   name: "Marché artisanal nocturne (front de mer du Lavandou)",
@@ -460,7 +460,7 @@ Event.create(
   start_date: DateTime.new(2023, 7, 22),
   end_date: DateTime.new(2023, 7, 22),
   start_location: "Dubrovnik, Croatia",
-  end_location: "Dubrovnk, Croatia"
+  end_location: "Dubrovnik, Croatia"
 )
 Event.create(
   name: "Grotte bleue",
@@ -470,7 +470,7 @@ Event.create(
   end_date: DateTime.new(2023, 7, 22),
   provider: "Dubrovnik Islands Tours",
   start_location: "Dubrovnik, Croatia",
-  end_location: "Dubrovnk, Croatie"
+  end_location: "Dubrovnik, Croatia"
 )
 Event.create(
   name: "Trip to Split",
@@ -480,7 +480,7 @@ Event.create(
   end_date: DateTime.new(2023, 7, 23, 9, 32),
   provider: "Čazmatrans",
   start_location: "Dubrovnik, Croatia",
-  end_location: "Split, Croatie"
+  end_location: "Split, Croatia"
 )
 Event.create(
   name: "Return to Dubrovnik",
@@ -499,7 +499,7 @@ Event.create(
   start_date: DateTime.new(2023, 7, 24, 9, 10),
   end_date: DateTime.new(2023, 7, 24, 11, 40),
   provider: "Transavia",
-  start_location: "Dobrota24, 20213, Čilipi, Croatia",
+  start_location: "Dobrota, 20215 Konavle, Croatia",
   end_location: "94390 Orly"
 )
 
