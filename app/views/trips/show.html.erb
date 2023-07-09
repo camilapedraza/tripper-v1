@@ -1,4 +1,6 @@
 <div class= "show_page" style="background-image: url('https://live.staticflickr.com/2162/1534505052_f571970f2c_b.jpg')">
+  <% content_for :meta_title, "#{@trip.name} || #{DEFAULT_META["meta_product_name"]}" %>
+
   <div class="trip_name">
     <h1><%= @trip.name %></h1>
   </div>
