@@ -1,3 +1,4 @@
+ <% content_for :meta_title, "#{@event.trip.name} || #{DEFAULT_META["meta_product_name"]}" %>
 <div class="container">
   <div class="left-align" style="margin-top: 50px">
     <h2>Informations about<br>your reservation</h2>
@@ -63,9 +64,9 @@
             </g>
           </svg>
           <div class="destination-name">
-            <p><%= @event.start_location %></p>
+            <p><%= @event.start_location_data.city %></p>
             <p><%= @event.format_duration_h_min %></p>
-            <p><%= @event.end_location %></p>
+            <p><%= @event.end_location_data.city%></p>
           </div>
         </div>
         <% if @event.seat_number %>
@@ -259,6 +260,8 @@
         <p><em><%= @event.notes if @event.notes %></em></p>
       </div>
     </div>
+    <br>
+    <%= "Notes: #{@event.notes}" if @event.notes %>
 
     <% when "rental" %>
       <div class="event-card-container">
