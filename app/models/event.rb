@@ -5,6 +5,7 @@ class Event < ApplicationRecord
   belongs_to :trip
 
   has_many :tasks, dependent: :destroy
+  has_many :files
 
   validates :event_type, inclusion: { in: EVENT_TYPES }
   validates :start_date, presence: true
