@@ -2,8 +2,20 @@
 <div class="container">
   <% case @event.event_type
     when "journey", "flight", "train", "bus", "boat" %>
-    <div class="left-align">
-      <h2>Booking details</h2>
+    <div class="row header mt-5">
+      <div class="col-8">
+        <h2>Booking details</h2>
+      </div>
+      <div class="edit-button col-2">
+        <%= link_to edit_trip_event_path(@trip, @event) do %>
+          <i class="fa-regular fa-pen-to-square fa-2xl" style="color: #7f7eff;"></i>
+        <% end %>
+      </div>
+      <div class="delete-button col-2">
+        <%= link_to trip_event_path(@trip, @event), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this event?"} do %>
+          <i class="fa-regular fa-trash-can fa-2xl" style="color: #7f7eff;"></i>
+        <% end %>
+      </div>
     </div>
     <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>
     <%# MISSING: USE GEOCDER TO DISPLAY SHORTER START LOCATIONS (CITY NAME, AIRPORT NAME, ETC.) %>
@@ -29,9 +41,9 @@
             </g>
           </svg>
           <div class="destination-name">
-            <p><%= @event.start_location_data.city %></p>
+            <p><%= @event.start_location_data&.city %></p>
             <p><%= @event.format_duration_h_min %></p>
-            <p><%= @event.end_location_data.city%></p>
+            <p><%= @event.end_location_data&.city%></p>
           </div>
         </div>
         <% if @event.seat_number %>
@@ -47,8 +59,20 @@
     <%= "Notes: #{@event.notes}" if @event.notes %>
 
     <% when "rental" %>xº
-      <div class="left-align">
-        <h2>Rental details</h2>
+      <div class="row header mt-5">
+        <div class="col-8">
+          <h2>Rental details</h2>
+        </div>
+        <div class="edit-button col-2">
+          <%= link_to edit_trip_event_path(@trip, @event) do %>
+            <i class="fa-regular fa-pen-to-square fa-2xl" style="color: #7f7eff;"></i>
+          <% end %>
+        </div>
+        <div class="delete-button col-2">
+          <%= link_to trip_event_path(@trip, @event), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this event?"} do %>
+            <i class="fa-regular fa-trash-can fa-2xl" style="color: #7f7eff;"></i>
+          <% end %>
+        </div>
       </div>
       <%# MISSING: THIS NEEDS TO BE BROKEN DOWN INTO TWO EVENTS: Pick up vs Drop off %>
       Pick up:
@@ -69,10 +93,22 @@
       <br>
 
     <% when "stay" %>
-      <div class="left-align">
-        <h2>Details for your stay</h2>
+      <div class="row header mt-5">
+        <div class="col-8">
+          <h2>Details for your stay</h2>
+        </div>
+        <div class="edit-button col-2">
+          <%= link_to edit_trip_event_path(@trip, @event) do %>
+            <i class="fa-regular fa-pen-to-square fa-2xl" style="color: #7f7eff;"></i>
+          <% end %>
+        </div>
+        <div class="delete-button col-2">
+          <%= link_to trip_event_path(@trip, @event), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this event?"} do %>
+            <i class="fa-regular fa-trash-can fa-2xl" style="color: #7f7eff;"></i>
+          <% end %>
+        </div>
       </div>
-      <%= "#{@event.provider} in " if @event.provider %><%= @event.start_location_data.city %>
+      <%= "#{@event.provider} in " if @event.provider %><%= @event.start_location_data&.city %>
       <br>
       Check in: <%= @event.format_start_date %> at <%= @event.format_start_time %>
       <br>
@@ -85,8 +121,20 @@
       <%= "Notes: #{@event.notes}" if @event.notes %>
 
     <% when "restaurant", "visit", "show" %>
-      <div class="left-align">
-        <h2>Event details</h2>
+      <div class="row header mt-5">
+        <div class="col-8">
+          <h2>Event details</h2>
+        </div>
+        <div class="edit-button col-2">
+          <%= link_to edit_trip_event_path(@trip, @event) do %>
+            <i class="fa-regular fa-pen-to-square fa-2xl" style="color: #7f7eff;"></i>
+          <% end %>
+        </div>
+        <div class="delete-button col-2">
+          <%= link_to trip_event_path(@trip, @event), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this event?"} do %>
+            <i class="fa-regular fa-trash-can fa-2xl" style="color: #7f7eff;"></i>
+          <% end %>
+        </div>
       </div>
       <%= @event.name %>
       <br><%= @event.format_start_time %>
@@ -101,8 +149,20 @@
       <br>
 
     <% else %>
-      <div class="left-align">
-        <h2>Custom Event Details</h2>
+      <div class="row header mt-5">
+        <div class="col-8">
+          <h2>Custom event details</h2>
+        </div>
+        <div class="edit-button col-2">
+          <%= link_to edit_trip_event_path(@trip, @event) do %>
+            <i class="fa-regular fa-pen-to-square fa-2xl" style="color: #7f7eff;"></i>
+          <% end %>
+        </div>
+        <div class="delete-button col-2">
+          <%= link_to trip_event_path(@trip, @event), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this event?"} do %>
+            <i class="fa-regular fa-trash-can fa-2xl" style="color: #7f7eff;"></i>
+          <% end %>
+        </div>
       </div>
       <%= @event.name %>
       <br>
@@ -127,7 +187,7 @@
       <h2>Files</h2>
     </div>
     <div>
-    <%= link_to "Add file",  "#", class: "btn btn-primary" %>
+      <%= link_to "Add file",  "#", class: "btn btn-primary" %>
     </div>
   </div>
   <br>

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/eventstype', to: 'pages#eventstype'
 
   resources :trips, only: %i[index show new create edit update] do
-    resources :events, only: %i[index show new create]
+    resources :events, only: %i[index show new create edit update destroy]
   end
 
   # MISSING: Delete trip

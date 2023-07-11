@@ -1,11 +1,11 @@
 class EventsController < ApplicationController
   before_action :set_trip, only: %i[show new create edit update]
+  before_action :set_event, only: %i[show edit update destroy]
 
   def index
   end
 
   def show
-    @event = Event.find(params[:id])
     @task = Task.new
   end
 
@@ -24,10 +24,29 @@ class EventsController < ApplicationController
     end
   end
 
+  def update
+    if @event.update(event_params)
+      redirect_to trip_event_path(@trip, @event)
+    else
+      @event = @trip.event
+      render "events/show", status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @event.destroy
+    redirect_to trip_path(@trip), status: :see_other
+  end
+
   private
 
   def set_trip
     @trip = Trip.find(params[:trip_id])
+  end
+
+  def set_event
+    @event = Event.find(params[:id])
+    @trip = @event.trip
   end
 
   def event_params
