@@ -1,11 +1,11 @@
 class EventsController < ApplicationController
   before_action :set_trip, only: %i[show new create edit update]
+  before_action :set_event, only: %i[show new create edit update destroy]
 
   def index
   end
 
   def show
-    @event = Event.find(params[:id])
     @task = Task.new
   end
 
@@ -24,10 +24,23 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @event.update(event_params)
+    # No need for app/views/restaurants/update.html.erb
+    redirect_to restaurant_path(@restaurant)
+  end
+
   private
 
   def set_trip
     @trip = Trip.find(params[:trip_id])
+  end
+
+  def set_event
+    @event = Event.find(params[:trip_id])
   end
 
   def event_params

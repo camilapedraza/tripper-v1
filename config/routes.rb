@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :events, only: %i[index show new create]
   end
 
+  resources :events, only: %i[update destroy]
   # MISSING: Delete trip
   # MISSING: Update event
   # MISSING: Delete event
