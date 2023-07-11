@@ -1,0 +1,5 @@
+meta_product_name: "Tripper"
+meta_title: "Tripper - Making Travel Easy"
+meta_description: "Plan your trips and keep track of all travel details in one single place"
+meta_image: "cover.png" # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards

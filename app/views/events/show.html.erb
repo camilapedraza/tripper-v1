@@ -1,3 +1,4 @@
+ <% content_for :meta_title, "#{@event.trip.name} || #{DEFAULT_META["meta_product_name"]}" %>
 <div class="container">
   <% case @event.event_type
     when "journey", "flight", "train", "bus", "boat" %>
@@ -60,6 +61,7 @@
       <%= @event.format_end_time %> on
       <%= @event.format_end_date %>
       <br>
+      Renting for <%= pluralize(@event.format_duration_d, "day") %>
       <%# MISSING: FORMAT SO IT'S 1 DAY WHEN LESS THAN 1 DAY %>
       Renting for <%= pluralize(event.format_duration_d, "day") %>
       <br>
