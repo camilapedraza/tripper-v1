@@ -69,8 +69,15 @@
 
 .documents {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 340px;
 }
+
+.document {
+  margin: 4px;
+  flex: 0 0 calc(50% - 8px);
+}
+
 
 .horizontal-display {
   display: flex;
