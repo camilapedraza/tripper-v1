@@ -1,47 +1,44 @@
  <% content_for :meta_title, "#{@event.trip.name} || #{DEFAULT_META["meta_product_name"]}" %>
 <div class="container">
-  <div class="left-align" style="margin-top: 50px">
-    <h2>Informations about<br>your reservation</h2>
-  </div>
   <% case @event.event_type
     when "journey"%>
+    <div class="left-align" style="margin-top: 50px">
+      <h2>Journey details</h2>
+    </div>
     <%# MISSING: FLIGHT NUMBER, TRAIN NUMBER, ETC. %>
     <%# MISSING: USE GEOCDER TO DISPLAY SHORTER START LOCATIONS (CITY NAME, AIRPORT NAME, ETC.) %>
     <div class="event-card-container">
-      <div class="journey-time">
-        <div class="event-hour">
-          <h2><%= @event.format_start_time %></h2>
-          <p><%= @event.format_start_date %></p>
-        </div>
-        <div class="event-hour">
-          <h2><%= @event.format_end_time %></h2>
-          <p><%= @event.format_end_date %></p>
-        </div>
-      </div>
+      <%= render "event_time_span", event: @event %>
       <div class="journey-container">
         <div class="journey-overview">
+          <%# JOURNEY %>
           <svg width="261" height="14" viewBox="0 0 261 14" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M7.24829 6.5H253.116" stroke="white" stroke-opacity="0.37" stroke-linecap="round"/>
           <path d="M7.88371 7C7.88371 8.57721 6.46197 10 4.52242 10C2.58287 10 1.16113 8.57721 1.16113 7C1.16113 5.42279 2.58287 4 4.52242 4C6.46197 4 7.88371 5.42279 7.88371 7Z" stroke="#7F7EFF" stroke-width="2"/>
           <path d="M259.748 7C259.748 8.57721 258.327 10 256.387 10C254.448 10 253.026 8.57721 253.026 7C253.026 5.42279 254.448 4 256.387 4C258.327 4 259.748 5.42279 259.748 7Z" stroke="#7F7EFF" stroke-width="2"/>
           </svg>
-          <div class="destination-name">
-            <p><%= @event.start_location %></p>
-            <p><%= @event.format_duration_h_min %></p>
-            <p><%= @event.end_location %></p>
-          </div>
+          <%# FLIGHT %>
+          <svg width="261" height="14" viewBox="0 0 261 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.24829 6.5H253.116" stroke="white" stroke-opacity="0.37" stroke-linecap="round"/>
+            <path d="M7.88371 7C7.88371 8.57721 6.46197 10 4.52242 10C2.58287 10 1.16113 8.57721 1.16113 7C1.16113 5.42279 2.58287 4 4.52242 4C6.46197 4 7.88371 5.42279 7.88371 7Z" stroke="#7F7EFF" stroke-width="2"/>
+            <path d="M259.748 7C259.748 8.57721 258.327 10 256.387 10C254.448 10 253.026 8.57721 253.026 7C253.026 5.42279 254.448 4 256.387 4C258.327 4 259.748 5.42279 259.748 7Z" stroke="#7F7EFF" stroke-width="2"/>
+            <g clip-path="url(#clip0_31_587)">
+              <path d="M137.998 5.25C139.487 5.25 142.077 6.04297 142.077 7C142.077 7.98438 139.487 8.75 137.998 8.75H132.922L128.546 13.5598C128.298 13.8332 127.836 14 127.336 14H124.889C124.427 14 124.092 13.7211 124.218 13.4422L126.352 8.75H121.876L119.995 10.325C119.865 10.4344 119.656 10.5 119.438 10.5H117.61C117.27 10.5 117 10.3277 117 10.1172C117 10.0816 117.009 10.0461 117.022 10.0105L118.393 7L117.022 3.98945C117.004 3.95391 117 3.91836 117 3.88281C117 3.66953 117.274 3.5 117.61 3.5H119.438C119.656 3.5 119.865 3.56562 119.995 3.675L121.876 5.25H126.356L124.223 0.557813C124.092 0.278906 124.427 0 124.889 0H127.336C127.836 0 128.298 0.169531 128.546 0.440234L132.922 5.25H137.998Z" fill="#7F7EFF"/>
+            </g>
+          </svg>
+
+          <%= render "event_space_span", event: @event %>
         </div>
         <% if @event.seat_number %>
-          <div class="journey-extra-details">
-            <div class="event-button">
-              <p><%= @event&.seat_number %></p>
-            </div>
-          </div>
+          <%= render "event_seat_number", event: @event %>
         <% end %>
       </div>
     </div>
 
     <% when "flight"%>
+    <div class="left-align" style="margin-top: 50px">
+      <h2>Flight Details</h2>
+    </div>
     <div class="flight-card-container">
       <div class="journey-time">
         <div class="event-hour">
@@ -69,27 +66,29 @@
             <p><%= @event.end_location_data.city%></p>
           </div>
         </div>
-        <% if @event.seat_number %>
+        <% unless @event.seat_number.empty? %>
           <div class="journey-extra-details">
             <div class="event-button">
-              <p><%= @event&.seat_number %></p>
+              <p><%= @event.seat_number %></p>
             </div>
           </div>
         <% end %>
       </div>
-      <div class="horizontal-display" style="margin-top: 20px">
-        <svg style="margin-right: 8px" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g clip-path="url(#clip0_546_12)">
-          <path d="M17 7.96875C17 11.7838 13.1949 14.875 8.50001 14.875C7.26817 14.875 6.09942 14.6625 5.04356 14.2807C4.64845 14.5695 4.0043 14.9646 3.24063 15.2967C2.44376 15.642 1.48419 15.9375 0.531258 15.9375C0.315438 15.9375 0.12286 15.808 0.0398518 15.6088C-0.043156 15.4096 0.00332838 15.1838 0.152742 15.0311L0.162703 15.0211C0.172664 15.0111 0.185946 14.9979 0.205867 14.9746C0.242391 14.9348 0.298836 14.8717 0.368563 14.7854C0.504696 14.6193 0.687313 14.3736 0.87325 14.0682C1.20528 13.517 1.52071 12.7932 1.5838 11.9797C0.587703 10.8508 8.07952e-06 9.46621 8.07952e-06 7.96875C8.07952e-06 4.15371 3.80509 1.0625 8.50001 1.0625C13.1949 1.0625 17 4.15371 17 7.96875Z" fill="#7F7EFF"/>
-          </g>
-          <defs>
-          <clipPath id="clip0_546_12">
-          <rect width="17" height="17" fill="white"/>
-          </clipPath>
-          </defs>
-        </svg>
-        <p><em><%= @event.notes if @event.notes %></em></p>
-      </div>
+      <% unless @event.notes.empty? %>
+        <div class="horizontal-display" style="margin-top: 20px">
+          <svg style="margin-right: 8px" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_546_12)">
+            <path d="M17 7.96875C17 11.7838 13.1949 14.875 8.50001 14.875C7.26817 14.875 6.09942 14.6625 5.04356 14.2807C4.64845 14.5695 4.0043 14.9646 3.24063 15.2967C2.44376 15.642 1.48419 15.9375 0.531258 15.9375C0.315438 15.9375 0.12286 15.808 0.0398518 15.6088C-0.043156 15.4096 0.00332838 15.1838 0.152742 15.0311L0.162703 15.0211C0.172664 15.0111 0.185946 14.9979 0.205867 14.9746C0.242391 14.9348 0.298836 14.8717 0.368563 14.7854C0.504696 14.6193 0.687313 14.3736 0.87325 14.0682C1.20528 13.517 1.52071 12.7932 1.5838 11.9797C0.587703 10.8508 8.07952e-06 9.46621 8.07952e-06 7.96875C8.07952e-06 4.15371 3.80509 1.0625 8.50001 1.0625C13.1949 1.0625 17 4.15371 17 7.96875Z" fill="#7F7EFF"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_546_12">
+            <rect width="17" height="17" fill="white"/>
+            </clipPath>
+            </defs>
+          </svg>
+          <p><em><%= @event&.notes %></em></p>
+        </div>
+      <% end %>
     </div>
 
     <% when "train"%>
@@ -118,9 +117,9 @@
               <path d="M126.429 0C124.536 0 123 1.42773 123 3.1875V11.6875C123 13.2812 124.257 14.5994 125.896 14.8385L124.254 16.3658C124.004 16.5982 124.182 17 124.536 17H125.954C126.257 17 126.546 16.8871 126.761 16.6879L128.714 14.875H133.286L135.236 16.6879C135.45 16.8871 135.739 17 136.043 17H137.464C137.821 17 138 16.5982 137.746 16.3658L136.104 14.8385C137.746 14.6027 139 13.2812 139 11.6875V3.1875C139 1.42773 137.464 0 135.571 0H126.429ZM125.286 3.1875C125.286 2.5998 125.796 2.125 126.429 2.125H135.571C136.204 2.125 136.714 2.5998 136.714 3.1875V6.375C136.714 6.9627 136.204 7.4375 135.571 7.4375H126.429C125.796 7.4375 125.286 6.9627 125.286 6.375V3.1875ZM131 9.5625C131.455 9.5625 131.891 9.73041 132.212 10.0293C132.534 10.3282 132.714 10.7336 132.714 11.1562C132.714 11.5789 132.534 11.9843 132.212 12.2832C131.891 12.5821 131.455 12.75 131 12.75C130.545 12.75 130.109 12.5821 129.788 12.2832C129.466 11.9843 129.286 11.5789 129.286 11.1562C129.286 10.7336 129.466 10.3282 129.788 10.0293C130.109 9.73041 130.545 9.5625 131 9.5625Z" fill="#7F7EFF"/>
             </svg>
           <div class="destination-name">
-            <p><%= @event.start_location %></p>
+            <p><%= @event.start_location_data.city %></p>
             <p><%= @event.format_duration_h_min %></p>
-            <p><%= @event.end_location %></p>
+            <p><%= @event.end_location_data.city%></p>
           </div>
         </div>
         <% if @event.seat_number %>
@@ -172,9 +171,9 @@
             <path d="M125 0C129.2 0 132 1.16875 132 2.65625V3.1875V4.25C132.553 4.25 133 4.7248 133 5.3125V7.4375C133 8.0252 132.553 8.5 132 8.5V13.8125C132 14.4002 131.553 14.875 131 14.875V15.9375C131 16.5252 130.553 17 130 17H129C128.447 17 128 16.5252 128 15.9375V14.875H122V15.9375C122 16.5252 121.553 17 121 17H120C119.447 17 119 16.5252 119 15.9375V14.875C118.447 14.875 118 14.4002 118 13.8125V8.5C117.447 8.5 117 8.0252 117 7.4375V5.3125C117 4.7248 117.447 4.25 118 4.25V3.1875V2.65625C118 1.16875 120.8 0 125 0ZM120 5.3125V8.5C120 9.0877 120.447 9.5625 121 9.5625H124.5V4.25H121C120.447 4.25 120 4.7248 120 5.3125ZM125.5 9.5625H129C129.553 9.5625 130 9.0877 130 8.5V5.3125C130 4.7248 129.553 4.25 129 4.25H125.5V9.5625ZM120.5 13.2812C120.765 13.2812 121.02 13.1693 121.207 12.9701C121.395 12.7708 121.5 12.5005 121.5 12.2188C121.5 11.937 121.395 11.6667 121.207 11.4674C121.02 11.2682 120.765 11.1562 120.5 11.1562C120.235 11.1562 119.98 11.2682 119.793 11.4674C119.605 11.6667 119.5 11.937 119.5 12.2188C119.5 12.5005 119.605 12.7708 119.793 12.9701C119.98 13.1693 120.235 13.2812 120.5 13.2812ZM129.5 13.2812C129.765 13.2812 130.02 13.1693 130.207 12.9701C130.395 12.7708 130.5 12.5005 130.5 12.2188C130.5 11.937 130.395 11.6667 130.207 11.4674C130.02 11.2682 129.765 11.1562 129.5 11.1562C129.235 11.1562 128.98 11.2682 128.793 11.4674C128.605 11.6667 128.5 11.937 128.5 12.2188C128.5 12.5005 128.605 12.7708 128.793 12.9701C128.98 13.1693 129.235 13.2812 129.5 13.2812ZM128 2.65625C128 2.36406 127.775 2.125 127.5 2.125H122.5C122.225 2.125 122 2.36406 122 2.65625C122 2.94844 122.225 3.1875 122.5 3.1875H127.5C127.775 3.1875 128 2.94844 128 2.65625Z" fill="#7F7EFF"/>
           </svg>
           <div class="destination-name">
-            <p><%= @event.start_location %></p>
+            <p><%= @event.start_location_data.city %></p>
             <p><%= @event.format_duration_h_min %></p>
-            <p><%= @event.end_location %></p>
+            <p><%= @event.end_location_data.city%></p>
           </div>
         </div>
         <% if @event.seat_number %>
@@ -233,9 +232,9 @@
               </defs>
             </svg>
           <div class="destination-name">
-            <p><%= @event.start_location %></p>
+            <p><%= @event.start_location_data.city %></p>
             <p><%= @event.format_duration_h_min %></p>
-            <p><%= @event.end_location %></p>
+            <p><%= @event.end_location_data.city%></p>
           </div>
         </div>
         <% if @event.seat_number %>
@@ -274,7 +273,7 @@
               <svg style="margin-right: 9px" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M0 16.3125C0 17.2441 0.671875 18 1.5 18H12.5C13.3281 18 14 17.2441 14 16.3125V6.75H0V16.3125ZM10 9.42188C10 9.18984 10.1688 9 10.375 9H11.625C11.8312 9 12 9.18984 12 9.42188V10.8281C12 11.0602 11.8312 11.25 11.625 11.25H10.375C10.1688 11.25 10 11.0602 10 10.8281V9.42188ZM10 13.9219C10 13.6898 10.1688 13.5 10.375 13.5H11.625C11.8312 13.5 12 13.6898 12 13.9219V15.3281C12 15.5602 11.8312 15.75 11.625 15.75H10.375C10.1688 15.75 10 15.5602 10 15.3281V13.9219ZM6 9.42188C6 9.18984 6.16875 9 6.375 9H7.625C7.83125 9 8 9.18984 8 9.42188V10.8281C8 11.0602 7.83125 11.25 7.625 11.25H6.375C6.16875 11.25 6 11.0602 6 10.8281V9.42188ZM6 13.9219C6 13.6898 6.16875 13.5 6.375 13.5H7.625C7.83125 13.5 8 13.6898 8 13.9219V15.3281C8 15.5602 7.83125 15.75 7.625 15.75H6.375C6.16875 15.75 6 15.5602 6 15.3281V13.9219ZM2 9.42188C2 9.18984 2.16875 9 2.375 9H3.625C3.83125 9 4 9.18984 4 9.42188V10.8281C4 11.0602 3.83125 11.25 3.625 11.25H2.375C2.16875 11.25 2 11.0602 2 10.8281V9.42188ZM2 13.9219C2 13.6898 2.16875 13.5 2.375 13.5H3.625C3.83125 13.5 4 13.6898 4 13.9219V15.3281C4 15.5602 3.83125 15.75 3.625 15.75H2.375C2.16875 15.75 2 15.5602 2 15.3281V13.9219ZM12.5 2.25H11V0.5625C11 0.253125 10.775 0 10.5 0H9.5C9.225 0 9 0.253125 9 0.5625V2.25H5V0.5625C5 0.253125 4.775 0 4.5 0H3.5C3.225 0 3 0.253125 3 0.5625V2.25H1.5C0.671875 2.25 0 3.00586 0 3.9375V5.625H14V3.9375C14 3.00586 13.3281 2.25 12.5 2.25Z" fill="#7F7EFF"/>
               </svg>
-              <p><%= @event.format_start_time %> on <%= @event.start_date.strftime("%b %d") %></p>
+              <p><%= @event.format_start_time %> on <%= @event.format_start_date %></p>
             </div>
             <div class="horizontal-display">
               <svg style="margin-right: 9px" width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -330,21 +329,21 @@
       <div class="event-card-container">
         <div class="other-event-card-container">
           <div class="event-information" style="margin-bottom: 21px">
-            <h2><%= "#{@event.provider} in " if @event.provider %><%= @event.start_location %><h2>
+            <h2><%= "#{@event.provider} in " if @event.provider %><%= @event.start_location_data.city %><h2>
           </div>
           <div class="event-information">
             <div class="horizontal-display">
               <svg style="margin-right: 9px" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0 16.3125C0 17.2441 0.671875 18 1.5 18H12.5C13.3281 18 14 17.2441 14 16.3125V6.75H0V16.3125ZM10 9.42188C10 9.18984 10.1688 9 10.375 9H11.625C11.8312 9 12 9.18984 12 9.42188V10.8281C12 11.0602 11.8312 11.25 11.625 11.25H10.375C10.1688 11.25 10 11.0602 10 10.8281V9.42188ZM10 13.9219C10 13.6898 10.1688 13.5 10.375 13.5H11.625C11.8312 13.5 12 13.6898 12 13.9219V15.3281C12 15.5602 11.8312 15.75 11.625 15.75H10.375C10.1688 15.75 10 15.5602 10 15.3281V13.9219ZM6 9.42188C6 9.18984 6.16875 9 6.375 9H7.625C7.83125 9 8 9.18984 8 9.42188V10.8281C8 11.0602 7.83125 11.25 7.625 11.25H6.375C6.16875 11.25 6 11.0602 6 10.8281V9.42188ZM6 13.9219C6 13.6898 6.16875 13.5 6.375 13.5H7.625C7.83125 13.5 8 13.6898 8 13.9219V15.3281C8 15.5602 7.83125 15.75 7.625 15.75H6.375C6.16875 15.75 6 15.5602 6 15.3281V13.9219ZM2 9.42188C2 9.18984 2.16875 9 2.375 9H3.625C3.83125 9 4 9.18984 4 9.42188V10.8281C4 11.0602 3.83125 11.25 3.625 11.25H2.375C2.16875 11.25 2 11.0602 2 10.8281V9.42188ZM2 13.9219C2 13.6898 2.16875 13.5 2.375 13.5H3.625C3.83125 13.5 4 13.6898 4 13.9219V15.3281C4 15.5602 3.83125 15.75 3.625 15.75H2.375C2.16875 15.75 2 15.5602 2 15.3281V13.9219ZM12.5 2.25H11V0.5625C11 0.253125 10.775 0 10.5 0H9.5C9.225 0 9 0.253125 9 0.5625V2.25H5V0.5625C5 0.253125 4.775 0 4.5 0H3.5C3.225 0 3 0.253125 3 0.5625V2.25H1.5C0.671875 2.25 0 3.00586 0 3.9375V5.625H14V3.9375C14 3.00586 13.3281 2.25 12.5 2.25Z" fill="#7F7EFF"/>
               </svg>
-              <p><%= @event.start_date.strftime("%b %d") %>, <%= @event.end_date.strftime("%b %d")%></p>
+              <p><%= @event.format_start_date %> <%= @event.format_start_time %> - <%= @event.format_end_date%> <%= @event.format_end_time %></p>
             </div>
             <%# MISSING: THE LOCATION ICON IS WAY TOO BIG %>
             <div class="horizontal-display">
               <svg style="margin-right: 11px" width="14" height="24" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5.44444 14.8569V22.2018L6.51486 23.7497C6.74576 24.0834 7.25472 24.0834 7.48563 23.7497L8.55556 22.2018V14.8569C8.05049 14.9469 7.53181 15.0003 7 15.0003C6.46819 15.0003 5.94951 14.9469 5.44444 14.8569ZM7 0C3.13396 0 0 3.02209 0 6.75013C0 10.4782 3.13396 13.5003 7 13.5003C10.866 13.5003 14 10.4782 14 6.75013C14 3.02209 10.866 0 7 0ZM7 3.56257C5.17708 3.56257 3.69444 4.99229 3.69444 6.75013C3.69444 7.06045 3.43292 7.31264 3.11111 7.31264C2.78931 7.31264 2.52778 7.06045 2.52778 6.75013C2.52778 4.37212 4.53444 2.43755 7 2.43755C7.32181 2.43755 7.58333 2.68974 7.58333 3.00006C7.58333 3.31038 7.32181 3.56257 7 3.56257Z" fill="#7F7EFF"/>
               </svg>
-              <p> <%= @event.provider_address %></p>
+              <p><%= @event.start_location %></p>
             </div>
             <div class="horizontal-display">
               <svg style="margin-right: 11px" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -385,7 +384,7 @@
               </clipPath>
               </defs>
             </svg>
-            <p>"<%= @event.name %>"  at  <%= @event.provider %></p>
+            <p>"<%= @event.name %>" <%= "at #{@event.provider}" if @event.provider %></p>
           </div>
           <div class="horizontal-display">
             <svg style="margin-right: 8px" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -412,7 +411,7 @@
               <svg style="margin-right: 11px" width="14" height="24" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5.44444 14.8569V22.2018L6.51486 23.7497C6.74576 24.0834 7.25472 24.0834 7.48563 23.7497L8.55556 22.2018V14.8569C8.05049 14.9469 7.53181 15.0003 7 15.0003C6.46819 15.0003 5.94951 14.9469 5.44444 14.8569ZM7 0C3.13396 0 0 3.02209 0 6.75013C0 10.4782 3.13396 13.5003 7 13.5003C10.866 13.5003 14 10.4782 14 6.75013C14 3.02209 10.866 0 7 0ZM7 3.56257C5.17708 3.56257 3.69444 4.99229 3.69444 6.75013C3.69444 7.06045 3.43292 7.31264 3.11111 7.31264C2.78931 7.31264 2.52778 7.06045 2.52778 6.75013C2.52778 4.37212 4.53444 2.43755 7 2.43755C7.32181 2.43755 7.58333 2.68974 7.58333 3.00006C7.58333 3.31038 7.32181 3.56257 7 3.56257Z" fill="#7F7EFF"/>
               </svg>
-              <p><%= @event.start_location %>kz,dk</p>
+              <p><%= @event.start_location %></p>
             </div>
             <div class="horizontal-display">
               <svg style="margin-right: 8px" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -434,7 +433,7 @@
     <div class="event-card-container">
       <div class="other-event-card-container">
         <div class="event-information">
-          <h2><%= @event.name %> details</h2>
+          <h2><%= @event.name %></h2>
         </div>
         <div class="event-information">
           <div class="horizontal-display">
@@ -456,7 +455,7 @@
             <svg style="margin-right: 11px" width="14" height="24" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5.44444 14.8569V22.2018L6.51486 23.7497C6.74576 24.0834 7.25472 24.0834 7.48563 23.7497L8.55556 22.2018V14.8569C8.05049 14.9469 7.53181 15.0003 7 15.0003C6.46819 15.0003 5.94951 14.9469 5.44444 14.8569ZM7 0C3.13396 0 0 3.02209 0 6.75013C0 10.4782 3.13396 13.5003 7 13.5003C10.866 13.5003 14 10.4782 14 6.75013C14 3.02209 10.866 0 7 0ZM7 3.56257C5.17708 3.56257 3.69444 4.99229 3.69444 6.75013C3.69444 7.06045 3.43292 7.31264 3.11111 7.31264C2.78931 7.31264 2.52778 7.06045 2.52778 6.75013C2.52778 4.37212 4.53444 2.43755 7 2.43755C7.32181 2.43755 7.58333 2.68974 7.58333 3.00006C7.58333 3.31038 7.32181 3.56257 7 3.56257Z" fill="#7F7EFF"/>
             </svg>
-            <p><%= @event.start_location %>Varigotti</p>
+            <p><%= @event.start_location %></p>
           </div>
         </div>
         <% if @event.end_date.present? %>
@@ -472,7 +471,7 @@
               </clipPath>
               </defs>
             </svg>
-            <p><%= @event.start_location %></p>
+            <p><%= @event.end_location %></p>
           </div>
         </div>
         <% end %>
@@ -499,17 +498,15 @@
 
   <div class="left-align">
     <h2>My Documents</h2>
-    <%# Pour l'instant les boutons ne fonctionnent pas %>
+  </div>
+  <div class="documents">
     <div class="documents">
-        <div class="documents">
-        <%= link_to "PASSEPORT",  "#", class: "secondary-pill-button document" %>
-        <%= link_to "VISA",  "#", class: "secondary-pill-button document" %>
-        <%= link_to "BOARDING PASS",  "#", class: "secondary-pill-button document" %>
-        <%= link_to "ADD DOC",  "#", class: "primary-pill-button document" %>
-        </div>
+      <% @event.files.each do |file| %>
+        <a href="" class="secondary-pill-button document"><%= file.filename.base.upcase %></a>
+      <% end %>
+      <%= link_to "ADD FILE", add_file_path(@event.trip, @event), class: "primary-pill-button document" %>
     </div>
   </div>
-
 
   <div class="left-align">
     <div class="checklist-container">

@@ -15,6 +15,8 @@ module Tripper
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    # This ensures adding new files through active storage doesn't replace existong files
+    config.active_storage.replace_on_assign_to_many = false
 
     # Configuration for the application, engines, and railties goes here.
     #
