@@ -1,11 +1,11 @@
 class EventsController < ApplicationController
-  before_action :set_trip, only: %i[show new create edit]
+  before_action :set_trip, only: %i[show new create edit update]
+  before_action :set_event, only: %i[show edit update destroy]
 
   def index
   end
 
   def show
-    @event = Event.find(params[:id])
     @task = Task.new
   end
 
@@ -24,19 +24,25 @@ class EventsController < ApplicationController
     end
   end
 
-  # MISSING: DELETE FILE
   def add_file
     @event = Event.find(params[:event_id])
   end
 
+  def destroy
+    @event.destroy
+    redirect_to trip_path(@trip), status: :see_other
+  end
+
   def update
-    @event = Event.find(params[:id])
-    # fetch user's selected label for file
-    file_label = params[:file_label]
-    @event.update(event_params)
-    # update saved file with selected label in form
-    update_filename(file_label) if @event.files.attached?
-    redirect_to trip_event_path(@event.trip, @event)
+    if @event.update(event_params)
+      file_label = params[:file_label]
+      @event.update(event_params) if file_label
+      update_filename(file_label) if @event.files.attached?
+      redirect_to trip_event_path(@trip, @event)
+    else
+      @event = @trip.event
+      render "events/show", status: :unprocessable_entity
+    end
   end
 
   private
@@ -51,6 +57,11 @@ class EventsController < ApplicationController
 
   def set_trip
     @trip = Trip.find(params[:trip_id])
+  end
+
+  def set_event
+    @event = Event.find(params[:id])
+    @trip = @event.trip
   end
 
   def event_params
