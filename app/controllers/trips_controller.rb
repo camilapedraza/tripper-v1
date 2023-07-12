@@ -34,6 +34,9 @@ class TripsController < ApplicationController
     redirect_to trip_path(@trip)
   end
 
+  def add_file
+  end
+
   private
 
   def set_trip
