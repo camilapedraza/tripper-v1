@@ -81,8 +81,8 @@ class Event < ApplicationRecord
 
   def format_duration_h_min
     duration
-    hours = (duration/3600).to_i
-    minutes = ((duration % 3600)/60).to_i
+    hours = (duration / 3600).to_i
+    minutes = ((duration % 3600) / 60).to_i
     # MISSING: refacto these three lines:
     formatted = "#{hours}h"
     formatted << (" #{minutes}min") if (duration % 3600).positive?
