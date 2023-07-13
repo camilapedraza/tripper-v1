@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @back_url = trip_path(@trip)
     @task = Task.new
   end
 
@@ -26,6 +27,7 @@ class EventsController < ApplicationController
 
   def add_file
     @event = Event.find(params[:event_id])
+    @trip = Trip.find(params[:id])
   end
 
   def destroy
@@ -34,10 +36,12 @@ class EventsController < ApplicationController
   end
 
   def update
+<<<<<<< HEAD
     raise
+=======
+    file_label = params[:file_label]
+>>>>>>> master
     if @event.update(event_params)
-      file_label = params[:file_label]
-      @event.update(event_params) if file_label
       update_filename(file_label) if @event.files.attached?
       redirect_to trip_event_path(@trip, @event)
     else
