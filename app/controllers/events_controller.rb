@@ -1,13 +1,13 @@
 class EventsController < ApplicationController
-  before_action :set_trip, only: %i[show new create edit update]
+  before_action :set_trip, only: %i[show new create edit]
   before_action :set_event, only: %i[show edit update destroy]
 
   def index
   end
 
   def show
-    @task = Task.new
     @back_url = trip_path(@trip)
+    @task = Task.new
   end
 
   def new
@@ -27,6 +27,7 @@ class EventsController < ApplicationController
 
   def add_file
     @event = Event.find(params[:event_id])
+    @trip = Trip.find(params[:id])
   end
 
   def destroy
@@ -35,9 +36,8 @@ class EventsController < ApplicationController
   end
 
   def update
+    file_label = params[:file_label]
     if @event.update(event_params)
-      file_label = params[:file_label]
-      @event.update(event_params) if file_label
       update_filename(file_label) if @event.files.attached?
       redirect_to trip_event_path(@trip, @event)
     else
