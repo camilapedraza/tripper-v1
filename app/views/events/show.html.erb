@@ -23,12 +23,12 @@
       </div>
       <div class="edit-button col-2">
         <%= link_to edit_trip_event_path(@trip, @event) do %>
-          <i class="fa-regular fa-pen-to-square fa-2xl" style="color: #7f7eff;"></i>
+          <i class="fa-regular fa-pen-to-square fa-1xl" style="color: #7f7eff;"></i>
         <% end %>
       </div>
       <div class="delete-button col-2">
         <%= link_to trip_event_path(@trip, @event), data: {turbo_method: :delete, turbo_confirm: "All event data, and all event tasks and files will be deleted too."} do %>
-          <i class="fa-regular fa-trash-can fa-2xl" style="color: #7f7eff;"></i>
+          <i class="fa-regular fa-trash-can fa-1xl" style="color: #7f7eff;"></i>
         <% end %>
       </div>
     </div>
@@ -315,11 +315,11 @@
     <h2>My Documents</h2>
   </div>
   <div class="documents">
-    <div class="documents">
+    <div class="document left-align">
       <% @event.files.each do |file| %>
         <a href="" class="secondary-pill-button document"><%= file.filename.base.upcase %></a>
       <% end %>
-      <%= link_to "ADD FILE", add_file_path(@event.trip, @event), class: "primary-pill-button document" %>
+      <%= link_to "ADD DOC", add_file_path(@event.trip, @event), class: "primary-pill-button document add-doc-link", style: "margin-left: 2px" %>
     </div>
   </div>
 
@@ -371,3 +371,19 @@
     </div>
   </div>
 </div>
+
+<div class="down-card" id="new-trip-card" style="display: none;">
+  <div style="margin-top: 12px">
+    <h2>Let’s add some documents</h2>
+  </div>
+  <div class="add-doc">
+    <%= simple_form_for(@event) do |f| %>
+      <%# fake form input — not an actual parameter, just captures intended label for uploaded file %>
+      <%= f.input :file_label, as: :fake_select, collection: Event::FILE_LABELS, input_html: { style: 'width: 330px;' } %>
+      <%= f.input :files, as: :file, label: false, input_html: { style: 'width: 330px;' } %>
+      <%= f.submit 'Upload File', class: "primary-button", style: 'margin-top: 20px;' %>
+    <% end %>
+  </div>
+</div>
+
+<div id="placeholder-card" style="height: 0; overflow: hidden;"></div>
