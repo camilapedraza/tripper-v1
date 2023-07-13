@@ -36,11 +36,7 @@ class EventsController < ApplicationController
   end
 
   def update
-<<<<<<< HEAD
-    raise
-=======
     file_label = params[:file_label]
->>>>>>> master
     if @event.update(event_params)
       update_filename(file_label) if @event.files.attached?
       redirect_to trip_event_path(@trip, @event)
