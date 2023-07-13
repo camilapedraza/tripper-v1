@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_trip, only: %i[show new create edit]
+  before_action :set_trip, only: %i[show new create edit update add_file]
   before_action :set_event, only: %i[show edit update destroy]
 
   def index
@@ -36,7 +36,11 @@ class EventsController < ApplicationController
   end
 
   def update
+<<<<<<< HEAD
+    raise
+=======
     file_label = params[:file_label]
+>>>>>>> master
     if @event.update(event_params)
       update_filename(file_label) if @event.files.attached?
       redirect_to trip_event_path(@trip, @event)
