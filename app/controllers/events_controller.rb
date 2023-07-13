@@ -7,6 +7,7 @@ class EventsController < ApplicationController
 
   def show
     @task = Task.new
+    @back_url = trip_path(@trip)
   end
 
   def new
