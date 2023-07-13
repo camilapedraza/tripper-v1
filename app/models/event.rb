@@ -1,13 +1,16 @@
 class Event < ApplicationRecord
   EVENT_TYPES = %w[journey flight train bus boat rental stay restaurant show visit other]
+  FILE_LABELS = ["Boarding Pass", "Visa", "Passport", "Loyalty Card", "Vaccinations"]
 
   before_save :geocode_endpoints
   belongs_to :trip
 
   has_many :tasks, dependent: :destroy
+  has_many_attached :files
 
   validates :event_type, inclusion: { in: EVENT_TYPES }
   validates :start_date, presence: true
+  # MISSING: FIX VALIDATIONS - MOST EVENTS NEED START AND END DATES, AND START AND END LOCATIONS TO WORK
   # validates :end_date, presence: true, if: :journey? || :flight? || :train? || :bus? || :boat? || :stay?
   validates :name, presence: true, if: :other?
 
@@ -78,8 +81,8 @@ class Event < ApplicationRecord
 
   def format_duration_h_min
     duration
-    hours = (duration/3600).to_i
-    minutes = ((duration % 3600)/60).to_i
+    hours = (duration / 3600).to_i
+    minutes = ((duration % 3600) / 60).to_i
     # MISSING: refacto these three lines:
     formatted = "#{hours}h"
     formatted << (" #{minutes}min") if (duration % 3600).positive?

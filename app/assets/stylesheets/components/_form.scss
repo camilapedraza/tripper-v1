@@ -23,14 +23,13 @@ form .form-control {
   border: 2px solid #7F7EFF;
   border-radius: 11px;
   width: 90%;
-  background-color: #4A4949 !important;
+  background-color: #2b2a2a !important;
   color: #7F7EFF;
 }
 
 form .form-control:focus {
   color: white;
-  background-color: #4A4949 !important;
-  border-color: #86b7fe;
+  background-color: #2b2a2a !important;
   outline: 0;
 }
 
@@ -60,10 +59,14 @@ form .add-task-input {
 form .add-task-button {
   border: none;
   text-decoration: none;
-  margin: 4px 2px;
+  margin: 5px 2px;
   cursor: pointer;
 }
 
 form .input-wrapper input::placeholder {
   color: #7F7EFF;
+}
+
+form ul {
+  margin: 0;
 }
