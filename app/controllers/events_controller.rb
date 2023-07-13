@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_trip, only: %i[show new create edit update]
+  before_action :set_trip, only: %i[show new create edit update add_file]
   before_action :set_event, only: %i[show edit update destroy]
 
   def index
@@ -34,6 +34,7 @@ class EventsController < ApplicationController
   end
 
   def update
+    raise
     if @event.update(event_params)
       file_label = params[:file_label]
       @event.update(event_params) if file_label
