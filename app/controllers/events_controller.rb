@@ -27,7 +27,6 @@ class EventsController < ApplicationController
 
   def add_file
     @event = Event.find(params[:event_id])
-    @trip = Trip.find(params[:id])
   end
 
   def destroy
