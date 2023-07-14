@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_trip, only: %i[show new create edit update add_file]
-  before_action :set_event, only: %i[show edit update destroy]
+  before_action :set_event, only: %i[show edit update destroy view_file]
 
   def index
   end
@@ -15,6 +15,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    @back_url = trip_path(@trip)
     @event = Event.new(event_params)
     @event.trip = @trip
     if @event.save!
@@ -26,7 +27,8 @@ class EventsController < ApplicationController
   end
 
   def add_file
-    @event = Event.find(params[:event_id])
+    @back_url = trip_path(@trip)
+    @event = Event.find(params[:id])
   end
 
   def destroy
@@ -43,6 +45,11 @@ class EventsController < ApplicationController
       @event = @trip.event
       render "events/show", status: :unprocessable_entity
     end
+  end
+
+  def view_file
+    @back_url = trip_event_path(@trip, @event)
+    @file = @event.files_blobs.find(params[:blob_id])
   end
 
   private

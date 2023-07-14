@@ -36,7 +36,7 @@ class TasksController < ApplicationController
   end
 
   def set_event
-    @event = Event.find(params[:event_id])
+    @event = Event.find(params[:id])
     @trip = @event.trip
   end
 
