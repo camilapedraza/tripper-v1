@@ -45,3 +45,9 @@ a {
   flex-direction: column;
   align-items: center;
 }
+
+.content-wrapper {
+  margin-bottom: 68px;
+    overflow: scroll;
+    height: calc(100vh - 68px);
+}

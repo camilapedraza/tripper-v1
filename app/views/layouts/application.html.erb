@@ -41,8 +41,9 @@
   <body>
     <%= render 'shared/navbar' unless current_page?(root_path) %>
     <%= render "shared/flashes" %>
-
-    <%= yield %>
+    <div class="content-wrapper">
+      <%= yield %>
+    </div>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </body>
 </html>
