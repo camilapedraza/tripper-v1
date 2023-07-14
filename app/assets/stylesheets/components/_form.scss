@@ -23,13 +23,13 @@ form .form-control {
   border: 2px solid #7F7EFF;
   border-radius: 11px;
   width: 90%;
-  background-color: #2b2a2a !important;
+  background-color: #2b2a2a;
   color: #7F7EFF;
 }
 
 form .form-control:focus {
   color: white;
-  background-color: #2b2a2a !important;
+  background-color: #2b2a2a;
   outline: 0;
 }
 
@@ -89,4 +89,8 @@ form ul {
     width: 90%;
     margin-top: 10px;
     margin-bottom: -6px;
+}
+
+.custom-input {
+  background-color: #4A4949 !important;
 }

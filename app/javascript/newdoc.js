@@ -1,4 +1,4 @@
-$(document).ready(function() {
+document.addEventListener("DOMContentLoaded", function() {
   var startX, startY;
 
   // Fonction pour capturer les coordonnées de départ du mouvement
@@ -10,7 +10,7 @@ $(document).ready(function() {
   // Fonction pour récupérer les coordonnées X de l'événement (souris ou tactile)
   function getEventX(event) {
     if (event.type.startsWith("touch")) {
-      return event.originalEvent.touches[0].pageX;
+      return event.touches[0].pageX;
     } else {
       return event.pageX;
     }
@@ -19,7 +19,7 @@ $(document).ready(function() {
   // Fonction pour récupérer les coordonnées Y de l'événement (souris ou tactile)
   function getEventY(event) {
     if (event.type.startsWith("touch")) {
-      return event.originalEvent.touches[0].pageY;
+      return event.touches[0].pageY;
     } else {
       return event.pageY;
     }
@@ -32,24 +32,22 @@ $(document).ready(function() {
     var diffY = moveY - startY;
 
     if (diffY > 50) {
-      // Fermer la carte New Trip si glissement vers le bas suffisant
-      $("#new-trip-card").slideUp(500, function() {
-        $("#placeholder-card").show();
+      // Fermer la carte down-card si glissement vers le bas suffisant
+      $("#down-card").slideUp(500, function() {
+        // Code à exécuter après la fermeture de la carte
       });
     }
   }
 
-  $(".add-doc-link").click(function(e) {
-    e.preventDefault();
-
-    if ($("#new-trip-card").is(":hidden")) {
-      $("#new-trip-card").slideDown(500, function() {
-        $("#placeholder-card").hide();
+  $("#add-doc-link").click(function() {
+    if ($("#down-card").is(":hidden")) {
+      $("#down-card").slideDown(500, function() {
+        // Code à exécuter après l'ouverture de la carte
       });
     }
   });
 
-  $(document).on("mousedown touchstart", "#new-trip-card", function(event) {
+  $(document).on("mousedown touchstart", "#down-card", function(event) {
     captureStartCoordinates(event);
 
     $(document).on("mousemove touchmove", function(event) {
@@ -65,13 +63,26 @@ $(document).ready(function() {
   });
 
   $(document).on("click", function(event) {
-    if (!$(event.target).closest("#new-trip-card").length && !$(event.target).is(".add-doc-link")) {
-      if ($("#new-trip-card").is(":visible")) {
-        $("#new-trip-card").slideUp(500, function() {
-          $("#placeholder-card").show();
+    if (!$(event.target).closest("#down-card").length && !$(event.target).is("#add-doc-link")) {
+      if ($("#down-card").is(":visible")) {
+        $("#down-card").slideUp(500, function() {
+          // Code à exécuter après la fermeture de la carte
         });
       }
     }
   });
+
+  // Masquer la carte "down-card" par défaut
+  $("#down-card").hide();
 });
 
+
+document.addEventListener('DOMContentLoaded', function() {
+  var addDocLink = document.getElementById('add-doc-link');
+  var downCard = document.getElementById('down-card');
+
+  addDocLink.addEventListener('click', function(event) {
+    event.preventDefault();
+    downCard.classList.toggle('visible');
+  });
+});

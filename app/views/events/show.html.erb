@@ -313,15 +313,17 @@
 
   <div class="left-align">
     <h2>My Documents</h2>
-  </div>
-  <div class="documents">
-    <div class="document left-align">
-      <% @event.files.each do |file| %>
-        <a href="" class="secondary-pill-button document"><%= file.filename.base.upcase %></a>
-      <% end %>
-      <%= link_to "ADD DOC", add_file_path(@event.trip, @event), class: "primary-pill-button document add-doc-link", style: "margin-left: 2px" %>
+    <div class="documents">
+      <div class="document left-align">
+        <% @event.files.each do |file| %>
+          <a href="" class="secondary-pill-button document"><%= file.filename.base.upcase %></a>
+        <% end %>
+        <%= link_to "ADD DOC", "#", class: "primary-pill-button document add-doc-link", style: "margin-left: 2px", id: "add-doc-link" %>
+      </div>
     </div>
   </div>
+
+
 
   <div class="left-align">
     <div class="checklist-container">
@@ -371,19 +373,16 @@
     </div>
   </div>
 </div>
-
-<div class="down-card" id="new-trip-card" style="display: none;">
+<div class="down-card" id="down-card" style="display: none;">
   <div style="margin-top: 12px">
-    <h2>Let’s add some documents</h2>
+    <h2>Add a document</h2>
   </div>
   <div class="add-doc">
     <%= simple_form_for(@event) do |f| %>
       <%# fake form input — not an actual parameter, just captures intended label for uploaded file %>
-      <%= f.input :file_label, as: :fake_select, collection: Event::FILE_LABELS, input_html: { style: 'width: 330px;' } %>
-      <%= f.input :files, as: :file, label: false, input_html: { style: 'width: 330px;' } %>
-      <%= f.submit 'Upload File', class: "primary-button", style: 'margin-top: 20px;' %>
+      <%= f.input :file_label, as: :fake_select, collection: Event::FILE_LABELS, input_html: { style: 'width: 330px;', class: 'custom-input' } %>
+      <%= f.input :files, as: :file, label: false, input_html: { style: 'width: 330px;', class: 'custom-input' } %>
+      <%= f.submit 'Upload File', class: "primary-button", style: 'margin-top: 57px;' %>
     <% end %>
   </div>
 </div>
-
-<div id="placeholder-card" style="height: 0; overflow: hidden;"></div>
