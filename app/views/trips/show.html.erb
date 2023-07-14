@@ -1,4 +1,4 @@
-<div class="show_page" style="background: url('<%= trip.image_background.present? ? trip.image_background : 'https://images.unsplash.com/photo-1551257227-0ac2bb537380?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80' %>') center; background-size: cover;">
+<div class="show_page" style="background: url('<%= @trip.image_background.present? ? @trip.image_background : 'https://images.unsplash.com/photo-1551257227-0ac2bb537380?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80' %>') center; background-size: cover;">
   <% content_for :meta_title, "#{@trip.name} || #{DEFAULT_META["meta_product_name"]}" %>
 
   <div class="trip_name">
