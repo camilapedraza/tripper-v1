@@ -9,7 +9,11 @@ form {
   padding: 6%;
 }
 
-form #new_event, #edit_event_376 {
+form #new_event, #edit_event_376 #new_user{
+  background-color: rgb(43, 42, 42) !important;
+}
+
+.simple_form {
   background-color: rgb(43, 42, 42) !important;
 }
 
@@ -125,4 +129,8 @@ form ul {
 
 .mapboxgl-ctrl-geocoder--input:focus{
   color: white;
+}
+
+.form-text {
+  color: #a5a3a3;
 }
