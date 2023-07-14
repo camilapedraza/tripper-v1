@@ -43,7 +43,7 @@ export default class extends Controller {
       this.element.querySelector("#notes-input").classList.remove("d-none")
       this.element.querySelector("#submit-input").classList.remove("d-none")
       this.element.querySelector("#reservation-nr-input").classList.add("d-none")
-      this.element.querySelector("#seat-nr-input").classList.add("d-none")
+      this.element.querySelector("#seat-nr-input").classList.remove("d-none")
       this.element.querySelector("#provider-details-input").classList.add("d-none")
       this.element.querySelector("#name-input").classList.remove("d-none")
       this.element.querySelector(".event_end_date").classList.add("d-none")
@@ -52,6 +52,7 @@ export default class extends Controller {
       this.element.querySelector("#name-label").innerHTML = 'Name'
       this.element.querySelector("#start-date-label").innerHTML = 'Date and time'
       this.element.querySelector("#start-location-label").innerHTML = 'Location'
+      this.element.querySelector("#seat-nr-label").innerHTML = 'Seat number'
     }
     if (selectedValue == "show") {
       this.element.querySelector("#date-input").classList.remove("d-none")
@@ -61,14 +62,16 @@ export default class extends Controller {
       this.element.querySelector("#submit-input").classList.remove("d-none")
       this.element.querySelector("#reservation-nr-input").classList.add("d-none")
       this.element.querySelector("#seat-nr-input").classList.add("d-none")
-      this.element.querySelector("#provider-details-input").classList.add("d-none")
+      this.element.querySelector("#provider-details-input").classList.remove("d-none")
       this.element.querySelector("#name-input").classList.remove("d-none")
       this.element.querySelector(".event_end_date").classList.add("d-none")
       this.element.querySelector(".event_end_location").classList.add("d-none")
       this.element.querySelector("#transport-nr-input").classList.add("d-none")
       this.element.querySelector("#name-label").innerHTML = 'Name'
       this.element.querySelector("#start-date-label").innerHTML = 'Date and time'
-      this.element.querySelector("#start-location-label").innerHTML = 'Location'
+      this.element.querySelector("#start-location-label").innerHTML = 'Address'
+      this.element.querySelector("#provider-label").innerHTML = 'Venue name'
+
     }
     if (selectedValue == "other") {
       this.element.querySelector("#name-input").classList.remove("d-none")
@@ -83,7 +86,7 @@ export default class extends Controller {
       this.element.querySelector(".event_end_date").classList.add("d-none")
       this.element.querySelector(".event_end_location").classList.add("d-none")
       this.element.querySelector("#transport-nr-input").classList.add("d-none")
-      this.element.querySelector("#provider-label").innerHTML = 'Event name'
+      this.element.querySelector("#name-label").innerHTML = 'Event name'
       this.element.querySelector("#start-date-label").innerHTML = 'Start date'
       this.element.querySelector("#end-date-label").innerHTML = 'End date'
       this.element.querySelector("#start-location-label").innerHTML = 'Start location'
@@ -109,7 +112,7 @@ export default class extends Controller {
       this.element.querySelector("#provider-label").innerHTML = 'Rental company'
       this.element.querySelector("#provider-phone-label").innerHTML = 'Phone'
       this.element.querySelector("#provider-email-label").innerHTML = 'Email'
-      this.element.querySelector("#reservation-nr-label").innerHTML = 'Reservation number'
+      this.element.querySelector("#reservation-nr-label").innerHTML = 'Booking number'
     }
     if (selectedValue == "journey") {
       this.element.querySelector("#date-input").classList.remove("d-none")
@@ -170,7 +173,7 @@ export default class extends Controller {
       this.element.querySelector("#provider-label").innerHTML = 'Train company'
       this.element.querySelector("#reservation-nr-label").innerHTML = 'Booking number'
       this.element.querySelector("#transport-nr-label").innerHTML = 'Train number'
-      this.element.querySelector("#seat-nr-label").innerHTML = 'Seat number'
+      this.element.querySelector("#seat-nr-label").innerHTML = 'Seat / Car'
     }
     if (selectedValue == "bus") {
       this.element.querySelector("#date-input").classList.remove("d-none")
