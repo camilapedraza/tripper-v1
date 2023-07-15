@@ -53,6 +53,14 @@ class EventsController < ApplicationController
     @file = @event.files_blobs.find(params[:blob_id])
   end
 
+  def detach_file
+    @event = Event.find(params[:event_id])
+    @trip = @event.trip
+    @file = @event.files_blobs.find(params[:blob_id])
+    @file.attachments.first.purge
+    redirect_to trip_event_path(@trip, @event), status: :see_other
+  end
+
   private
 
   def update_filename(label)
