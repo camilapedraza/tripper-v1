@@ -104,7 +104,8 @@ class Event < ApplicationRecord
   end
 
   def format_duration_d
-    duration.to_i / 86_400
+    nights = duration / 86_400
+    nights > 0 && nights < 1 ? 1 : nights.to_i
   end
 
   # get start_location_data.city or start_location_data.country, etc.
