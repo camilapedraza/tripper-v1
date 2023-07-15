@@ -23,12 +23,12 @@
       </div>
       <div class="edit-button col-2">
         <%= link_to edit_trip_event_path(@trip, @event) do %>
-          <i class="fa-regular fa-pen-to-square fa-2xl" style="color: #7f7eff;"></i>
+          <i class="fa-regular fa-pen-to-square fa-1xl" style="color: #7f7eff;"></i>
         <% end %>
       </div>
       <div class="delete-button col-2">
         <%= link_to trip_event_path(@trip, @event), data: {turbo_method: :delete, turbo_confirm: "All event data, and all event tasks and files will be deleted too."} do %>
-          <i class="fa-regular fa-trash-can fa-2xl" style="color: #7f7eff;"></i>
+          <i class="fa-regular fa-trash-can fa-1xl" style="color: #7f7eff;"></i>
         <% end %>
       </div>
     </div>
@@ -272,7 +272,7 @@
           <% if @event.end_date.present? %>
           <div class="event-information">
             <div class="horizontal-display">
-              <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg style="margin-right: 8px" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_490_15)">
                 <path d="M1.16667 0C0.521354 0 0 0.502734 0 1.125C0 1.74727 0.521354 2.25 1.16667 2.25V2.63672C1.16667 4.12734 1.78281 5.5582 2.87656 6.61289L5.34844 9L2.87656 11.3871C1.78281 12.4418 1.16667 13.8727 1.16667 15.3633V15.75C0.521354 15.75 0 16.2527 0 16.875C0 17.4973 0.521354 18 1.16667 18H2.33333H11.6667H12.8333C13.4786 18 14 17.4973 14 16.875C14 16.2527 13.4786 15.75 12.8333 15.75V15.3633C12.8333 13.8727 12.2172 12.4418 11.1234 11.3871L8.65156 9L11.1271 6.61289C12.2208 5.5582 12.837 4.12734 12.837 2.63672V2.25C13.4823 2.25 14.0036 1.74727 14.0036 1.125C14.0036 0.502734 13.4823 0 12.837 0H11.6667H2.33333H1.16667ZM10.5 15.3633V15.75H3.5V15.3633C3.5 14.4668 3.86823 13.609 4.52448 12.9762L7 10.5926L9.47552 12.9797C10.1318 13.6125 10.5 14.4703 10.5 15.3668V15.3633Z" fill="#7F7EFF"/>
                 </g>
