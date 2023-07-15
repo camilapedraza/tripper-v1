@@ -2,13 +2,14 @@
 {
   display: block;
   position: absolute;
-  top: 50px;
-  right: 50px;
+  // top: 50px;
+  // right: 50px;
 
   z-index: 1;
 
   -webkit-user-select: none;
   user-select: none;
+  transform: translate(calc(-50% - 1rem), -50%);
 }
 
 #menuToggle input
@@ -119,17 +120,21 @@
 
 .container-navbar {
   display: flex;
-  height: 75px;
-  width: 90%;
+  height: $navbar-height;
+  width: 100%;
   align-items: center;
   background-color: transparent;
+  position: fixed;
+  top: 0;
+  justify-content: space-between;
+  padding: 0 2rem;
 }
 
 .retour-fleche {
   width: 49px;
   height: 49px;
-  margin-left: 34px;
-  margin-top: 51px;
+  // margin-left: 34px;
+  // margin-top: 51px;
 }
 
 .items-nav {
@@ -139,7 +144,7 @@
 }
 
 .item-nav {
-  margin-top: 20px;
+  // margin-top: 20px;
   width: 148px;
   height: 44px;
   border-radius: 22px;
