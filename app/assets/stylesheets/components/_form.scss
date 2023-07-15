@@ -73,7 +73,7 @@ form .input-wrapper input::placeholder {
 
 .category-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
@@ -81,7 +81,7 @@ form .input-wrapper input::placeholder {
   background-color: #4A4949;
   border-radius: 14px;
   padding: 8px;
-  width: 5.5rem;
+  width: 5.9rem;
   margin: 2%;
   height: fit-content;
 }
