@@ -376,11 +376,11 @@
     <h2>Add a document</h2>
   </div>
   <div class="add-doc">
-    <%= simple_form_for([@trip, @event]) do |f| %>
+    <%= simple_form_for([@trip, @event], html: { class: 'custom-form' }) do |f| %>
       <%# fake form input — not an actual parameter, just captures intended label for uploaded file %>
-      <%= f.input :file_label, as: :fake_select, collection: Event::FILE_LABELS, input_html: { style: 'width: 330px;', class: 'custom-input' } %>
+      <%= f.input :file_label, as: :fake_select, collection: Event::FILE_LABELS, input_html: { style: 'width: 330px;', class: 'custom-input' }, label_html: {style: 'background-color: #4A4949'} %>
       <%= f.input :files, as: :file, label: false, input_html: { style: 'width: 330px;', class: 'custom-input' } %>
-      <%= f.submit 'Upload File', class: "primary-button", style: 'margin-top: 57px;' %>
+      <%= f.submit 'Upload File', class: "primary-button", style: 'margin-top: 12px;' %>
     <% end %>
   </div>
 </div>

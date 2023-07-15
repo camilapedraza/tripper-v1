@@ -1,6 +1,6 @@
 form {
   margin-top: 25px;
-  background-color: #4A4949 !important;
+  background-color: #4A4949;
   color: white;
   display: flex;
   flex-direction: column;
@@ -10,11 +10,15 @@ form {
 }
 
 form #new_event, #edit_event_376 #new_user{
-  background-color: rgb(43, 42, 42) !important;
+  background-color: rgb(43, 42, 42);
 }
 
 .simple_form {
-  background-color: rgb(43, 42, 42) !important;
+  background-color: rgb(43, 42, 42);
+}
+
+.custom-form {
+  background-color: rgb(43, 42, 42);
 }
 
 form label {
@@ -30,7 +34,7 @@ form label {
 form .form-control, .form-select {
   border: 2px solid #7F7EFF;
   border-radius: 11px;
-  background-color: #2b2a2a !important;
+  background-color: #2b2a2a;
   color: #7F7EFF;
   width: 338px;
   height: 47px;
@@ -38,7 +42,7 @@ form .form-control, .form-select {
 
 form .form-control:focus {
   color: white;
-  background-color: #2b2a2a !important;
+  background-color: #2b2a2a;
   outline: 0;
 }
 
