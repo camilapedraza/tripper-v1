@@ -316,11 +316,11 @@
   </div>
   <div class="documents">
     <div class="document left-align">
-        <% @event.files.each do |file| %>
-          <a href="<%= view_file_path(@trip, @event, file.id) %>" class="secondary-pill-button document"><%= file.filename.base.upcase %></a>
-        <% end %>
-        <%= link_to "ADD DOC", "#", class: "primary-pill-button document add-doc-link", style: "margin-left: 2px", id: "add-doc-link" %>
-      </div>
+      <% @event.files.each do |file| %>
+        <a href="<%= view_file_path(@trip, @event, file.id) %>" class="secondary-pill-button document"><%= file.filename.base.upcase %></a>
+      <% end %>
+      <%= link_to "ADD DOC", add_file_path(@trip, @event), class: "primary-pill-button document add-doc-link", style: "margin-left: 2px", id: "add-doc-link" %>
+    </div>
   </div>
 
   <div class="left-align">
