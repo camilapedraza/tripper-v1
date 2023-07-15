@@ -1,9 +1,42 @@
 <div class="container"
      data-controller="event-type-selection"
      data-event-type-selection-start-type-value="<%= @event.event_type %>">
-  <%= simple_form_for [@trip, event] do |f| %>
-    <%= f.object.errors.full_messages.join(', ') %>
-    <%= f.input :event_type, label: 'What type of event?', collection: Event::EVENT_TYPES, input_html:{data: { event_type_selection_target: "type", action: "change->event-type-selection#change"}}, id:"selector", prompt: "Pick one" %>
+  <%= simple_form_for [@trip, @event] do |f| %>
+    <p class="text-center fs-3 w-100"
+       data-event-type-selection-target="typeTitle"></p>
+    <%= f.input :event_type,
+                as: :radio_buttons,
+                collection: Event::EVENT_TYPES,
+                collection_wrapper_tag: 'div',
+                label_method: lambda { |event_type|
+                  emoji = Event.emoji_for(event_type)
+                  "#{emoji}\n#{event_type.capitalize}"
+                  content = content_tag(
+                    'p',
+                    class: 'bg-secondary fs-2 mb-1 py-2 rounded-4 text-center w-100',
+                    data: {
+                      action: 'click->event-type-selection#change',
+                      event_type_selection_type_param: event_type
+                    }
+                  ) { emoji }
+                  content << content_tag(
+                    'p',
+                    class: 'fs-6 text-center mb-0',
+                    data: {
+                      action: 'click->event-type-selection#change',
+                      event_type_selection_type_param: event_type
+                    }
+                  ) { event_type.capitalize }
+                },
+                collection_wrapper_class: 'category-wrapper',
+                item_wrapper_class: 'category-item',
+                input_html: {
+                  data: {
+                    # event_type_selection_target: "type",
+                    # action: "change->event-type-selection#change click->event-type-selection#change"
+                  },
+                  class: 'category-selector'
+                } %>
     <div id="name-input" class="d-none">
       <%= f.input :name, label_html: { id: "name-label" }  %>
     </div>
