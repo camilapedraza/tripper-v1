@@ -1,4 +1,7 @@
-<div class="container-navbar">
+<% if push_navbar? %>
+  <div class="navbar-filler"></div>
+<% end %>
+<div class="container-navbar bg-transparent">
   <div class="retour-fleche">
     <%= link_to @back_url || :back do %>
       <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,7 +39,6 @@
     </div>
   </nav>
 </div>
-
 <div class="navbar-bottom" style="display:flex;flex-direction: row;align-items: center;justify-content: space-between;height: 68px;padding-right: 13px;">
     <div class="navbar_trip" style="display: flex;justify-content: center;flex-direction: column;width: 49px;">
       <%= link_to trips_path do %>

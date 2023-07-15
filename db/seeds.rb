@@ -74,12 +74,6 @@ trip5 = Trip.new(
 )
 trip5.save
 
-trip6 = Trip.new(
-  name: "All Events",
-  user: camila
-)
-trip6.save
-
 puts "Creating events"
 Event.create(
   name: "TGV to Annecy",
@@ -500,135 +494,6 @@ Event.create(
   start_location: "Dubrovnik Airport, Čilipi, Croatia",
   end_location: "Orly Airport"
 )
-Event.create(
-  trip: trip6,
-  event_type: "journey",
-  start_date: DateTime.new(2023, 7, 14, 1),
-  end_date: DateTime.new(2023, 7, 14, 2),
-  start_location: "33 Rue Des Rosiers, 75004 Paris, France",
-  end_location: "22 Rue Des Solitaires, 75019 Paris, France",
-  provider_url: nil,
-  name: "Roadtrip",
-  notes: "This is a journey in Paris, walking"
-)
-
-event4 = Event.create(
-  trip: trip6,
-  event_type: "flight",
-  start_date: DateTime.new(2023, 7, 14, 2),
-  end_date: DateTime.new(2023, 7, 14, 3),
-  start_location: "Paris, France",
-  end_location: "Porto, Portugal",
-  reservation_number: "YTP5D",
-  seat_number: "1A",
-  provider: "Airfrance",
-  notes: "Missing: Airline (provider), Booking number (resevation_number) and Flight number (transport_number)",
-  transport_number: "AF 14"
-)
-
-Event.create(
-  trip: trip6,
-  event_type: "train",
-  start_date: DateTime.new(2023, 7, 14, 3),
-  end_date: DateTime.new(2023, 7, 14, 4),
-  start_location: "Porto, Portugal",
-  end_location: "Lisbon, Portugal",
-  reservation_number: "RES2789",
-  seat_number: "Car 4, Seat 78",
-  provider: "Comboios de Portugal"
-)
-
-Event.create(
-  trip: trip6,
-  event_type: "bus",
-  start_date: DateTime.new(2023, 7, 14, 4),
-  end_date: DateTime.new(2023, 7, 14, 5),
-  start_location: "Lisbon, Portugal",
-  end_location: "Sintra, Lisbon, Portugal",
-  seat_number: "17D",
-  notes: "1 hour bus"
-)
-
-Event.create(
-  trip: trip6,
-  event_type: "boat",
-  start_date: DateTime.new(2023, 7, 14, 5),
-  end_date: DateTime.new(2023, 7, 14, 6),
-  start_location: "Lisbon, Lisbon, Portugal",
-  end_location: "Ponta Delgada, Azores, Portugal",
-  reservation_number: "13923893",
-  seat_number: "Cabin 5",
-  provider: "Norwegian Cruise Line"
-)
-
-Event.create(
-  trip: trip6,
-  event_type: "rental",
-  start_date: DateTime.new(2023, 7, 14, 6),
-  end_date: DateTime.new(2023, 7, 14, 7),
-  start_location: "Sixt, Rua Do Pólo Norte, Lisbon, Lisbon 1700-008, Portugal",
-  end_location: "Sixt, Terminal 4, Madrid, Madrid 28042, Spain",
-  provider: "Sixt",
-  notes: "Reservation number missing"
-)
-
-Event.create(
-  trip: trip6,
-  event_type: "stay",
-  start_date: DateTime.new(2023, 7, 14, 7),
-  end_date: DateTime.new(2023, 7, 14, 8),
-  start_location: "Calle Del 2 De Mayo, 28770 Colmenar Viejo, Madrid, Spain",
-  provider: "Airbnb",
-  provider_phone: "078930293002"
-)
-
-Event.create(
-  trip: trip6,
-  event_type: "restaurant",
-  start_date: DateTime.new(2023, 7, 14, 8),
-  end_date: nil,
-  start_location: "Casa Macareno, c/ San Vicente Ferrer, 44, Madrid, Madrid 28004, Spain",
-  name: "Casa Macareno"
-)
-
-Event.create(
-  trip: trip6,
-  event_type: "visit",
-  start_date: DateTime.new(2023, 7, 14, 9),
-  end_date: nil,
-  start_location: "Museo del Prado, C. de Ruiz de Alarcón, 23, Madrid, Madrid 28014, Spain",
-  name: "Prado Museum",
-  notes: "Pick up entrance tickets at gate"
-)
-
-Event.create(
-  trip: trip6,
-  event_type: "show",
-  start_date: DateTime.new(2023, 7, 14, 10),
-  start_location: "Calle De La Cruz 26, 28012 Madrid, Madrid, Spain",
-  name: "Flamenco Night",
-  notes: "teatro Tablao - provider missing in form!",
-  provider: "Flamenco Essential"
-)
-
-Event.create(
-  trip: trip6,
-  event_type: "other",
-  start_date: DateTime.new(2023, 7, 15, 9),
-  end_date: nil,
-  start_location: "New York City, New York, United States",
-  name: "FAKE EVENT"
-)
-
-Event.create(
-  trip: trip6,
-  event_type: "other",
-  start_date: DateTime.new(2023, 7, 16, 9),
-  end_date: nil,
-  start_location: "Tokyo, Japan",
-  name: "FAKE EVENT"
-)
-
 Collaborator.create(
   trip: trip1,
   user: alexis
@@ -647,21 +512,6 @@ Collaborator.create(
 Collaborator.create(
   trip: trip2,
   user: fausto
-)
-
-Collaborator.create(
-  trip: trip6,
-  user: fausto
-)
-
-Collaborator.create(
-  trip: trip6,
-  user: alexis
-)
-
-Collaborator.create(
-  trip: trip6,
-  user: gaetan
 )
 
 puts "Creating tasks"
@@ -694,20 +544,4 @@ Task.create(
 Task.create(
   event: event3,
   content: "Book parking spot nearby"
-)
-
-Task.create(
-  event: event4,
-  content: "Get travel insurance",
-  is_complete: true
-)
-
-Task.create(
-  event: event4,
-  content: "Buy carry-on bag"
-)
-
-Task.create(
-  event: event4,
-  content: "Check in and get boarding pass"
 )
