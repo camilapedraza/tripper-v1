@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   end
 
   def new
+    @back_url = trip_path(@trip)
     @event = Event.new
   end
 
@@ -18,7 +19,7 @@ class EventsController < ApplicationController
     @back_url = trip_path(@trip)
     @event = Event.new(event_params)
     @event.trip = @trip
-    if @event.save!
+    if @event.save
       # redirect_to trip_event_path(@trip, @event)
       redirect_to trip_path(@trip)
     else
@@ -50,6 +51,14 @@ class EventsController < ApplicationController
   def view_file
     @back_url = trip_event_path(@trip, @event)
     @file = @event.files_blobs.find(params[:blob_id])
+  end
+
+  def detach_file
+    @event = Event.find(params[:event_id])
+    @trip = @event.trip
+    @file = @event.files_blobs.find(params[:blob_id])
+    @file.attachments.first.purge
+    redirect_to trip_event_path(@trip, @event), status: :see_other
   end
 
   private

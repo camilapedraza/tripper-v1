@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/eventstype', to: 'pages#eventstype'
   get '/trips/:trip_id/events/:id/add_file', to: 'events#add_file', as: 'add_file'
   get '/trips/:trip_id/events/:id/view_file/:blob_id', to: 'events#view_file', as: 'view_file'
+  delete '/events/:event_id/blobs/:blob_id', to: 'events#detach_file', as: :event_detach_file
 
   resources :trips, only: %i[index show new create edit update] do
     resources :events, only: %i[index show new create edit update destroy]
