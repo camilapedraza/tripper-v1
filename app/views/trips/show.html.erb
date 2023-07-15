@@ -1,4 +1,4 @@
-<div class= "show_page" style="background-image: url('https://live.staticflickr.com/2162/1534505052_f571970f2c_b.jpg')">
+<div class="show_page" style="background: url('<%= @trip.image_background.present? ? @trip.image_background : 'https://images.unsplash.com/photo-1551257227-0ac2bb537380?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80' %>') center; background-size: cover; background-attachment: fixed;">
   <% content_for :meta_title, "#{@trip.name} || #{DEFAULT_META["meta_product_name"]}" %>
 
   <div class="trip_name">
@@ -12,7 +12,7 @@
         <img class="rounded-circle" width="35px" height="35px" src="<%= user.photo.attached? ? image_path("user_seeds/#{user.photo.filename}") : image_path('avatar.png') %>" />
       <% end %>
       <% if @trippers.count > 3 %>
-        <span class="rounded-pill border border-success p-2">+ <%= pluralize(@trippers.count - 3, "tripper") %></span>
+        <span class="trippers-pill p-2">+ <%= pluralize(@trippers.count - 3, "tripper") %></span>
       <% end %>
     </div>
     <div>
@@ -158,7 +158,7 @@
                               </div>
                         <% when "restaurant", "visit", "show" %>
                             <%= event.name %>
-                            <% if event.event_type == "show" %>
+                            <% if event.event_type == "show" && event.provider.present? %>
                               at <%= event.provider %>
                               <br>
                               Show starts at <%= event.format_start_time %>

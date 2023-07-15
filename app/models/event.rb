@@ -13,16 +13,15 @@ class Event < ApplicationRecord
     validates :name, presence: true
   end
   validates :start_location, presence: true
-  with_options if: :journey? ||	:flight? ||	:train? || :bus? ||	:boat? ||	:rental? do
-    validates :end_location, presence: true
+  with_options if: -> { journey? ||	flight? ||	train? || bus? ||	boat? || rental? } do |e|
+    e.validates :end_location, presence: true
   end
   validates :start_date, presence: true
-  with_options unless: :restaurant? || :visit? || :show? do
-    validates :end_date, presence: true
-    validates :end_date, comparison: { greater_than_or_equal_to: :start_date }
+  with_options if: -> { journey? ||	flight? ||	train? || bus? ||	boat? || rental? } do |e|
+    e.validates :end_date, presence: true
+    e.validates :end_date, comparison: { greater_than_or_equal_to: :start_date }
   end
-  validates :provider, presence: true, if: :show?
-
+  # validates :provider, presence: true, if: :show?
 
   # MISSING: FIX VALIDATIONS - MOST EVENTS NEED START AND END DATES, AND START AND END LOCATIONS TO WORK
   # validates :end_date, presence: true, if: :journey? || :flight? || :train? || :bus? || :boat? || :stay?
@@ -122,7 +121,8 @@ class Event < ApplicationRecord
   end
 
   def format_duration_d
-    duration.to_i / 86_400
+    nights = duration / 86_400
+    nights > 0 && nights < 1 ? 1 : nights.to_i
   end
 
   # get start_location_data.city or start_location_data.country, etc.

@@ -1,4 +1,6 @@
-<div class="container" data-controller="event-type-selection">
+<div class="container"
+     data-controller="event-type-selection"
+     data-event-type-selection-start-type-value="<%= @event.event_type %>">
   <%= simple_form_for [@trip, @event] do |f| %>
     <p class="text-center fs-3 w-100"
        data-event-type-selection-target="typeTitle"></p>

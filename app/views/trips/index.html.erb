@@ -8,7 +8,7 @@
     <% @trips.each do |trip| %>
       <div class="card-trip">
         <%= link_to trip_path(trip), class: "text-decoration-none" do %>
-          <div class="img-card" style="background: url('https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg') center;"></div>
+          <div class="img-card" style="background: url('<%= trip.image_url.present? ? trip.image_url : 'https://images.unsplash.com/photo-1551257227-0ac2bb537380?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80' %>') center; background-size: cover;"></div>
           <div class="name_cities">
             <div class="text-name">
               <h2><%= trip.name %></h2>

@@ -36,31 +36,41 @@ camila.save
 puts "Creating trips"
 trip1 = Trip.new(
   name: "Varigotti with Family",
-  user: fausto
+  user: fausto,
+  image_url: "https://images.unsplash.com/photo-1605449427208-be4ecba7563f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+  image_background: "https://images.unsplash.com/photo-1605449427208-be4ecba7563f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
 )
 trip1.save
 
 trip2 = Trip.new(
   name: "Family Eurotrip",
-  user: camila
+  user: camila,
+  image_url: "https://images.unsplash.com/photo-1570698473651-b2de99bae12f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWFkcmlkfGVufDB8fDB8fHww&auto=format&fit=crop&w=900&q=60",
+  image_background: "https://images.unsplash.com/photo-1585164917550-6f73d03dc019?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=926&q=80"
 )
 trip2.save
 
 trip3 = Trip.new(
   name: "Trip to Croatia with friends",
-  user: alexis
+  user: alexis,
+  image_url: "https://images.unsplash.com/photo-1626699848008-7e419bc4e237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNyb2F0aWF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=900&q=60",
+  image_background: "https://images.unsplash.com/photo-1568292551807-edf51b93f4a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNyb2F0aWF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=900&q=60"
 )
 trip3.save
 
 trip4 = Trip.new(
   name: "Le Lavandou with friends",
-  user: gaetan
+  user: gaetan,
+  image_url: "https://images.unsplash.com/photo-1647885457515-1ff4e9f095dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGF2YW5kb3V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=900&q=60",
+  image_background: "https://images.unsplash.com/photo-1647885457515-1ff4e9f095dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGF2YW5kb3V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=900&q=60"
 )
 trip4.save
 
 trip5 = Trip.new(
   name: "Project X in Sarajevo",
-  user: alexis
+  user: alexis,
+  image_url: "https://images.unsplash.com/photo-1574414237365-9b3e19c008ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHNhcmFqZXZvfGVufDB8fDB8fHww&auto=format&fit=crop&w=900&q=60",
+  image_background: "https://images.unsplash.com/photo-1574414237365-9b3e19c008ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHNhcmFqZXZvfGVufDB8fDB8fHww&auto=format&fit=crop&w=900&q=60"
 )
 trip5.save
 
