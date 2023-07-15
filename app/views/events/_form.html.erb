@@ -1,5 +1,8 @@
-<div class="container" data-controller="event-type-selection">
-  <%= simple_form_for [@trip, @event] do |f| %>
+<div class="container"
+     data-controller="event-type-selection"
+     data-event-type-selection-start-type-value="<%= @event.event_type %>">
+  <%= simple_form_for [@trip, event] do |f| %>
+    <%= f.object.errors.full_messages.join(', ') %>
     <%= f.input :event_type, label: 'What type of event?', collection: Event::EVENT_TYPES, input_html:{data: { event_type_selection_target: "type", action: "change->event-type-selection#change"}}, id:"selector", prompt: "Pick one" %>
     <div id="name-input" class="d-none">
       <%= f.input :name, label_html: { id: "name-label" }  %>
