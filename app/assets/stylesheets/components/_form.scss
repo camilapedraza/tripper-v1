@@ -9,22 +9,32 @@ form {
   padding: 6%;
 }
 
+form #new_event, #edit_event_376 #new_user{
+  background-color: rgb(43, 42, 42) !important;
+}
+
+.simple_form {
+  background-color: rgb(43, 42, 42) !important;
+}
+
 form label {
   position: relative;
   right: -13px;
   top: 19px;
   padding-right: 8px;
   padding-left: 8px;
-  background-color: #4A4949;
+  background-color: rgb(43, 42, 42);
   color: #7F7EFF;
 }
 
-form .form-control {
+form .form-control, .form-select {
   border: 2px solid #7F7EFF;
   border-radius: 11px;
   width: 90%;
-  background-color: #2b2a2a;
+  background-color: #2b2a2a !important;
   color: #7F7EFF;
+  width: 338px;
+  height: 47px;
 }
 
 form .form-control:focus {
@@ -71,6 +81,7 @@ form ul {
   margin: 0;
 }
 
+
 .add-doc {
   display: flex;
   flex-direction: column;
@@ -93,4 +104,58 @@ form ul {
 
 .custom-input {
   background-color: #4A4949 !important;
+
+.mapboxgl-ctrl-geocoder--input {
+  border: 2px solid #7F7EFF;
+  border-radius: 11px;
+  width: 90%;
+  background-color: #2b2a2a !important;
+  color: #7F7EFF;
+  width: 338px;
+  height: 47;
+}
+
+.mapboxgl-ctrl-geocoder{
+  background-color:  rgb(43, 42, 42);
+  box-shadow: none !important;
+}
+
+.form-label {
+  position: relative;
+  right: -13px;
+  top: 19px;
+  padding-right: 8px;
+  padding-left: 8px;
+  background-color: rgb(43, 42, 42);
+  color: #7F7EFF;
+  z-index: 10;
+}
+
+.mapboxgl-ctrl-geocoder--button {
+  background-color: rgb(43, 42, 42);
+}
+
+.mapboxgl-ctrl-geocoder--icon {
+  fill: #7F7EFF;
+}
+
+.display-below {
+  z-index: 0;
+}
+
+.mapboxgl-ctrl-geocoder .suggestions {
+  position: relative;
+  z-index: 1000;
+}
+
+.mapboxgl-ctrl-geocoder {
+  color: white;
+}
+
+.mapboxgl-ctrl-geocoder--input:focus{
+  color: white;
+}
+
+.form-text {
+  color: #a5a3a3;
 }
