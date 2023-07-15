@@ -158,7 +158,7 @@
                               </div>
                         <% when "restaurant", "visit", "show" %>
                             <%= event.name %>
-                            <% if event.event_type == "show" %>
+                            <% if event.event_type == "show" && event.provider.present? %>
                               at <%= event.provider %>
                               <br>
                               Show starts at <%= event.format_start_time %>

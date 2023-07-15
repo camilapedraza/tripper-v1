@@ -13,9 +13,9 @@
           <% elsif @event.event_type == "restaurant" %>
             Reservation <%= "at #{@event.event_provider}" if @event.provider %>
           <% elsif @event.event_type == "visit" %>
-            Visit to <%= @event.event_name %>
+            Visit to <%= @event.name %>
           <% elsif @event.event_type == "show" %>
-            Show: <%= @event.event_name %> <%= "at #{@event.provider}" if @event.provider %>
+            Show: <%= @event.name %> <%= "at #{@event.provider}" if @event.provider.present? %>
           <% elsif @event.event_type == "other" %>
             <%= @event.name %>
           <% end %>
@@ -210,7 +210,7 @@
               </clipPath>
               </defs>
             </svg>
-            <p>"<%= @event.name %>" <%= "at #{@event.provider}" if @event.provider %></p>
+            <p>"<%= @event.name %>" <%= "at #{@event.provider}" if @event.provider.present? %></p>
           </div>
           <div class="horizontal-display">
             <svg style="margin-right: 8px" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">

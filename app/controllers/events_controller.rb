@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   end
 
   def new
+    @back_url = trip_path(@trip)
     @event = Event.new
   end
 
@@ -18,7 +19,7 @@ class EventsController < ApplicationController
     @back_url = trip_path(@trip)
     @event = Event.new(event_params)
     @event.trip = @trip
-    if @event.save!
+    if @event.save
       # redirect_to trip_event_path(@trip, @event)
       redirect_to trip_path(@trip)
     else
