@@ -30,6 +30,24 @@ class Event < ApplicationRecord
   # with_options if: :flight? do
   #   validates :
   # end
+  def self.emoji_for(event_type)
+    case event_type
+    when "journey" then "🎒"
+    when "flight" then "✈️"
+    when "train" then "🚂"
+    when "bus" then "🚌"
+    when "boat" then "⛵️"
+    when "rental" then "🎿"
+    when "stay" then "🏠"
+    when "restaurant" then "🍕"
+    when "show" then "🎭"
+    when "visit" then "🖼️"
+    when "other" then "⚙️"
+    else
+      "💕"
+    end
+  end
+
   def journey?
     event_type == "journey"
   end

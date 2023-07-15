@@ -19,12 +19,7 @@ form #new_event, #edit_event_376 #new_user{
 
 form label {
   position: relative;
-  right: -13px;
-  top: 19px;
-  padding-right: 8px;
-  padding-left: 8px;
   background-color: rgb(43, 42, 42);
-  color: #7F7EFF;
 }
 
 form .form-control, .form-select {
@@ -74,6 +69,41 @@ form .add-task-button {
 
 form .input-wrapper input::placeholder {
   color: #7F7EFF;
+}
+
+.category-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  background-color: #4A4949;
+  border-radius: 14px;
+  padding: 8px;
+  width: 5.35rem;
+  margin: 2%;
+  height: fit-content;
+}
+
+.category-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.category-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.category-selector:checked + label {
+  color: white !important;
 }
 
 form ul {
