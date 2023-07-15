@@ -314,12 +314,14 @@
   <div class="left-align">
     <h2>My Documents</h2>
     <div class="documents">
+
       <div class="document left-align">
         <% @event.files.each do |file| %>
           <a href="" class="secondary-pill-button document"><%= file.filename.base.upcase %></a>
         <% end %>
         <%= link_to "ADD DOC", "#", class: "primary-pill-button document add-doc-link", style: "margin-left: 2px", id: "add-doc-link" %>
       </div>
+
     </div>
   </div>
 
