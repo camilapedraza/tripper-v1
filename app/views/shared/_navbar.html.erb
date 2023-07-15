@@ -24,7 +24,7 @@
           <div class="photo-nav">
             <% if user_signed_in? && current_user.photo.attached? %>
               <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= image_tag url_for(current_user.photo), class: "avatar", alt: "dropdown menu" %>
+                <%= image_tag image_path("user_seeds/#{current_user.photo.filename}"), class: "avatar", alt: "dropdown menu" %>
               </a>
             <% else %>
               <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

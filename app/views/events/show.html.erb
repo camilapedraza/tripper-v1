@@ -1,6 +1,6 @@
 <% content_for :meta_title, "#{@event.trip.name} || #{DEFAULT_META["meta_product_name"]}" %>
 <div class="container">
-  <div class="left-align" style="margin-top: 50px">
+  <div class="left-align">
     <div class="row header mt-5">
       <div class="col-8">
         <h2>
@@ -91,7 +91,7 @@
               </svg>
             <% end %>
             <%# SHOWS PARTIAL WITH START & END LOCATION CITIES %>
-            <% render "event_space_span", event: @event %>
+            <%= render "event_space_span", event: @event %>
           </div>
           <% if @event.seat_number %>
             <%# SHOWS PARTIAL WITH SEAT OR CABIN NUMBER %>
@@ -261,26 +261,11 @@
               <p><%= @event.format_start_time %></p>
             </div>
           </div>
-          <div class="event-information">
-            <div class="horizontal-display">
-              <svg style="margin-right: 11px" width="14" height="24" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5.44444 14.8569V22.2018L6.51486 23.7497C6.74576 24.0834 7.25472 24.0834 7.48563 23.7497L8.55556 22.2018V14.8569C8.05049 14.9469 7.53181 15.0003 7 15.0003C6.46819 15.0003 5.94951 14.9469 5.44444 14.8569ZM7 0C3.13396 0 0 3.02209 0 6.75013C0 10.4782 3.13396 13.5003 7 13.5003C10.866 13.5003 14 10.4782 14 6.75013C14 3.02209 10.866 0 7 0ZM7 3.56257C5.17708 3.56257 3.69444 4.99229 3.69444 6.75013C3.69444 7.06045 3.43292 7.31264 3.11111 7.31264C2.78931 7.31264 2.52778 7.06045 2.52778 6.75013C2.52778 4.37212 4.53444 2.43755 7 2.43755C7.32181 2.43755 7.58333 2.68974 7.58333 3.00006C7.58333 3.31038 7.32181 3.56257 7 3.56257Z" fill="#7F7EFF"/>
-              </svg>
-              <p><%= @event.start_location %></p>
-            </div>
-          </div>
           <% if @event.end_date.present? %>
           <div class="event-information">
             <div class="horizontal-display">
-              <svg style="margin-right: 8px" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_490_15)">
-                <path d="M1.16667 0C0.521354 0 0 0.502734 0 1.125C0 1.74727 0.521354 2.25 1.16667 2.25V2.63672C1.16667 4.12734 1.78281 5.5582 2.87656 6.61289L5.34844 9L2.87656 11.3871C1.78281 12.4418 1.16667 13.8727 1.16667 15.3633V15.75C0.521354 15.75 0 16.2527 0 16.875C0 17.4973 0.521354 18 1.16667 18H2.33333H11.6667H12.8333C13.4786 18 14 17.4973 14 16.875C14 16.2527 13.4786 15.75 12.8333 15.75V15.3633C12.8333 13.8727 12.2172 12.4418 11.1234 11.3871L8.65156 9L11.1271 6.61289C12.2208 5.5582 12.837 4.12734 12.837 2.63672V2.25C13.4823 2.25 14.0036 1.74727 14.0036 1.125C14.0036 0.502734 13.4823 0 12.837 0H11.6667H2.33333H1.16667ZM10.5 15.3633V15.75H3.5V15.3633C3.5 14.4668 3.86823 13.609 4.52448 12.9762L7 10.5926L9.47552 12.9797C10.1318 13.6125 10.5 14.4703 10.5 15.3668V15.3633Z" fill="#7F7EFF"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_490_15">
-                <rect width="14" height="18" fill="white"/>
-                </clipPath>
-                </defs>
+              <svg style="margin-right: 11px" width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 0C1.55313 0 2 0.558594 2 1.25V1.875L4.15625 1.20312C5.34688 0.832031 6.60313 1.00391 7.70312 1.69141C9.15 2.59766 10.8531 2.59766 12.3 1.69141L12.6 1.50391C13.2438 1.09766 14 1.68359 14 2.58203V13.5078C14 14.0273 13.7406 14.4961 13.35 14.6797L12.2656 15.1875C10.8219 15.8633 9.21562 15.7578 7.8375 14.8984C6.65312 14.1562 5.29688 13.9727 4.00938 14.375L2 15V18.75C2 19.4414 1.55313 20 1 20C0.446875 20 0 19.4414 0 18.75V15.625V13.0469V2.5V1.25C0 0.558594 0.446875 0 1 0ZM2 7.30859L4 6.76562V9.32422L2 9.86719V12.4219L3.525 11.9453C3.68438 11.8945 3.84063 11.8516 4 11.8164V9.32422L5.21562 8.99609C5.475 8.92578 5.7375 8.89844 6 8.91406V6.41406C6.425 6.42969 6.85 6.51563 7.2625 6.66406L8 6.93359V9.53906L6.69688 9.05859C6.46875 8.97656 6.23438 8.92578 6 8.91016V11.6992C6.68125 11.7734 7.35313 11.9609 8 12.2617V9.53906L8.70938 9.80078C9.13125 9.95703 9.5625 10.0508 10 10.0898V7.57812C9.75625 7.54688 9.5125 7.48828 9.275 7.40234L8 6.93359V4.51172C7.59375 4.36328 7.19375 4.16797 6.80625 3.92578C6.55 3.76562 6.27812 3.65234 6 3.58203V6.41016C5.59375 6.39453 5.1875 6.44141 4.79063 6.55078L4 6.76562V3.82812L2 4.45312V7.30859ZM10 13.1133C10.525 13.1719 11.0594 13.0859 11.5625 12.8477L12 12.6445V9.83984L11.7531 9.91016C11.1781 10.0781 10.5875 10.1328 10 10.0859V13.1094V13.1133ZM12 7.27734V4.50781C11.3469 4.74609 10.675 4.86328 10 4.86328V7.57812C10.4344 7.63281 10.875 7.59766 11.3031 7.47656L12 7.27344V7.27734Z" fill="#7F7EFF"/>
               </svg>
               <p><%= @event.end_location %></p>
             </div>
@@ -290,14 +275,7 @@
           <div class="event-information">
             <div class="horizontal-display">
               <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_494_2)">
                 <path d="M1 0C1.55313 0 2 0.558594 2 1.25V1.875L4.15625 1.20312C5.34688 0.832031 6.60313 1.00391 7.70312 1.69141C9.15 2.59766 10.8531 2.59766 12.3 1.69141L12.6 1.50391C13.2438 1.09766 14 1.68359 14 2.58203V13.5078C14 14.0273 13.7406 14.4961 13.35 14.6797L12.2656 15.1875C10.8219 15.8633 9.21562 15.7578 7.8375 14.8984C6.65312 14.1562 5.29688 13.9727 4.00938 14.375L2 15V18.75C2 19.4414 1.55313 20 1 20C0.446875 20 0 19.4414 0 18.75V15.625V13.0469V2.5V1.25C0 0.558594 0.446875 0 1 0ZM2 7.30859L4 6.76562V9.32422L2 9.86719V12.4219L3.525 11.9453C3.68438 11.8945 3.84063 11.8516 4 11.8164V9.32422L5.21562 8.99609C5.475 8.92578 5.7375 8.89844 6 8.91406V6.41406C6.425 6.42969 6.85 6.51563 7.2625 6.66406L8 6.93359V9.53906L6.69688 9.05859C6.46875 8.97656 6.23438 8.92578 6 8.91016V11.6992C6.68125 11.7734 7.35313 11.9609 8 12.2617V9.53906L8.70938 9.80078C9.13125 9.95703 9.5625 10.0508 10 10.0898V7.57812C9.75625 7.54688 9.5125 7.48828 9.275 7.40234L8 6.93359V4.51172C7.59375 4.36328 7.19375 4.16797 6.80625 3.92578C6.55 3.76562 6.27812 3.65234 6 3.58203V6.41016C5.59375 6.39453 5.1875 6.44141 4.79063 6.55078L4 6.76562V3.82812L2 4.45312V7.30859ZM10 13.1133C10.525 13.1719 11.0594 13.0859 11.5625 12.8477L12 12.6445V9.83984L11.7531 9.91016C11.1781 10.0781 10.5875 10.1328 10 10.0859V13.1094V13.1133ZM12 7.27734V4.50781C11.3469 4.74609 10.675 4.86328 10 4.86328V7.57812C10.4344 7.63281 10.875 7.59766 11.3031 7.47656L12 7.27344V7.27734Z" fill="#7F7EFF"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_494_2">
-                <rect width="14" height="20" fill="white"/>
-                </clipPath>
-                </defs>
               </svg>
               <p><%= @event.end_location %></p>
             </div>
@@ -305,10 +283,12 @@
           <% end %>
         </div>
       <% end%>
-      <%# DISPLAY NOTES IF ANY ARE PRESENT (FOR ALL EVENT TYPES) %>
-      <% if @event.notes.present? %>
-        <%= render "event_notes", event: @event %>
-      <% end %>
+
+  </div>
+  <div class="left-align">
+    <% if @event.notes.present? %>
+      <%= render "event_notes", event: @event %>
+    <% end %>
   </div>
 
   <div class="left-align">
@@ -316,11 +296,11 @@
   </div>
   <div class="documents">
     <div class="document left-align">
-        <% @event.files.each do |file| %>
-          <a href="<%= view_file_path(@trip, @event, file.id) %>" class="secondary-pill-button document"><%= file.filename.base.upcase %></a>
-        <% end %>
-        <%= link_to "ADD DOC", "#", class: "primary-pill-button document add-doc-link", style: "margin-left: 2px", id: "add-doc-link" %>
-      </div>
+      <% @event.files.each do |file| %>
+        <a href="<%= view_file_path(@trip, @event, file.id) %>" class="secondary-pill-button-doc document"><%= file.filename.base.upcase %></a>
+      <% end %>
+      <%= link_to "ADD DOC", add_file_path(@trip, @event), class: "primary-pill-button document add-doc-link", style: "margin-left: 2px", id: "add-doc-link" %>
+    </div>
   </div>
 
   <div class="left-align">
@@ -376,11 +356,11 @@
     <h2>Add a document</h2>
   </div>
   <div class="add-doc">
-    <%= simple_form_for([@trip, @event]) do |f| %>
+    <%= simple_form_for([@trip, @event], html: { class: 'custom-form' }) do |f| %>
       <%# fake form input — not an actual parameter, just captures intended label for uploaded file %>
-      <%= f.input :file_label, as: :fake_select, collection: Event::FILE_LABELS, input_html: { style: 'width: 330px;', class: 'custom-input' } %>
+      <%= f.input :file_label, as: :fake_select, collection: Event::FILE_LABELS, input_html: { style: 'width: 330px;', class: 'custom-input' }, label_html: {style: 'background-color: #4A4949'} %>
       <%= f.input :files, as: :file, label: false, input_html: { style: 'width: 330px;', class: 'custom-input' } %>
-      <%= f.submit 'Upload File', class: "primary-button", style: 'margin-top: 57px;' %>
+      <%= f.submit 'Upload File', class: "primary-button", style: 'margin-top: 12px;' %>
     <% end %>
   </div>
 </div>
