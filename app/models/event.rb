@@ -9,7 +9,21 @@ class Event < ApplicationRecord
   has_many_attached :files
 
   validates :event_type, inclusion: { in: EVENT_TYPES }
+  with_options if: :journey? || :restaurant? || :visit? || :show? || :other? do
+    validates :name, presence: true
+  end
+  validates :start_location, presence: true
+  with_options if: :journey? ||	:flight? ||	:train? || :bus? ||	:boat? ||	:rental? do
+    validates :end_location, presence: true
+  end
   validates :start_date, presence: true
+  with_options unless: :restaurant? || :visit? || :show? do
+    validates :end_date, presence: true
+    validates :end_date, comparison: { greater_than_or_equal_to: :start_date }
+  end
+  validates :provider, presence: true, if: :show?
+
+
   # MISSING: FIX VALIDATIONS - MOST EVENTS NEED START AND END DATES, AND START AND END LOCATIONS TO WORK
   # validates :end_date, presence: true, if: :journey? || :flight? || :train? || :bus? || :boat? || :stay?
   validates :name, presence: true, if: :other?
@@ -17,6 +31,24 @@ class Event < ApplicationRecord
   # with_options if: :flight? do
   #   validates :
   # end
+  def self.emoji_for(event_type)
+    case event_type
+    when "journey" then "🙈"
+    when "flight" then "😳"
+    when "train" then "😇"
+    when "bus" then "😗"
+    when "boat" then "🥰"
+    when "rental" then "🙈"
+    when "stay" then "🙈"
+    when "restaurant" then "🙈"
+    when "show" then "🙈"
+    when "visit" then "🙈"
+    when "other" then "🙈"
+    else
+      "💕"
+    end
+  end
+
   def journey?
     event_type == "journey"
   end

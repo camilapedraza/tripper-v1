@@ -1,6 +1,6 @@
-<%= simple_form_for(@event) do |f| %>
+<%= simple_form_for([@trip, @event]) do |f| %>
   <%# fake form input — not an actual paramater, just captures intended label for uploaded file %>
   <%= f.input :file_label, as: :fake_select, collection: Event::FILE_LABELS %>
   <%= f.input :files, as: :file %>
-  <%= f.submit 'Upload File'  %>
+  <%= f.submit 'Upload File', class: "primary-button" %>
 <% end %>
