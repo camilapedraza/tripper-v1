@@ -38,7 +38,7 @@
       when "journey", "flight", "train", "bus", "boat" %>
       <%# MISSING: TRANSPORT NUMBER (flight number, train number, etc.), RESERVATION NUMBER & PROVIDER INFO (airline, train company, etc.) %>
         <%# SHOWS PARTIAL WITH START & END DATETIMES %>
-        <%= render "event_time_span", event: @event %>
+        <%= render "events/event_time_span", event: @event %>
         <div class="journey-container">
           <div class="journey-overview">
             <% if @event.event_type == "journey" %>
@@ -91,11 +91,11 @@
               </svg>
             <% end %>
             <%# SHOWS PARTIAL WITH START & END LOCATION CITIES %>
-            <%= render "event_space_span", event: @event %>
+            <%= render "events/event_space_span", event: @event %>
           </div>
           <% if @event.seat_number %>
             <%# SHOWS PARTIAL WITH SEAT OR CABIN NUMBER %>
-            <%= render "event_seat_number", event: @event %>
+            <%= render "events/event_seat_number", event: @event %>
           <% end %>
         </div>
 
@@ -287,7 +287,7 @@
   </div>
   <div class="left-align">
     <% if @event.notes.present? %>
-      <%= render "event_notes", event: @event %>
+      <%= render "events/event_notes", event: @event %>
     <% end %>
   </div>
 
