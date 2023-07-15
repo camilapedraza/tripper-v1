@@ -297,7 +297,7 @@
   <div class="documents">
     <div class="document left-align">
         <% @event.files.each do |file| %>
-          <a href="<%= view_file_path(@trip, @event, file.id) %>" class="secondary-pill-button document"><%= file.filename.base.upcase %></a>
+          <a href="<%= view_file_path(@trip, @event, file.id) %>" class="secondary-pill-button-doc document"><%= file.filename.base.upcase %></a>
         <% end %>
         <%= link_to "ADD DOC", "#", class: "primary-pill-button document add-doc-link", style: "margin-left: 2px", id: "add-doc-link" %>
       </div>
