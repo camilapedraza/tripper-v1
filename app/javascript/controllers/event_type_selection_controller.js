@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["type"]
+  static targets = ['typeTitle']
   static values= {
     startType: String
   }
@@ -11,7 +11,9 @@ export default class extends Controller {
   }
 
   change(e) {
-    const selectedValue = e.srcElement.value.toLowerCase()
+    const selectedValue = e.params.type
+    e.target.closest('fieldset').classList.add('d-none')
+    this.typeTitleTarget.innerText = selectedValue.charAt(0).toUpperCase() + selectedValue.slice(1)
     document.querySelectorAll(".input-wrapper").forEach(element => {
       element.classList.add("d-none")
     })
