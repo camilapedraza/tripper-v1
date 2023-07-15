@@ -68,12 +68,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_14_230945) do
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "provider_address"
-    t.string "transport_number"
     t.float "start_latitude"
     t.float "start_longitude"
     t.float "end_latitude"
     t.float "end_longitude"
+    t.string "provider_address"
+    t.string "transport_number"
     t.index ["trip_id"], name: "index_events_on_trip_id"
   end
 
