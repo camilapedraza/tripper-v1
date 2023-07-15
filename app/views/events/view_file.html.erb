@@ -6,7 +6,8 @@
   </div>
   <div class="delete-button mt-5">
     <%# MISSING - MAKE DELETE LINK WORK!  %>
-      <i class="fa-regular fa-trash-can fa-2xl" style="color: #7f7eff;"></i>
-    <%# end %>
+    <%= link_to event_detach_file_path(@event, @file), data: { turbo_method: :delete } do %>
+        <i class="fa-regular fa-trash-can fa-2xl" style="color: #7f7eff;"></i>
+    <% end %>
   </div>
 </div>
