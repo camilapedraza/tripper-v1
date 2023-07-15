@@ -10,7 +10,6 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @trippers = group_trippers(@trip)
     @chron_events = @trip.events.order(start_date: :asc)
-    @back_url = trips_path
   end
 
 

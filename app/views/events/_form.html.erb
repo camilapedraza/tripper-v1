@@ -1,33 +1,33 @@
 <div class="container" data-controller="event-type-selection">
   <%= simple_form_for [@trip, @event] do |f| %>
-    <%= f.input :event_type, label: 'What type of event?', collection: Event::EVENT_TYPES, input_html:{data: { event_type_selection_target: "type", action: "change->event-type-selection#change"}}, id:"selector", prompt: "Pick one" %>
+    <%= f.input :event_type, collection: Event::EVENT_TYPES, input_html:{data: { event_type_selection_target: "type", action: "change->event-type-selection#change"}}, id:"selector" %>
     <div id="name-input" class="d-none">
       <%= f.input :name, label_html: { id: "name-label" }  %>
-    </div>
-    <div class="row d-none" id="location-input">
-      <div class="col">
-        <div style="z-index: 2000">
-          <%= f.input :start_location,
-                      input_html: {data: {start_location_autocomplete_target: "start_location"}, class: "d-none"},
-                      label_html: { id: "start-location-label" },
-                      wrapper_html: {data: {controller: "start-location-autocomplete", start_location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
-        </div>
-        <%= f.input :end_location,
-                    input_html: {data: {end_location_autocomplete_target: "end_location"}, class: "d-none display-below" },
-                    label_html: { id: "end-location-label" },
-                    wrapper_html: {data: {controller: "end-location-autocomplete", end_location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
-      </div>
     </div>
     <div class="row d-none" id="date-input">
       <div class="col">
         <%= f.input :start_date, as: :string,
                     wrapper_html: { class: "mb-4" },
-                    label_html: { class: "form-label", id: "start-date-label" },
+                    label_html: { class: "form-label text-secondary fw-bold", id: "start-date-label" },
                     input_html: { data: { controller: "flatpickr" } } %>
         <%= f.input :end_date, as: :string,
                     wrapper_html: { class: "mb-4" },
-                    label_html: { class: "form-label", id: "end-date-label" },
+                    label_html: { class: "form-label text-secondary fw-bold", id: "end-date-label" },
                     input_html: { data: { controller: "flatpickr" } } %>
+      </div>
+    </div>
+    <div class="row d-none" id="location-input">
+      <div class="col">
+        <%= f.input :start_location,
+                    input_html: {data: {start_location_autocomplete_target: "start_location"}, class: "d-none"},
+                    label_html: { id: "start-location-label" },
+                    wrapper_html: {data: {controller: "start-location-autocomplete", start_location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
+      </div>
+      <div class="col">
+        <%= f.input :end_location,
+                    input_html: {data: {end_location_autocomplete_target: "end_location"}, class: "d-none" },
+                    label_html: { id: "start-location-label" },
+                    wrapper_html: {data: {controller: "end-location-autocomplete", end_location_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
       </div>
     </div>
     <div id="provider-input" class="d-none">
@@ -47,16 +47,10 @@
       <%= f.input :seat_number, label_html: { id: "seat-nr-label" } %>
     </div>
     <div id="notes-input" class="d-none">
-      <%= f.input :notes, as: :text %>
+      <%= f.input :notes %>
     </div>
     <div id="submit-input" class="d-none">
-      <%= f.submit class: "primary-button" %>
+      <%= f.submit %>
     </div>
   <% end %>
-
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
 </div>

@@ -12,14 +12,12 @@ Rails.application.routes.draw do
   get '/components', to: 'pages#components'
   get '/uikitt', to: 'pages#uikitt'
   get '/eventstype', to: 'pages#eventstype'
-  get '/trips/:trip_id/events/:id/add_file', to: 'events#add_file', as: 'add_file'
-  get '/trips/:trip_id/events/:id/view_file/:blob_id', to: 'events#view_file', as: 'view_file'
+  get '/trips/:id/events/:event_id/add_file', to: 'events#add_file', as: 'add_file'
 
   resources :trips, only: %i[index show new create edit update] do
     resources :events, only: %i[index show new create edit update destroy]
   end
 
-  resources :events, only: %i[update destroy]
   # MISSING: Delete trip
   # MISSING: Update event
   # MISSING: Delete event
