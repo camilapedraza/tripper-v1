@@ -12,7 +12,6 @@ class TripsController < ApplicationController
     @chron_events = @trip.events.order(start_date: :asc)
   end
 
-
   def new
     @trip = Trip.new
   end
