@@ -40,49 +40,50 @@
   </nav>
 </div>
 <div class="navbar-bottom" style="display:flex;flex-direction: row;align-items: center;justify-content: space-between;height: 68px;padding-right: 13px;">
-    <div class="navbar_trip" style="display: flex;justify-content: center;flex-direction: column;width: 49px;">
-      <%= link_to trips_path do %>
-        <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path id="Vector 8" d="M1 8.76923V22H8.36842V14.3077H14.2632V22H22V8.76923L11.3158 2L1 8.76923Z" stroke="#7F7EFF" stroke-width="2"></path>
-        </svg>
-      <% end %>
-        <p style="margin-bottom: 0px;display: flex;flex-wrap: nowrap;justify-content: center;font-size: 12px;">Trips</p>
-      </div>
-      <div class="navbar_event" style="display: flex;flex-direction: row;align-items: center;">
-        <div class="event-button" style="margin-right: 15px;">
-        <% @next_event = Event.where("start_date >= ?", Date.today).order("start_date ASC").limit(1).first %>
-          <p><%= @next_event.other? ? @next_event.name.upcase : @next_event.event_type.upcase %></p>
-        </div>
-        <div class="text-navbar_event" style="display: flex;align-items: flex-start;flex-direction: column;">
-          <h2 style="
-              color: white;
-              font-size: 16px;
-              font-family: Montserrat, sans-serif;
-              margin-bottom: 0px;
-              margin-top: 18px;
-            ">
-            <%= @next_event.format_start_time %>
-            </h2>
-          <p style="font-size: 9px;color: white;margin-bottom: 0px;"><%= @next_event.format_start_date %></p>
-          <p>
-          </p>
-        </div>
-      </div>
-      <div class="navbar_next link">
-        <%= link_to trip_event_path(@next_event.trip, @next_event) do %>
-          <div class="navbar_next link">
-            <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="Group 16">
-                <g id="Group 15">
-                <line id="Line 4" x1="9.89958" y1="21.5061" x2="20.5062" y2="10.8995" stroke="#7F7EFF" stroke-width="2"></line>
-                </g>
-                <g id="Group 14">
-                <line id="Line 5" x1="10.6068" y1="1.00005" x2="21.2134" y2="11.6067" stroke="#7F7EFF" stroke-width="2"></line>
-                </g>
-              </g>
-              </svg>
-              <p style="display: flex;font-weight: light;margin-bottom: 0px;font-size: 12px;align-items: center;flex-direction: row;justify-content: center;">Next event</p>
-          </div>
-        <% end %>
-        </div>
+  <div class="navbar_trip" style="display: flex;justify-content: center;flex-direction: column;width: 49px;">
+    <%= link_to trips_path do %>
+      <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path id="Vector 8" d="M1 8.76923V22H8.36842V14.3077H14.2632V22H22V8.76923L11.3158 2L1 8.76923Z" stroke="#7F7EFF" stroke-width="2"></path>
+      </svg>
+    <% end %>
+      <p style="margin-bottom: 0px;display: flex;flex-wrap: nowrap;justify-content: center;font-size: 12px;">Trips</p>
   </div>
+  <% @next_event = Event.where("start_date >= ?", Date.today).order("start_date ASC").limit(1).first %>
+  <% if @next_event %>
+    <div class="navbar_event" style="display: flex;flex-direction: row;align-items: center;">
+      <div class="event-button" style="margin-right: 15px;">
+        <p><%= @next_event.other? ? @next_event.name.upcase : @next_event.event_type.upcase %></p>
+      </div>
+      <div class="text-navbar_event" style="display: flex;align-items: flex-start;flex-direction: column;">
+        <h2 style="
+            color: white;
+            font-size: 16px;
+            font-family: Montserrat, sans-serif;
+            margin-bottom: 0px;
+            margin-top: 18px;
+          ">
+          <%= @next_event.format_start_time %>
+          </h2>
+        <p style="font-size: 9px;color: white;margin-bottom: 0px;"><%= @next_event.format_start_date %></p>
+        <p></p>
+      </div>
+    </div>
+    <div class="navbar_next link">
+      <%= link_to trip_event_path(@next_event.trip, @next_event) do %>
+        <div class="navbar_next link">
+          <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="Group 16">
+              <g id="Group 15">
+                <line id="Line 4" x1="9.89958" y1="21.5061" x2="20.5062" y2="10.8995" stroke="#7F7EFF" stroke-width="2"></line>
+              </g>
+              <g id="Group 14">
+                <line id="Line 5" x1="10.6068" y1="1.00005" x2="21.2134" y2="11.6067" stroke="#7F7EFF" stroke-width="2"></line>
+              </g>
+            </g>
+          </svg>
+          <p style="display: flex;font-weight: light;margin-bottom: 0px;font-size: 12px;align-items: center;flex-direction: row;justify-content: center;">Next event</p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
